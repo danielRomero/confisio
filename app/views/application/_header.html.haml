@@ -1,0 +1,28 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      =link_to root_path, class: 'navbar-brand' do
+        <img alt="Brand" src="...">
+        Confisio
+    #navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.active
+          %a{:href => "#"} Promociones
+        %li
+          %a{:href => "#about"} Patologías
+        %li
+          %a{:href => "#contact"} Contacto
+      %ul.nav.navbar-nav.pull-right
+        -if signed_in?
+          %li
+            =link_to current_user.name, user_path(current_user)
+          %li
+            =link_to 'Salir', logout_path, method: :delete
+        -else
+          %li
+            =link_to 'Iniciar Sesión', login_path

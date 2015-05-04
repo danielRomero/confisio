@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-md-12
+      .error-template.text-center{style: 'padding: 40px 15px;text-align: center;'}
+        %h1
+          Oops!
+        %h2
+          =@title
+        .error-details
+          ="Lo sentimos, ha ocurrido un error, #{@message}."
+        .error-actions{style: 'margin-top:15px;margin-bottom:15px;'}
+          =link_to(root_path) do
+            .btn.btn-primary.btn-lg
+              %span.fa.fa-home
+              Volver a inicio
