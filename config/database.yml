@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: confisio_production
-  username: confisio
+  database: <%= ENV['CONFISIO_DATABASE_NAME'] %>
+  username: <%= ENV['CONFISIO_DATABASE_USERNAME'] %>
   password: <%= ENV['CONFISIO_DATABASE_PASSWORD'] %>

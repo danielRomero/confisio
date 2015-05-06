@@ -14,3 +14,4 @@
 dominio-goDaddy
 .env
 EC2Confisio.pem
+ec2Credentials

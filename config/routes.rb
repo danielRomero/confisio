@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   
   resources :posts
+  resources :release_suscriptions
 
   get    'control' => 'controls#index'
   get    'login'   => 'sessions#new'

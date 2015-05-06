@@ -1,0 +1,25 @@
+!!!
+%html.confisio
+  %head
+    %title Confisio
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %section.container#application_content
+      #application_flashes
+        =render partial: 'application/flashes'
+      %h1
+        Confisio, clínica de fisioterapia
+      %p
+        Estamos a punto de abrir nuestra clínica en Calle Falsa 123 y estrenar esta web
+      %h5
+        Suscríbete ahora y recibe promociones exclusivas con motivo de la apertura
+      =form_for ReleaseSuscription.new do |f|
+        .row
+          .col-xs-12.col-sm-6.col-md-4.col-lg-4
+            =f.label :email
+            .input-group
+              =f.email_field :email, class: 'form-control'
+              %span.input-group-btn
+                =f.submit 'Enviar', class: 'btn btn-primary'
