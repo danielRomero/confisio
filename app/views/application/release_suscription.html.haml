@@ -10,9 +10,12 @@
       #application_flashes
         =render partial: 'application/flashes'
       %h1
-        Confisio, clínica de fisioterapia
+        Confisio, tu clínica de fisioterapia en Madrid
       %p
-        Estamos a punto de abrir nuestra clínica en Calle Falsa 123 y estrenar esta web
+        Estamos a punto de abrir nuestra clínica en Avenida Badajoz N° 3, Local 4, 28027 Madrid y estrenar esta web.
+      .row
+        .col-xs-12.col-sm-6.col-md-6.col-lg-6
+          %iframe{width: "100%", height: "350", frameborder: "0", style: "border:0", src: "https://www.google.com/maps/embed/v1/place?q=Avenida%20de%20Badajoz%20N%C2%B0%203%2028027%20Madrid&key=AIzaSyDzUZZ3jTlkuTkC_oMBil_0D8528fTxICc"}
       %h5
         Suscríbete ahora y recibe promociones exclusivas con motivo de la apertura
       =form_for ReleaseSuscription.new do |f|
