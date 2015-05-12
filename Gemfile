@@ -8,6 +8,8 @@ gem 'pg'
 
 gem 'responders', '~> 2.0'
 
+gem 'acts-as-taggable-on'
+
 gem 'haml-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

@@ -1,0 +1,17 @@
+=render partial: 'application/contact_address'
+%h5{style: 'margin-top: 35px;'}
+  Compartir
+%p
+  .fa.fa-twitter
+  .fa.fa-google-plus
+  .fa.fa-linkedin
+  .fa.fa-facebook
+%h5
+  Etiquetas:
+%p
+  =current_post.tag_list
+
+%h5
+  Relacionados
+-posts.each do |post|
+  =render partial: 'posts/right_column/show', locals: { post: post }

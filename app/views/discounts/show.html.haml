@@ -1,0 +1,12 @@
+.jumbotron
+  .container
+    %h1= "#{@discount.quantity} #{@discount.discount_type}"
+    %p
+      %b=@discount.title
+    %p= @discount.description.html_safe
+    Código:
+    =@discount.code
+
+-if admin?
+  = link_to 'Editar', edit_discount_path(@discount), class: 'btn btn-default'
+= link_to 'Todos los descuentos', discounts_path, class: 'btn btn-default pull-right'

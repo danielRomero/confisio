@@ -5,27 +5,32 @@
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :surname
-    = f.text_field :surname
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :phone
-    = f.text_field :phone
-  .field
-    = f.label :gender
-    = f.text_field :gender
-  .field
-    = f.label :password
-    = f.text_field :password
-  .field
-    = f.label :password_confirmation
-    = f.text_field :password_confirmation
-  .actions
-    = f.submit 'Save'
+  .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4.col-lg-4.col-lg-offset-4
+    .form-group
+      = f.label :name, 'Nombre'
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :surname, 'Apellidos'
+      = f.text_field :surname, class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.text_field :email, class: 'form-control'
+    .form-group
+      = f.label :phone, 'Teléfono'
+      = f.text_field :phone, class: 'form-control'
+    .form-group
+      = f.label :gender, 'Género'
+      %br
+      = f.label :gender, 'Hombre', :value => 'Hombre'
+      = f.radio_button :gender, 'Hombre', :checked => @user.gender == 'Hombre'
+      %span{style: 'padding: 0 10px;'}
+      = f.label :gender, 'Mujer', :value => 'Mujer'
+      = f.radio_button :gender, 'Mujer', :checked => @user.gender == 'Mujer'
+    .form-group
+      = f.label :password, 'Contraseña'
+      = f.text_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation, 'Repetir contraseña'
+      = f.text_field :password_confirmation, class: 'form-control'
+    .actions
+      = f.submit 'Guardar', class: 'btn btn-primary'

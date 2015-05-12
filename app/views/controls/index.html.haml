@@ -1,2 +1,16 @@
-=link_to 'Usuarios', users_path
-=link_to 'Posts', posts_path
+=link_to users_path, class: 'btn btn-primary' do
+  Usuarios
+  %span.badge=User.count
+
+=link_to posts_path, class: 'btn btn-primary' do
+  Entradas Blog
+  %span.badge=Post.count
+
+=link_to discounts_path, class: 'btn btn-primary' do
+  Descuentos
+  %span.badge=Discount.count
+
+=link_to '#', class: 'btn btn-primary' do
+  Calendario
+  %span.badge
+    .fa.fa-calendar

@@ -1,0 +1,13 @@
+.page-header
+  %h1
+    Confisio
+    %small Fisioterapia
+.row
+  .col-xs-12.col-sm-6.col-md-6.col-lg-6
+    =render partial: 'application/contact_address'
+    =render partial: 'application/quotes'
+
+  .col-xs-12.col-sm-6.col-md-6.col-lg-6
+    .embed-responsive.embed-responsive-16by9
+      %iframe.embed-responsive-item{frameborder: "0", style: "border:0", src: "https://www.google.com/maps/embed/v1/place?q=Avenida%20de%20Badajoz%20N%C2%B0%203%2028027%20Madrid&key=AIzaSyDzUZZ3jTlkuTkC_oMBil_0D8528fTxICc"}
+%hr

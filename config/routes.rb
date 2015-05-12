@@ -10,12 +10,17 @@ Rails.application.routes.draw do
   end
   
   resources :posts
+
+  resources :discounts
+  
   resources :release_suscriptions
 
   get    'control' => 'controls#index'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+  get    'about'   => 'pages#about'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

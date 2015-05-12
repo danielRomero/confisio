@@ -1,0 +1,27 @@
+= form_for @discount do |f|
+  - if @discount.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@discount.errors.count, "error")} prohibited this discount from being saved:"
+      %ul
+        - @discount.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :code, 'Código promocional'
+    %small Se ha generado un código pero puedes elegir el que quieras
+    = f.text_field :code, value: Discount.generate_promotional_code, class: 'form-control'
+  .form-group
+    = f.label :title, 'Título'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :description, 'Descripción'
+    = f.cktext_area :description, :cols => 40, :ckeditor => {:toolbar => 'mini', :language => 'es'}
+  .form-group
+    = f.label :discount_type, 'Tipo'
+    = f.select :discount_type, options_for_select(Discount::TYPES), class: 'form-control'
+  .form-group
+    = f.label :quantity, 'Cantidad'
+    %small Porcentaje o precio
+    = f.text_field :quantity, class: 'form-control'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-primary'

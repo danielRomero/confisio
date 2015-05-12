@@ -1,24 +1,25 @@
 %p#notice= notice
 
 %p
-  %b Name:
+  %b Nombre:
   = @user.name
 %p
-  %b Surname:
+  %b Apellidos:
   = @user.surname
 %p
   %b Email:
   = @user.email
 %p
-  %b Phone:
+  %b Teléfono:
   = @user.phone
 %p
-  %b Gender:
+  %b Género:
   = @user.gender
-%p
-  %b Remember token:
-  = @user.remember_token
 
-= link_to 'Edit', edit_user_path(@user)
+= link_to users_path do
+  .fa.fa-reply
+  Volver
 \|
-= link_to 'Back', users_path
+= link_to edit_user_path(@user) do
+  .fa.fa-pencil
+  Editar

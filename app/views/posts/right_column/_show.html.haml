@@ -1,0 +1,5 @@
+=link_to post do
+  -if post.primary_image
+    =image_tag(post.primary_image, alt: post.title, class: 'img-responsive')
+  %h5=post.title
+%hr

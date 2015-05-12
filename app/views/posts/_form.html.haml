@@ -6,19 +6,33 @@
         - @post.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :body
-    = f.text_area :body
+  .form-group
+    = f.label :title, 'Título'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :tag_list, 'Tags'
+    %small
+      Escribe la etiqueta y pulsa 'intro'.
+    %br
+    = f.hidden_field :tag_list, placeholder: 'Tags', class: 'input_post_tag_tex_field_hidden'
+    = text_field_tag :tag_manager_list, nil, placeholder: 'Tags', class: 'input_post_tag_tex_field tm-input tm-input-success'
+    :javascript
+      jQuery(".input_post_tag_tex_field").tagsManager({
+        prefilled: #{@post.tags.pluck(:name)},
+        CapitalizeFirstLetter: false,
+        replace: false,
+        output: '.input_post_tag_tex_field_hidden'
+      });
+      
+  .form-group
+    = f.label :primary_image, 'Imagen portada (URL)'
+    %small
+      Si no pones ninguna se escogerá la primera incluida en el contenido del post
+    = f.text_field :primary_image, class: 'form-control'
 
-  = f.cktext_area :body, :class => 'someclass', :ckeditor => {:language => 'es'}
+  .form-group
+    = f.label :body, 'Contenido'
+    = f.cktext_area :body, :cols => 40, :ckeditor => {:toolbar => 'mini', :language => 'es'}
   
-  = f.cktext_area :body, :value => 'Default value', :id => 'sometext'
-  
-  = cktext_area :body, :info, :cols => 40, :ckeditor => {:uiColor => '#AADC6E', :toolbar => 'mini'}
-  
-  .actions
-    = f.submit 'Save'
+  = f.submit 'Guardar', class: 'btn btn-primary pull-right'
   

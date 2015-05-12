@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   
+  skip_before_filter :login_required
+
   def create
     if params[:session] and params[:session][:email] and params[:session][:password]
       if user = User.find_by(email: params[:session][:email])

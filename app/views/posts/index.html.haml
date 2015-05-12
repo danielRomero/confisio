@@ -1,23 +1,22 @@
-%h1 Listing posts
+%h1 Todas las Entradas
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th Body
-      %th
-      %th
-      %th
-
-  %tbody
-    - @posts.each do |post|
-      %tr
-        %td= post.title
-        %td= post.body
-        %td= link_to 'Show', post
-        %td= link_to 'Edit', edit_post_path(post)
-        %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Post', new_post_path
+- @posts.each_with_index do |post, index|
+  .media
+    .media-left
+      =link_to(post) do
+        =image_tag(post.primary_image, alt: post.title, class: 'media-object img-responsive', style: 'max-height: 64px; min-width: 64px;')
+    .media-body
+      %h4.media-heading
+        =link_to(post.title, post)
+      %p
+        =post.body[0..150].html_safe + '...'
+        %span
+          =link_to('ver más', post)
+          
+      -if admin?
+        = link_to 'Editar', edit_post_path(post), class: 'btn btn-default'
+        = link_to post, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger' do
+          .fa.fa-trash
+-if admin?
+  %br
+  = link_to 'Nueva entrada', new_post_path, class: 'btn btn-primary pull-right'

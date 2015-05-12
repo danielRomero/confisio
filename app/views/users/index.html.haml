@@ -1,31 +1,37 @@
-%h1 Listing users
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Surname
-      %th Email
-      %th Phone
-      %th Gender
-      %th Remember token
-      %th
-      %th
-      %th
-
-  %tbody
-    - @users.each do |user|
+%h1 Todos los usuarios
+.table-responsive
+  %table.table.table-striped.table-hover.table-condensed
+    %thead
       %tr
-        %td= user.name
-        %td= user.surname
-        %td= user.email
-        %td= user.phone
-        %td= user.gender
-        %td= user.remember_token
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Fecha registro
+        %th Nombre
+        %th Apellidos
+        %th Email
+        %th Teléfono
+        %th Género
+        %th
+        %th
+        %th
+
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.created_at
+          %td= user.name
+          %td= user.surname
+          %td= user.email
+          %td= user.phone
+          %td= user.gender
+          %td= link_to 'Ver', user
+          %td
+            = link_to edit_user_path(user) do
+              .fa.fa-pencil
+              Editar
+          %td
+            = link_to user, :method => :delete, :data => { :confirm => '¿Estás seguro?' } do
+              .fa.fa-trash
+              Borrar
 
 %br
 
-= link_to 'New User', new_user_path
+= link_to 'Nuevo Usuario', new_user_path, class: 'btn btn-primary pull-right'

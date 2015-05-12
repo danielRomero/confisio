@@ -25,7 +25,18 @@ html.confisio {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     section#application_content.container{
-      padding-top: 60px;
+      padding: 60px 0;
+      #carousel-example-generic{
+        .carousel-inner{
+          .carousel_image_holder{
+            overflow: hidden;
+            img{
+              width: 100%;
+              max-height: 350px;
+            }
+          }
+        }
+      }
     }
     footer.footer{
       position: absolute;

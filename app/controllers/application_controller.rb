@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  before_filter :login_required, except: [:index]
+
   before_action do |controller|
     if ENV["RELEASE_MODE"] == "ON"
       if ( params[:action] == 'create' and params[:controller] == 'release_suscriptions' )
@@ -92,6 +94,7 @@ class ApplicationController < ActionController::Base
       if signed_in?
         return true
       else
+        apply_flash(type='warning', message='No tienes permisos para acceder a esta sección')
         redirect_to root_path
       end
     end

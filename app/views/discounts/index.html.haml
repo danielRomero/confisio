@@ -1,0 +1,23 @@
+%h1 Todos los descuentos
+
+.table-responsive
+  %table.table.table-striped.table-hover
+    %tbody
+      - @discounts.each do |discount|
+        %tr
+          %th{scope: 'row'}= "#{discount.quantity} #{discount.discount_type}"
+          %td= discount.title
+          %td= discount.code
+          %td= link_to 'Ver', discount, class: 'btn btn-primary btn-sm'
+          -if admin?
+            %td
+              = link_to edit_discount_path(discount), class: 'btn btn-primary btn-sm' do
+                .fa.fa-pencil
+                Editar
+            %td
+              = link_to discount, :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: 'btn btn-danger btn-sm' do
+                .fa.fa-trash
+                Borrar
+-if admin?
+  %br
+  = link_to 'Nuevo Descuento', new_discount_path
