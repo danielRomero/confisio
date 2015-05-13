@@ -10,7 +10,7 @@
         =image_tag('nombre-logo.png', alt: APP_NAME, class: 'img-responsive', style: 'width: 90px')
     #navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li
+        %li{class: (params[:controller] == 'discounts') ? 'active' : nil}
           =link_to 'Promociones', discounts_path
         %li{class: (params[:controller] == 'posts') ? 'active' : nil}
           =link_to 'Patologías', posts_path

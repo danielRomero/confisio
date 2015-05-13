@@ -2,6 +2,7 @@
 %html.confisio
   %head
     %title Confisio
+    =render partial: 'application/favicon'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     %link{ rel:'stylesheet', href: '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' }
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -9,11 +10,12 @@
   %body
     =render partial: 'application/header'
     %section.container#application_content
-      #application_flashes
-        =render partial: 'application/flashes'
-      .raw
-        .col-xs-12.col-sm-6.col-md-6.col-lg-10
-          = yield
-        .hidden-xs.col-sm-6.col-md-6.col-lg-2
-          = yield(:right_colum)
+      .container
+        #application_flashes
+          =render partial: 'application/flashes'
+        .raw
+          .col-xs-12.col-sm-6.col-md-6.col-lg-10
+            = yield
+          .hidden-xs.col-sm-6.col-md-6.col-lg-2
+            = yield(:right_colum)
     =render partial: 'application/footer'
