@@ -1,0 +1,38 @@
+.col-xs-12.col-sm-6.col-sm-offset-3.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
+  = form_for @setting do |f|
+    - if @setting.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@setting.errors.count, "error")} prohibited this setting from being saved:"
+        %ul
+          - @setting.errors.full_messages.each do |msg|
+            %li= msg
+
+    .form-group
+      = f.label :landing_quotes, 'Frases landing'
+      =render partial: 'settings/form_landing_quote', locals: { value: nil }
+      -@setting.landing_quotes.each do |landing_quote|
+        =render partial: 'settings/form_landing_quote', locals: { value: landing_quote }
+
+    .form-group
+      = f.label :landing_images, 'Fotos landing'
+      =render partial: 'settings/form_landing_image', locals: { value: nil }
+      -@setting.landing_images.each do |landing_image|
+        =render partial: 'settings/form_landing_image', locals: { value: landing_image }
+
+    .form-group
+      = f.label :phone, 'Teléfono'
+      = f.text_field :phone, class: 'form-control'
+    .form-group
+      = f.label :mobile_phone, 'Teléfono móvil'
+      = f.text_field :mobile_phone, class: 'form-control'
+    .form-group
+      = f.label :address_street, 'Dirección'
+      = f.text_field :address_street, class: 'form-control'
+    .form-group
+      = f.label :address_cp, 'Código postal'
+      = f.number_field :address_cp, class: 'form-control'
+    .form-group
+      = f.label :primary_email, 'Email'
+      = f.text_field :primary_email, class: 'form-control'
+    .actions
+      = f.submit 'Guardar', class: 'btn btn-primary pull-right'

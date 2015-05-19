@@ -7,10 +7,12 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 RAILS_ENV = ENV["RAILS_ENV"]
-EMAIL = "confianzayfisioterapia@gmail.com"
-PHONE = "91 827 33 20"
-MOBILE_PHONE = "664 47 60 55"
+
 APP_NAME = "Confisio"
+
+APP_META_KEYWORDS = %w[fisioterapia madrid cefaleas tratamiento]
+APP_META_DESCRIPTION = ""
+
 module Confisio
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -29,6 +31,5 @@ module Confisio
     config.active_record.raise_in_transactional_callbacks = true
     
     config.time_zone = 'Madrid'
-    config.active_record.default_timezone = 'Madrid'
   end
 end

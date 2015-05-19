@@ -1,15 +1,15 @@
 %address
   %strong=APP_NAME
   %br/
-  Avenida de Badajoz Nº 3
+  =Setting.first.address_street
   %br/
-  Madrid, 28027
+  ="Madrid, #{Setting.first.address_cp}"
   %br/
   %abbr{:title => "Phone"} P:
-  =MOBILE_PHONE
+  =Setting.first.mobile_phone
   %abbr{:title => "Phone"} P:
-  =PHONE
+  =Setting.first.phone
 %address
   %strong Email
   %br/
-  %a{:href => "mailto:#{EMAIL}"}=EMAIL
+  %a{:href => "mailto:#{Setting.first.primary_email}"}=Setting.first.primary_email

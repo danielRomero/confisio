@@ -17,7 +17,8 @@ class Post < ActiveRecord::Base
 
 
   def related_posts
-    Post.tagged_with(self.tags, on: :tags).where.not(id: self.id).limit(8).by_create_date
+    self.find_related_tags.where.not(id: self.id).limit(8).by_create_date
+    # related_tags_for
   end
   
   private

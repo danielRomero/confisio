@@ -1,0 +1,8 @@
+.row{style: 'padding-bottom: 15px;'}
+  .col-lg-9
+    = text_field_tag 'setting[landing_images][]', value, class: 'form-control'
+  .col-lg-3
+    .btn.btn-sm.btn-default{ onclick: "$(this).closest('.row').remove()"}
+      .fa.fa-trash
+    .btn.btn-sm.btn-default{ onclick: "$(this).closest('.row').after( $(this).closest('.row').clone() )"}
+      .fa.fa-plus

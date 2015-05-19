@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  landing_quotes: MyText
+  landing_images: MyText
+  phone: MyString
+  mobile_phone: MyString
+  address_street: MyString
+  address_cp: 1
+  primary_email: MyString
+
+two:
+  landing_quotes: MyText
+  landing_images: MyText
+  phone: MyString
+  mobile_phone: MyString
+  address_street: MyString
+  address_cp: 1
+  primary_email: MyString

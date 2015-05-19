@@ -11,7 +11,9 @@ class Discount < ActiveRecord::Base
   TYPES = %w[€ % unidades]
 
   def self.generate_promotional_code
-    SecureRandom.urlsafe_base64(nil, false)
+    new_code = SecureRandom.urlsafe_base64(nil, false)
+    Discount.generate_promotional_code if Discount.find_by(code: new_code)
+    return new_code
   end
 
 

@@ -12,6 +12,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @title = @post.title
+    @description = Nokogiri::HTML(@post.body.to_s[0..200]).text
     render layout: 'columns'
   end
 

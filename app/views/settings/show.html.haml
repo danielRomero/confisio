@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Landing quotes:
+  = @setting.landing_quotes
+%p
+  %b Landing images:
+  = @setting.landing_images
+%p
+  %b Phone:
+  = @setting.phone
+%p
+  %b Mobile phone:
+  = @setting.mobile_phone
+%p
+  %b Address street:
+  = @setting.address_street
+%p
+  %b Address cp:
+  = @setting.address_cp
+%p
+  %b Primary email:
+  = @setting.primary_email
+
+= link_to 'Edit', edit_setting_path(@setting)
+\|
+= link_to 'Back', settings_path

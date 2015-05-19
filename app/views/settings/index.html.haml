@@ -1,0 +1,31 @@
+%h1 Listing settings
+
+%table
+  %thead
+    %tr
+      %th Landing quotes
+      %th Landing images
+      %th Phone
+      %th Mobile phone
+      %th Address street
+      %th Address cp
+      %th Primary email
+      %th
+      %th
+      %th
+
+  %tbody
+    - @settings.each do |setting|
+      %tr
+        %td= setting.landing_quotes
+        %td= setting.landing_images
+        %td= setting.phone
+        %td= setting.mobile_phone
+        %td= setting.address_street
+        %td= setting.address_cp
+        %td= setting.primary_email
+        %td= link_to 'Show', setting
+        %td= link_to 'Edit', edit_setting_path(setting)
+        %td= link_to 'Destroy', setting, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
+
+%br
