@@ -34,5 +34,11 @@
     .form-group
       = f.label :primary_email, 'Email'
       = f.text_field :primary_email, class: 'form-control'
+    .form-group
+      = f.label :psychology_base_price, 'Precio base Psicología'
+      = f.number_field :psychology_base_price, class: 'form-control', :step => 0.01
+    .form-group
+      = f.label :physiotherapy_base_price, 'Precio base Fisioterapia'
+      = f.number_field :physiotherapy_base_price, class: 'form-control', :step => 0.01
     .actions
       = f.submit 'Guardar', class: 'btn btn-primary pull-right'

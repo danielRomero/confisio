@@ -1,5 +1,8 @@
+.page-header
+  %h1
+    Precio por sesión
+    %small="#{Setting.first.physiotherapy_base_price}€"
 %h1 Todos los descuentos
-
 .table-responsive
   %table.table.table-striped.table-hover
     %tbody
@@ -7,7 +10,7 @@
         %tr
           %th{scope: 'row'}= "#{discount.quantity} #{discount.discount_type}"
           %td= discount.title
-          %td= discount.code
+          -#%td= discount.code
           %td= link_to 'Ver', discount, class: 'btn btn-primary btn-sm'
           -if admin?
             %td

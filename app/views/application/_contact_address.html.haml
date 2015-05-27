@@ -1,15 +1,14 @@
 %address
-  %strong=APP_NAME
-  %br/
   =Setting.first.address_street
   %br/
   ="Madrid, #{Setting.first.address_cp}"
   %br/
-  %abbr{:title => "Phone"} P:
+  .fa.fa-whatsapp
   =Setting.first.mobile_phone
-  %abbr{:title => "Phone"} P:
-  =Setting.first.phone
-%address
-  %strong Email
   %br/
+  .fa.fa-phone
+  =Setting.first.phone
+  %br/
+  .fa.fa-envelope-o
   %a{:href => "mailto:#{Setting.first.primary_email}"}=Setting.first.primary_email
+%hr

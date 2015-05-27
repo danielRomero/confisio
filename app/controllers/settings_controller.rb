@@ -69,6 +69,6 @@ class SettingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
-      params.require(:setting).permit( { landing_quotes: [] }, { landing_images: [] }, :phone, :mobile_phone, :address_street, :address_cp, :primary_email)
+      params.require(:setting).permit( { landing_quotes: [] }, { landing_images: [] }, :phone, :mobile_phone, :address_street, :address_cp, :primary_email, :physiotherapy_base_price, :psychology_base_price)
     end
 end

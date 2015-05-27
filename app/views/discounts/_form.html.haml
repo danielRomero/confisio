@@ -22,6 +22,6 @@
   .form-group
     = f.label :quantity, 'Cantidad'
     %small Porcentaje o precio
-    = f.text_field :quantity, class: 'form-control'
+    = f.number_field :quantity, class: 'form-control', :step => 0.01
   .actions
     = f.submit 'Guardar', class: 'btn btn-primary'

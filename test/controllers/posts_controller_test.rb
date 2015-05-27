@@ -44,6 +44,6 @@ class PostsControllerTest < ActionController::TestCase
       delete :destroy, id: @post
     end
 
-    assert_redirected_to posts_path
+    assert_redirected_to posts_by_category_path(category: @post.category.name)
   end
 end

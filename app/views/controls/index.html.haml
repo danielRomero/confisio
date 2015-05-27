@@ -2,8 +2,8 @@
   Usuarios
   %span.badge=User.count
 
-=link_to posts_path, class: 'btn btn-primary' do
-  Entradas Blog
+=link_to posts_by_category_path(category: 'Fisioterapia'), class: 'btn btn-primary' do
+  Entradas Blog Fisioterapia
   %span.badge=Post.count
 
 =link_to discounts_path, class: 'btn btn-primary' do

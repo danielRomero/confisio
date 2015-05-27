@@ -12,14 +12,19 @@
       %ul.nav.navbar-nav
         %li{class: (params[:controller] == 'discounts') ? 'active' : nil}
           =link_to 'Tarifas y promociones', discounts_path
-        %li{class: (params[:controller] == 'posts') ? 'active' : nil}
-          =link_to 'Psicología', posts_path
-        %li{class: (params[:controller] == 'posts') ? 'active' : nil}
-          =link_to 'Fisioterapia', posts_path
+        -if Post.from_category('Psicología').count > 0
+          %li{class: (params[:controller] == 'posts' and params[:category] == 'psicologia') ? 'active' : nil}
+            =link_to 'Psicología', posts_by_category_path('psicologia')
+        -if Post.from_category('Fisioterapia').count > 0
+          %li{class: (params[:controller] == 'posts' and params[:category] == 'fisioterapia') ? 'active' : nil}
+            =link_to 'Fisioterapia', posts_by_category_path('fisioterapia')
+
         %li{class: (params[:action] == 'about' and params[:controller] == 'pages') ? 'active' : nil}
           =link_to 'Contacto', about_path
-        %li{class: (params[:action] == 'about' and params[:controller] == 'pagessss') ? 'active' : nil}
+        
+        -#%li{class: (params[:action] == 'about' and params[:controller] == 'pagessss') ? 'active' : nil}
           =link_to 'Equipo', about_path
+
         -if admin?
           %li{class: (params[:controller] == 'controls') ? 'active' : nil}
             =link_to 'Panel Control', control_path

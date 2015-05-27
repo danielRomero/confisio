@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518191908) do
+ActiveRecord::Schema.define(version: 20150525212831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "discounts", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150518191908) do
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "primary_image"
+    t.integer  "category_id"
   end
 
   create_table "release_suscriptions", force: :cascade do |t|
@@ -43,15 +51,25 @@ ActiveRecord::Schema.define(version: 20150518191908) do
   end
 
   create_table "settings", force: :cascade do |t|
-    t.text     "landing_quotes", default: [],              array: true
-    t.text     "landing_images", default: [],              array: true
+    t.text     "landing_quotes",           default: [],                array: true
+    t.text     "landing_images",           default: [],                array: true
     t.string   "phone"
     t.string   "mobile_phone"
     t.string   "address_street"
     t.integer  "address_cp"
     t.string   "primary_email"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.float    "physiotherapy_base_price", default: 38.0
+    t.float    "psychology_base_price",    default: 38.0
+  end
+
+  create_table "subcategories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "taggings", force: :cascade do |t|

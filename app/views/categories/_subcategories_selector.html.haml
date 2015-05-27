@@ -1,0 +1,8 @@
+-if @category and !@category.subcategories.empty?
+  =#select_tag('post[subcategories_attributes]', option_tags = nil, options = {})
+  = label_tag :subcategories, 'Sub-sección'
+  %small puedes seleccionar varias opciones pulsando ctrl al hacer click
+  =select_tag 'post[subcategories_attributes][id][]', options_from_collection_for_select(@category.subcategories, "id", "name"), multiple: true, class: 'form-control'
+  = label_tag :subcategories, 'Nueva Sub-sección'
+  =text_field_tag 'post[subcategories_attributes][name][]', nil, class: 'form-control'
+  =#select_tag "people", options_from_collection_for_select(@people, "id", "name"), include_blank: true

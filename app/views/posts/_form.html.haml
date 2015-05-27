@@ -23,6 +23,22 @@
         replace: false,
         output: '.input_post_tag_tex_field_hidden'
       });
+  .form-group
+    = f.label :category_id, 'Sección'
+    = f.select(:category_id, Category.all.collect {|u| [u.name, u.id]}, {:prompt => 'Select', class: 'form-control'}, onchange: "$.getScript('/categories/'+ $(this).val() +'/subcategories_selector?post_id=#{@post.id}')")
+    #subcategories_selector
+      =render partial: 'categories/subcategories_selector', locals: { post: @post, category: @post.category }
+    -#
+      = f.label :sub_category, 'Sub sección'
+
+      = f.fields_for :subcategories, @post.subcategories do |sc|
+        = sc.text_field :name, class: 'form-control'
+
+      = f.fields_for :subcategories, @post.subcategories.new do |sc|
+        = sc.text_field :name, class: 'form-control'
+      -#=# f.fields_for :subcategories do |sc|
+        =# sc.text_field :name, class: 'form-control'
+        =# sc.select(:subcategory, [['Type A', 'Type A'],['Type B', 'Type B'],['Type C', 'Type C'],['Type D', 'Type D'],['Type E', 'Type E']],{ :prompt => "Please select"},{ :multiple => true, :size => 5 })
       
   .form-group
     = f.label :primary_image, 'Imagen portada (URL)'

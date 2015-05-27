@@ -6,7 +6,14 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.by_create_date
+    @category = case params[:category]
+      when 'psicologia'
+        'Psicología'
+      else
+        'Fisioterapia'
+      end
+
+    @posts = Post.from_category(@category).by_create_date
   end
 
   # GET /posts/1
@@ -74,6 +81,18 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :tag_list, :body, :primary_image)
+      params.require(:post).permit( :title, :tag_list, :body, :category_id, :primary_image )
+    end
+
+    def check_subcategories_attributes post
+
+      if params[:subcategories_attributes]
+        if params[:subcategories_attributes][:id]
+          
+        end
+        if params[:subcategories_attributes][:name]
+        end
+      end
+
     end
 end

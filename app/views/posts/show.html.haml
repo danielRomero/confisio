@@ -11,4 +11,4 @@
 
 -if admin?
   = link_to 'Editar', edit_post_path(@post), class: 'btn btn-default'
-= link_to 'Volver', posts_path, class: 'btn btn-default'
+= link_to 'Volver', posts_by_category_path(category: @post.category.name), class: 'btn btn-default'

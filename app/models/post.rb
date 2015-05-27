@@ -3,13 +3,20 @@ class Post < ActiveRecord::Base
   acts_as_taggable
 
   belongs_to :user
+  belongs_to :category
+  has_many :subcategories, through: :category
+
+  accepts_nested_attributes_for :category, :subcategories
 
   scope :by_create_date, -> { order(created_at: :desc) }
+
+  scope :from_category, ->(category_name) { includes(:category).where(categories: {name: category_name}) }
   
   before_validation(on: :create) do
-    # self.user = current_user
-    self.user_id = 1
+    self.user = current_user
   end
+
+  validates_presence_of :category_id
 
   before_save :check_primary_image
 

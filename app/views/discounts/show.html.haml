@@ -4,8 +4,8 @@
     %p
       %b=@discount.title
     %p= @discount.description.html_safe
-    Código:
-    =@discount.code
+    -#Código:
+    -#=@discount.code
 
 -if admin?
   = link_to 'Editar', edit_discount_path(@discount), class: 'btn btn-default'
