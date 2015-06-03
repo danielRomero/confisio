@@ -3,6 +3,6 @@
     = label_tag :subcategories, 'Sub-sección'
     %small puedes seleccionar varias opciones pulsando ctrl al hacer click
     =select_tag 'post[subcategories_attributes][id][]', options_from_collection_for_select(category.subcategories, "id", "name", post.subcategories.ids), multiple: true, class: 'form-control'
-  .col-xs-12.col-sm-4.col-md-4.col-lg-4
-    = label_tag :subcategories, 'Nueva Sub-sección'
-    =text_field_tag 'post[subcategories_attributes][name][]', nil, class: 'form-control'
+.col-xs-12.col-sm-4.col-md-4.col-lg-4
+  = label_tag :subcategories, 'Nueva Sub-sección'
+  =text_field_tag 'post[subcategories_attributes][name][]', nil, class: 'form-control'

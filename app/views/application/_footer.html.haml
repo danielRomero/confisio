@@ -1,6 +1,13 @@
 %footer.footer
   .container
-    -#%p.text-muted
+    %p.text-muted
+      ="® #{Date.today.year} #{APP_NAME} ·"
+      =link_to('Contacto', about_path)
+      -#=link_to('Privacidad', '')
+        ·
+        =link_to('Términos', '')
+      
+    -#
       .text-right
         .fa.fa-twitter
         -# https://about.twitter.com/resources/buttons#tweet
