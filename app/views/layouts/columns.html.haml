@@ -8,9 +8,9 @@
       .container
         #application_flashes
           =render partial: 'application/flashes'
-        .raw
-          .col-xs-12.col-sm-6.col-md-6.col-lg-10
+        .row
+          .col-xs-12.col-sm-8.col-md-8.col-lg-10
             = yield
-          .hidden-xs.col-sm-6.col-md-6.col-lg-2
+          .hidden-xs.col-sm-4.col-md-4.col-lg-2
             = yield(:right_colum)
     =render partial: 'application/footer'

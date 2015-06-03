@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525212831) do
+ActiveRecord::Schema.define(version: 20150602173250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20150525212831) do
     t.string   "primary_image"
     t.integer  "category_id"
   end
+
+  create_table "posts_subcategories", id: false, force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "subcategory_id"
+  end
+
+  add_index "posts_subcategories", ["post_id", "subcategory_id"], name: "index_posts_subcategories_on_post_id_and_subcategory_id", using: :btree
 
   create_table "release_suscriptions", force: :cascade do |t|
     t.string   "email"

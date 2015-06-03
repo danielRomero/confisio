@@ -40,6 +40,7 @@ class PostsController < ApplicationController
     #@post.body = post_params[:body].first
     respond_to do |format|
       if @post.save
+        clean_categories(@post)
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -54,6 +55,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        clean_categories(@post)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -74,6 +76,36 @@ class PostsController < ApplicationController
   end
 
   private
+    def clean_categories(post)
+      if params[:post] and params[:post][:subcategories_attributes]
+        subcategories = []
+        
+        if subcategories_ids = params[:post][:subcategories_attributes][:id]
+          # asigno esas subcategorías al post
+          for subcategory_id in subcategories_ids
+            if subcategory = Subcategory.find_by(id: subcategory_id)
+              subcategories << subcategory
+            end
+          end
+        end
+
+        if subcategories_names = params[:post][:subcategories_attributes][:name]
+          # creo subcategorias asociadas al post.category
+          for subcategories_name in subcategories_names
+            if !subcategories_name.blank?
+              subcategories << Subcategory.find_or_create_by(name: subcategories_name, category_id: post.category.id)
+            end
+          end
+        end
+
+        if !subcategories.empty?
+          post.subcategories = subcategories
+          post.save
+        end
+
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
@@ -82,17 +114,5 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit( :title, :tag_list, :body, :category_id, :primary_image )
-    end
-
-    def check_subcategories_attributes post
-
-      if params[:subcategories_attributes]
-        if params[:subcategories_attributes][:id]
-          
-        end
-        if params[:subcategories_attributes][:name]
-        end
-      end
-
     end
 end
