@@ -8,12 +8,21 @@ class PostsController < ApplicationController
   def index
     @category = case params[:category]
       when 'psicologia'
-        'Psicología'
+        'Psicología' # Al loro con el acento
       else
         'Fisioterapia'
       end
-
+    
     @posts = Post.from_category(@category).by_create_date
+
+    if params[:sucategory] and @subcategory = Subcategory.find_by(name_safe: params[:sucategory])
+      @posts = @posts.joins(:subcategories).where( subcategories: { id: @subcategory.id } )
+    end
+    
+    if params[:etiqueta]
+      @posts = @posts.tagged_with(params[:etiqueta])
+    end
+
   end
 
   # GET /posts/1
@@ -108,7 +117,11 @@ class PostsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      if params[:permalink]
+        @post = Post.find_by(permalink: params[:permalink])
+      else
+        @post = Post.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

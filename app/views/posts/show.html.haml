@@ -1,14 +1,19 @@
-%p#notice= notice
-
 -content_for :right_colum do
   =render partial: 'posts/right_column/index', locals: { posts: @post.related_posts, current_post: @post }
 .page-header
   %h1
     = @post.title
+  %small
+    -for subcategory in @post.subcategories
+      =link_to(subcategory.name, posts_by_category_path(category: @post.category.name.downcase, subcategory: subcategory.name_safe))
+    -if @post.subcategories and @post.tag_list
+      |
+    -for tag in @post.tag_list
+      =link_to(subcategory.name, posts_by_category_path(category: @post.category.name.downcase, etiqueta: tag))
 %br
 %p
   = @post.body.html_safe
 
 -if admin?
   = link_to 'Editar', edit_post_path(@post), class: 'btn btn-default'
-= link_to 'Volver', posts_by_category_path(category: @post.category.name), class: 'btn btn-default'
+= link_to 'Volver', posts_by_category_path(category: @post.category.name.downcase), class: 'btn btn-default'

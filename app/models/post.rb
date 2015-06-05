@@ -19,8 +19,10 @@ class Post < ActiveRecord::Base
   validates_presence_of :category_id
 
   before_save :check_primary_image
+  before_create :generate_permalink
 
   validates :user_id, presence: true
+  validates :title, presence: true
 
 
   def related_posts
@@ -52,5 +54,9 @@ class Post < ActiveRecord::Base
       end
 
       self.body = doc
+    end
+
+    def generate_permalink
+      self.permalink = URI.encode(self.title.gsub(' ','-'))
     end
 end

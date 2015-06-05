@@ -9,8 +9,10 @@
         #application_flashes
           =render partial: 'application/flashes'
         .row
-          .col-xs-12.col-sm-8.col-md-8.col-lg-10
+          -#.col-xs-12.col-sm-8.col-md-8.col-lg-10
+          .col-sm-8.blog-main
             = yield
-          .hidden-xs.col-sm-4.col-md-4.col-lg-2
+          -#.hidden-xs.col-sm-4.col-md-4.col-lg-2
+          .col-sm-3.col-sm-offset-1.blog-sidebar
             = yield(:right_colum)
     =render partial: 'application/footer'

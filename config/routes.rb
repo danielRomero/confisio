@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :settings
   
   resources :posts, except: [:index]
+  get '/blog/:category' => 'posts#index', as: 'posts_by_category', defaults: {category: 'fisioterapia'}
+  
+  get '/blog/:category/:permalink' => 'posts#show', as: 'posts_by_category_permalink', defaults: {category: 'fisioterapia'}
 
   resources :discounts, :path => 'descuentos'
   
@@ -26,8 +29,4 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get    'contacto'   => 'pages#about', as: 'about'
-
-  get '/blog/:category' => 'posts#index', as: 'posts_by_category', defaults: {category: 'fisioterapia'}
-
-  # get '/mypeople/discover/:s' => 'users#discover_people', :as => 'discover_mypeople', :constraints => { :s => /(linkedin|mail|facebook|all)/ }, :defaults => {:s => 'all'}
 end

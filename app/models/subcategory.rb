@@ -5,4 +5,11 @@ class Subcategory < ActiveRecord::Base
   has_many :posts, :through => :posts_subcategories
 
   validates :name, :category_id, presence: true
+
+  before_save :generate_permalink
+
+  private
+    def generate_permalink
+      self.name_safe = URI.encode(self.name.gsub(' ','-'))
+    end
 end
