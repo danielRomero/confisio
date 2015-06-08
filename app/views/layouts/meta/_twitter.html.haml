@@ -1,0 +1,12 @@
+%meta{:content => APP_NAME, :property => "twitter:site"}/
+%meta{:content => "13334762", :property => "twitter:site:id"}/
+%meta{:content => APP_NAME, :property => "twitter:creator"}/
+%meta{:content => "13334762", :property => "twitter:creator:id"}/
+%meta{:content => "summary_large_image", :property => "twitter:card"}/
+%meta{:content => @titulo ? "#{APP_NAME} · #{@titulo}" : APP_NAME, :property => "twitter:title"}/
+
+%meta{:content => @description ? @description : APP_META_DESCRIPTION, :property => "twitter:description"}/
+
+%meta{:content => "http://#{ENV['HOST']}/assets/favicon/logo-confisio_1200_1200.png", :property => "twitter:image:src"}/
+%meta{:content => "1200", :property => "twitter:image:width"}/
+%meta{:content => "1200", :property => "twitter:image:height"}/

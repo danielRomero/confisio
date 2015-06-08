@@ -7,4 +7,3 @@
     =render partial: 'application/contact_address'
     -Post.by_create_date.limit(5).each do |post|
       =render partial: 'posts/right_column/show', locals: { post: post }
-  
