@@ -57,6 +57,11 @@ class Post < ActiveRecord::Base
     end
 
     def generate_permalink
-      self.permalink = URI.encode(self.title.gsub(' ','-'))
+      loop do
+        times = nil
+        self.permalink = "#{self.title.parameterize}#{times}"
+        times += 1
+        break unless Post.find_by(permalink: self.permalink)
+      end
     end
 end
