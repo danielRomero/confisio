@@ -6,7 +6,7 @@
   %small
     -for subcategory in @post.subcategories
       =link_to(subcategory.name, posts_by_category_path(category: @post.category.name.downcase, subcategory: subcategory.name_safe))
-    -if @post.subcategories and @post.tag_list
+    -if @post.subcategories.length > 0
       |
     -for tag in @post.tag_list
       =link_to(subcategory.name, posts_by_category_path(category: @post.category.name.downcase, etiqueta: tag))
