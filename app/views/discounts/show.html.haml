@@ -9,4 +9,7 @@
 
 -if admin?
   = link_to 'Editar', edit_discount_path(@discount), class: 'btn btn-default'
+  = link_to @discount, :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: 'btn btn-danger btn-sm' do
+    .fa.fa-trash
+    Borrar
 = link_to 'Todos los descuentos', discounts_path, class: 'btn btn-default pull-right'

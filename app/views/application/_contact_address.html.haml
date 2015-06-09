@@ -9,5 +9,5 @@
   .fa.fa-phone
   =Setting.first.phone
   %br/
-  %a{:href => "mailto:#{Setting.first.primary_email}"}=Setting.first.primary_email
+  =link_to(Setting.first.primary_email, "mailto:#{Setting.first.primary_email}")
 %hr

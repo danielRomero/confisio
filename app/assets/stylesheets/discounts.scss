@@ -1,3 +1,29 @@
 // Place all the styles related to the discounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.discount_index{
+  .panel{
+    .panel-body{
+      .value_holder{
+        background: #FAFAFA none repeat scroll 0% 0%;
+        width: 120px;
+        height: 120px;
+        margin: -10px auto 20px;
+        border: 1px dashed #C8C8C8;
+        border-radius: 100%;
+        transition: all 300ms ease 0s;
+        h4.value{
+          background: #5E7985 none repeat scroll 0% 0%;
+          width: 100px;
+          height: 100px;
+          text-align: center;
+          font-size: 20px;
+          line-height: 103px;
+          color: #FFF;
+          margin: 9px auto 0px;
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+}

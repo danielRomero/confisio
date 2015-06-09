@@ -21,6 +21,8 @@
 
         %li{class: (params[:action] == 'about' and params[:controller] == 'pages') ? 'active' : nil}
           =link_to 'Contacto', about_path
+        %li{class: (params[:action] == 'team' and params[:controller] == 'pages') ? 'active' : nil}
+          =link_to 'Equipo', team_path
         
         -#%li{class: (params[:action] == 'about' and params[:controller] == 'pagessss') ? 'active' : nil}
           =link_to 'Equipo', about_path

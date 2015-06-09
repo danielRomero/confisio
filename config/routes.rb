@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get    'contacto'   => 'pages#about', as: 'about'
+  get    'equipo'       => 'pages#team',  as: 'team'
 end

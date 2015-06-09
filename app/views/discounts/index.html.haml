@@ -1,26 +1,40 @@
-.page-header
-  %h1
-    Precio por sesión
-    %small="#{Setting.first.physiotherapy_base_price}€"
-%h1 Todos los descuentos
-.table-responsive
-  %table.table.table-striped.table-hover
-    %tbody
-      - @discounts.each do |discount|
-        %tr
-          %th{scope: 'row'}= "#{discount.quantity} #{discount.discount_type}"
-          %td= discount.title
-          -#%td= discount.code
-          %td= link_to 'Ver', discount, class: 'btn btn-primary btn-sm'
-          -if admin?
-            %td
-              = link_to edit_discount_path(discount), class: 'btn btn-primary btn-sm' do
-                .fa.fa-pencil
-                Editar
-            %td
-              = link_to discount, :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: 'btn btn-danger btn-sm' do
-                .fa.fa-trash
-                Borrar
--if admin?
-  %br
-  = link_to 'Nuevo Descuento', new_discount_path
+.discount_index
+  .page-header
+    %h1
+      Precio por sesión
+      %small="#{Setting.first.physiotherapy_base_price}€"
+  %h2
+    Descuentos
+  .row
+    - @discounts.each do |discount|
+      .col-xs-8.col-xs-offset-2.col-sm-3.col-sm-offset-0.col-md-3.col-md-offset-0.col-lg-2.col-lg-offset-0
+        =link_to(discount) do
+          .panel.panel-default
+            .panel-body
+              .value_holder
+                %h4.value
+                  ="#{'%.2f' % discount.quantity.round(2)} #{discount.discount_type}"
+              .text-center
+                = discount.title
+  .clearfix
+  -#.table-responsive
+    %table.table.table-striped.table-hover
+      %tbody
+        - @discounts.each do |discount|
+          %tr
+            %th{scope: 'row'}= "#{discount.quantity} #{discount.discount_type}"
+            %td= discount.title
+            -#%td= discount.code
+            %td= link_to 'Ver', discount, class: 'btn btn-primary btn-sm'
+            -if admin?
+              %td
+                = link_to edit_discount_path(discount), class: 'btn btn-primary btn-sm' do
+                  .fa.fa-pencil
+                  Editar
+              %td
+                = link_to discount, :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: 'btn btn-danger btn-sm' do
+                  .fa.fa-trash
+                  Borrar
+  -if admin?
+    %br
+    = link_to 'Nuevo Descuento', new_discount_path

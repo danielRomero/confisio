@@ -1,0 +1,54 @@
+.pages-team
+  .container
+    .row
+      %h1
+        Conoce a nuestros profesionales
+    .row
+      .col-xs-12.col-xs-offset-1.col-sm-12.col-sm-offset-0.col-md-12.col-md-offset-0.col-lg-12.col-lg-offset-0
+        .col-xs-10.col-sm-4.col-md-4.col-lg-4
+          .card
+            %canvas.header-bg{:height => "70", :width => "250"}
+            .avatar
+              =image_tag('http://res.cloudinary.com/confisio/image/upload/v1433877308/empleados/rodrigo_1.jpg', alt: 'Rofrigo Guerrero Corral ')
+            .content{style: 'padding: 5px'}
+              %p
+                Fisioterapeuta
+                %br/
+                Osteópata, posturólogo
+              %p.contact
+                Rodrigo Guerrero Corral
+                %br/
+                Contacto:
+                =link_to(Setting.first.primary_email, "mailto:#{Setting.first.primary_email}")
+        .col-xs-10.col-sm-4.col-md-4.col-lg-4
+          .card
+            %canvas.header-bg{:height => "70", :width => "250"}
+            .avatar
+              =image_tag('http://res.cloudinary.com/confisio/image/upload/v1433876735/empleados/ines_1.jpg', alt: 'Inés Santos Martínez')
+            .content{style: 'padding: 5px'}
+              %p
+                Psicóloga
+                %br/
+                Master en clínica general
+                Especialista psicología infanto-juvenil
+              %p.contact
+                Inés Santos Martínez
+                %br/
+                Contacto:
+                =link_to(Setting.first.primary_email, "mailto:#{Setting.first.primary_email}")
+        .col-xs-10.col-sm-4.col-md-4.col-lg-4
+          .card
+            %canvas.header-bg{:height => "70", :width => "250"}
+            .avatar
+              =image_tag('http://res.cloudinary.com/confisio/image/upload/v1433876732/empleados/carlos_1.jpg', alt: 'Carlos Salas Merino')
+            .content{style: 'padding: 5px'}
+              %p
+                Psicólogo
+                %br/
+                Master en clínica general
+                Especialista ensiedad y estrés
+              %p.contact
+                Carlos Salas Merino
+                %br/
+                Contacto:
+                =link_to(Setting.first.primary_email, "mailto:#{Setting.first.primary_email}")
