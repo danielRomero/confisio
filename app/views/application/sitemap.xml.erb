@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+  <url>
+    <loc>http://<%= ENV['HOST'] %></loc>
+    <lastmod><%= 7.days.ago %></lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://<%= ENV['HOST'] %>/contacto</loc>
+    <lastmod><%= 7.days.ago %></lastmod>
+  </url>
+
+  <url>
+    <loc>http://<%= ENV['HOST'] %>/equipo</loc>
+    <lastmod><%= 7.days.ago %></lastmod>
+  </url>
+
+  <url>
+    <loc>http://<%= ENV['HOST'] %>/descuentos</loc>
+    <lastmod><%= 7.days.ago %></lastmod>
+  </url>
+
+  <% Category.all.each do |category| %>
+    <% if !category.posts.blank? %>
+      <url>
+        <loc>http://<%= ENV['HOST'] %>/blog/<%= (category.name.downcase == 'psicología') ? 'psicologia' : category.name.downcase %></loc>
+        <lastmod><%= category.updated_at %></lastmod>
+      </url>
+    <% end %>
+
+    <% category.posts.each do |post| %>
+      <url>
+        <loc>http://<%= ENV['HOST'] %>/blog/<%= (category.name.downcase == 'psicología') ? 'psicologia' : category.name.downcase %>/<%= post.permalink %></loc>
+
+        <lastmod><%= post.updated_at %></lastmod>
+
+      </url>
+    <% end %>
+  <% end %>
+  
+</urlset>

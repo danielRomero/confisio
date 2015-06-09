@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   acts_as_taggable
 
   belongs_to :user
-  belongs_to :category
+  belongs_to :category, touch: true
 
   has_many :posts_subcategories
   has_many :subcategories, :through => :posts_subcategories

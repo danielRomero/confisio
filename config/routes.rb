@@ -30,4 +30,6 @@ Rails.application.routes.draw do
 
   get    'contacto'   => 'pages#about', as: 'about'
   get    'equipo'       => 'pages#team',  as: 'team'
+
+  get '/sitemap', to: 'application#sitemap', as: 'sitemap', defaults: { format: 'xml' }
 end

@@ -3,25 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_filter :login_required, except: [:index]
-
-  before_action do |controller|
-    if ENV["RELEASE_MODE"] == "ON"
-      if ( params[:action] == 'create' and params[:controller] == 'release_suscriptions' )
-        true
-      elsif( params[:action] != 'index' and params[:controller] != 'application' )
-        redirect_to root_path
-      end
-    end
-  end
+  before_filter :login_required, except: [:index, :sitemap]
   
   include SessionsHelper
-
-  def index
-    if ENV["RELEASE_MODE"] == "ON"
-      render template: 'application/release_suscription', layout: false
-    end
-  end
+  
   # Generic error
   def error(message='Algo salió mal, inténtalo de nuevo', type='warning')
     respond_to do |format|

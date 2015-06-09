@@ -10,7 +10,7 @@ RAILS_ENV = ENV["RAILS_ENV"]
 
 APP_NAME = "Confisio"
 
-APP_META_KEYWORDS = %w[fisioterapia madrid cefaleas tratamiento]
+APP_META_KEYWORDS = %w[fisioterapia madrid cefalea tratamiento psicología osteopatía posturologo posturología infanto-juvenil cognitivo-conductual ansiedad estrés ]
 APP_META_DESCRIPTION = "Clínica de fisioterapia y psicología. Para nosotros es importante resolver tus dudas, y que entiendas las causas del problema, para hacerte participe del tratamiento y evitar recaidas. Fisioterapeutas y psicólogos colegiados en constante formación."
 
 module Confisio
