@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @title = @post.title
-    @description = Nokogiri::HTML(@post.body.to_s[0..200]).text
+    @description = @post.meta_description
     render layout: 'columns'
   end
 

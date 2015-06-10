@@ -29,6 +29,14 @@ class Post < ActiveRecord::Base
     self.find_related_tags.where.not(id: self.id).limit(8).by_create_date
     # related_tags_for
   end
+
+  # First 200 characteres of post's body without HTML elements for description meta tag
+  def meta_description
+    require 'nokogiri'
+    require 'nokogiri-styles'  
+    doc = Nokogiri::HTML(self.body)
+    return doc.css('p').first.children.text[0..200]
+  end
   
   private
 
