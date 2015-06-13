@@ -1,4 +1,4 @@
-%address
+-# %address
   =Setting.first.address_street
   %br/
   ="Madrid, #{Setting.first.address_cp}"
@@ -11,3 +11,43 @@
   %br/
   =link_to(Setting.first.primary_email, "mailto:#{Setting.first.primary_email}")
 %hr
+
+%address{:itemscope => '', :itemtype => 'http://schema.org/LocalBusiness'}
+  %span{:itemprop => 'name'}=APP_NAME
+  %div{:itemprop => 'address', :itemscope => '', :itemtype => 'http://schema.org/PostalAddress'}
+    %span{:itemprop => 'streetAddress'}=Setting.first.address_street
+    = succeed ',' do
+      %span{:itemprop => 'addressLocality'} madrid
+    %span{:itemprop => 'addressRegion'} madrid
+    %span{:itemprop => 'postalCode'}=Setting.first.address_cp
+  Phone:
+  %span{:itemprop => 'telephone'}=Setting.first.mobile_phone
+
+%script{:type => "application/ld+json"}
+  :cdata
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Organization",
+      "url" : "http://#{ENV['HOST']}",
+      "logo" : "http://#{ENV['HOST']}/assets/favicon/confisio-logo_196_196.png",
+      "contactPoint" : [
+        {
+          "@type" : "ContactPoint",
+          "telephone" : "+34-#{Setting.first.mobile_phone}",
+          "contactType" : "customer service",
+          "areaServed" : "ES",
+          "availableLanguage" : "Spanish"
+        },
+        {
+          "@type" : "ContactPoint",
+          "telephone" : "+34-#{Setting.first.phone}",
+          "contactType" : "customer service",
+          "areaServed" : "ES",
+          "availableLanguage" : "Spanish"
+        }
+      ],
+      "sameAs" : [
+        "https://www.facebook.com/clinicaconfisio",
+        "https://plus.google.com/111880488504173820946"
+      ]
+    }

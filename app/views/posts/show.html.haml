@@ -9,7 +9,7 @@
     -if @post.subcategories.length > 0
       |
     -for tag in @post.tag_list
-      =link_to(subcategory.name, posts_by_category_path(category: @post.category.name.downcase, etiqueta: tag))
+      =link_to(tag, posts_by_category_path(category: @post.category.name.downcase, etiqueta: tag))
 %br
 %p
   = @post.body.html_safe
@@ -17,3 +17,14 @@
 -if admin?
   = link_to 'Editar', edit_post_path(@post), class: 'btn btn-default'
 = link_to 'Volver', posts_by_category_path(category: @post.category.name.downcase), class: 'btn btn-default'
+%script{:type => "application/ld+json"}
+  :cdata
+    {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "headline": "#{@post.title}",
+    "image": ["#{@post.primary_image}"],
+    "datePublished": "#{I18n.l(@post.created_at, :format => :w3c)}",
+    "description": "A new post about #{@post.category.name}",
+    "articleBody": "#{@post.body}"
+    }

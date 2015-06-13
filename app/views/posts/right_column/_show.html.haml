@@ -1,4 +1,4 @@
-=link_to post do
+=link_to posts_by_category_permalink_path(category: post.category.name.downcase, permalink: post.permalink) do
   -if post.primary_image
     =image_tag(post.primary_image, alt: post.title, class: 'img-responsive')
   %h5=post.title

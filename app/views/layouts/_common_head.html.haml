@@ -2,9 +2,8 @@
 %meta{ 'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
 %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }
 %meta{ content: I18n.locale, 'http-equiv' => 'Content-Language' }
-
-%title= @titulo ? "#{APP_NAME} · #{@titulo}" : "#{APP_NAME} · Fisioterapia y Psicología"
-
+%title{itemprop: 'name'}= @titulo ? "#{APP_NAME} · #{@titulo}" : "#{APP_NAME} · Fisioterapia y Psicología"
+%link{rel: 'canonical', href: "#{root_url}", itemprop: 'url'}
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 %link{ rel:'stylesheet', href: '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' }
 = javascript_include_tag 'application', 'data-turbolinks-track' => true

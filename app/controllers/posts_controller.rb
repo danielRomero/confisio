@@ -30,6 +30,8 @@ class PostsController < ApplicationController
   def show
     @title = @post.title
     @description = @post.meta_description
+    @meta_url = posts_by_category_permalink_url(@post.category.name, @post.permalink)
+    @meta_image = @post.primary_image
     render layout: 'columns'
   end
 

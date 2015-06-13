@@ -1,16 +1,20 @@
 %meta{:content => ENV['FB_APP_ID'], :property => "fb:app_id"}/
 %meta{:content => "http://#{ENV['HOST']}", :property => "og:url"}/
-%meta{:content => APP_NAME, :property => "og:site_name"}/
+%meta{:content => @meta_url || APP_NAME, :property => "og:site_name"}/
 %meta{:content => @titulo ? "#{APP_NAME} · #{@titulo}" : APP_NAME , :property => "og:title"}/
+%meta{:content => @description || APP_META_DESCRIPTION, :property => "og:description"}/
+-if @meta_image
+  %meta{:content => @meta_image, :property => "og:image"}/
+  %meta{:content => "image/png", :property => "og:image:type"}/
+  %meta{:content => "1200", :property => "og:image:width"}/
+  %meta{:content => "1200", :property => "og:image:height"}/
+-else
+  %meta{:content => "http://#{ENV['HOST']}/assets/favicon/logo-confisio_1200_1200.png", :property => "og:image"}/
+  %meta{:content => "image/png", :property => "og:image:type"}/
+  %meta{:content => "1200", :property => "og:image:width"}/
+  %meta{:content => "1200", :property => "og:image:height"}/
 
-%meta{:content => @description ? @description : APP_META_DESCRIPTION, :property => "og:description"}/
-
-%meta{:content => "http://#{ENV['HOST']}/assets/favicon/logo-confisio_1200_1200.png", :property => "og:image"}/
-%meta{:content => "image/png", :property => "og:image:type"}/
-%meta{:content => "1200", :property => "og:image:width"}/
-%meta{:content => "1200", :property => "og:image:height"}/
-
-%meta{:content => "http://#{ENV['HOST']}/assets/favicon/logo-confisio_1200_620.png", :property => "og:image"}/
-%meta{:content => "image/png", :property => "og:image:type"}/
-%meta{:content => "1200", :property => "og:image:width"}/
-%meta{:content => "620", :property => "og:image:height"}/
+  %meta{:content => "http://#{ENV['HOST']}/assets/favicon/logo-confisio_1200_620.png", :property => "og:image"}/
+  %meta{:content => "image/png", :property => "og:image:type"}/
+  %meta{:content => "1200", :property => "og:image:width"}/
+  %meta{:content => "620", :property => "og:image:height"}/
