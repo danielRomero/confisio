@@ -1,27 +1,16 @@
--# %address
-  =Setting.first.address_street
-  %br/
-  ="Madrid, #{Setting.first.address_cp}"
-  %br/
-  .fa.fa-whatsapp
-  =Setting.first.mobile_phone
-  %br/
-  .fa.fa-phone
-  =Setting.first.phone
-  %br/
-  =link_to(Setting.first.primary_email, "mailto:#{Setting.first.primary_email}")
-%hr
-
 %address{:itemscope => '', :itemtype => 'http://schema.org/LocalBusiness'}
-  %span{:itemprop => 'name'}=APP_NAME
+  %span.hidden{:itemprop => 'name'}=APP_NAME
   %div{:itemprop => 'address', :itemscope => '', :itemtype => 'http://schema.org/PostalAddress'}
     %span{:itemprop => 'streetAddress'}=Setting.first.address_street
     = succeed ',' do
-      %span{:itemprop => 'addressLocality'} madrid
-    %span{:itemprop => 'addressRegion'} madrid
+      %span.hidden{:itemprop => 'addressLocality'} Madrid
     %span{:itemprop => 'postalCode'}=Setting.first.address_cp
-  Phone:
+    %span{:itemprop => 'addressRegion'} Madrid
+  .fa.fa-phone
   %span{:itemprop => 'telephone'}=Setting.first.mobile_phone
+  %br/
+  .fa.fa-whatsapp
+  =Setting.first.mobile_phone
 
 %script{:type => "application/ld+json"}
   :cdata
