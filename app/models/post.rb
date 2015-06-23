@@ -11,10 +11,6 @@ class Post < ActiveRecord::Base
   scope :by_create_date, -> { order(created_at: :desc) }
 
   scope :from_category, ->(category_name) { includes(:category).where(categories: {name: category_name}) }
-  
-  before_validation(on: :create) do
-    self.user = current_user
-  end
 
   validates_presence_of :category_id
 
@@ -65,9 +61,9 @@ class Post < ActiveRecord::Base
     end
 
     def generate_permalink
+      times = 0
       loop do
-        times = nil
-        self.permalink = "#{self.title.parameterize}#{times}"
+        self.permalink = "#{self.title.parameterize}#{times == 0 ? nil : times}"
         times += 1
         break unless Post.find_by(permalink: self.permalink)
       end

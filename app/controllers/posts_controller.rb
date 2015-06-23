@@ -6,14 +6,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @category = case params[:category]
-      when 'psicologia'
-        'Psicología' # Al loro con el acento
-      else
-        'Fisioterapia'
-      end
+
+    @category = Category.find_by(name: Category.name_from_name_safe(params[:category]))
     
-    @posts = Post.from_category(@category).by_create_date
+    @posts = @category.posts.by_create_date
 
     if params[:sucategory] and @subcategory = Subcategory.find_by(name_safe: params[:sucategory])
       @posts = @posts.joins(:subcategories).where( subcategories: { id: @subcategory.id } )
@@ -48,6 +44,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     #@post.body = post_params[:body].first
     respond_to do |format|
       if @post.save
