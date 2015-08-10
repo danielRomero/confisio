@@ -61,7 +61,7 @@ class Post < ActiveRecord::Base
       loop do
         self.permalink = "#{self.title.parameterize}#{times == 0 ? nil : times}"
         times += 1
-        break unless Post.find_by(permalink: self.permalink)
+        break unless Post.find_by(permalink: self.permalink) or (Rails.application.routes.recognize_path(self.permalink) rescue nil)
       end
     end
 end

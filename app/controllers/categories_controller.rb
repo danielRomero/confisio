@@ -46,7 +46,7 @@ class CategoriesController < ApplicationController
 
   private
     def set_category
-      if !@category = Category.find_by(permalink: params[:category_permalink])
+      if !@category = @section.categories.find_by(permalink: params[:category_permalink])
         redirect_to categories_path(@section.permalink)
       end
     end

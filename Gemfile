@@ -55,6 +55,7 @@ group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
+  gem 'capistrano-rvm'
 end
 
 group :development, :test do

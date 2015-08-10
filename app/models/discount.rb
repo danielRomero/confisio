@@ -7,6 +7,11 @@ class Discount < ActiveRecord::Base
 
   private
     def generate_permalink
-      self.permalink = self.title.parameterize
+      times = 0
+      loop do
+        self.permalink = "#{self.title.parameterize}#{times == 0 ? nil : times}"
+        times += 1
+        break unless (Rails.application.routes.recognize_path(self.permalink) rescue nil)
+      end
     end
 end

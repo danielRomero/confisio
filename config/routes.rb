@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :settings, param: :permalink #### ADMIN
   resources :app_configurations, only: [:edit, :update] #### ADMIN
-  
+
   scope ':permalink' do
     resources :posts, param: :post_permalink, except: :show
     get 'precios', to: 'sections#precios', as: :prices

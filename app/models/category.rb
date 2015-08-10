@@ -6,6 +6,11 @@ class Category < ActiveRecord::Base
   before_create :generate_permalink
   private
     def generate_permalink
-      self.permalink = self.name.parameterize
+      times = 0
+      loop do
+        self.permalink = "#{self.name.parameterize}#{times == 0 ? nil : times}"
+        times += 1
+        break unless (Rails.application.routes.recognize_path(self.permalink) rescue nil)
+      end
     end
 end

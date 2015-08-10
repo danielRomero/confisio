@@ -1,52 +1,54 @@
-                Prefix Verb   URI Pattern                                      Controller#Action
-                  root GET    /                                                application#index
-                 login GET    /login(.:format)                                 sessions#new
-                       POST   /login(.:format)                                 sessions#create
-                logout GET    /logout(.:format)                                sessions#logout
-               contact GET    /contacto(.:format)                              application#contact
-                  team GET    /equipo(.:format)                                application#team
-              sections POST   /sections(.:format)                              sections#create
-           new_section GET    /sections/new(.:format)                          sections#new
-          edit_section GET    /sections/:permalink/edit(.:format)              sections#edit
-               section GET    /sections/:permalink(.:format)                   sections#show
-                       PATCH  /sections/:permalink(.:format)                   sections#update
-                       PUT    /sections/:permalink(.:format)                   sections#update
-                       DELETE /sections/:permalink(.:format)                   sections#destroy
-              settings GET    /settings(.:format)                              settings#index
-                       POST   /settings(.:format)                              settings#create
-           new_setting GET    /settings/new(.:format)                          settings#new
-          edit_setting GET    /settings/:permalink/edit(.:format)              settings#edit
-               setting GET    /settings/:permalink(.:format)                   settings#show
-                       PATCH  /settings/:permalink(.:format)                   settings#update
-                       PUT    /settings/:permalink(.:format)                   settings#update
-                       DELETE /settings/:permalink(.:format)                   settings#destroy
-edit_app_configuration GET    /app_configurations/:id/edit(.:format)           app_configurations#edit
-     app_configuration PATCH  /app_configurations/:id(.:format)                app_configurations#update
-                       PUT    /app_configurations/:id(.:format)                app_configurations#update
-                 posts GET    /:permalink/posts(.:format)                      posts#index
-                       POST   /:permalink/posts(.:format)                      posts#create
-              new_post GET    /:permalink/posts/new(.:format)                  posts#new
-             edit_post GET    /:permalink/posts/:post_permalink/edit(.:format) posts#edit
-                  post PATCH  /:permalink/posts/:post_permalink(.:format)      posts#update
-                       PUT    /:permalink/posts/:post_permalink(.:format)      posts#update
-                       DELETE /:permalink/posts/:post_permalink(.:format)      posts#destroy
-                prices GET    /:permalink/precios(.:format)                    sections#precios
-             discounts GET    /:permalink/descuentos(.:format)                 discounts#index
-                       POST   /:permalink/descuentos(.:format)                 discounts#create
-          new_discount GET    /:permalink/descuentos/new(.:format)             discounts#new
-         edit_discount GET    /:permalink/descuentos/:id/edit(.:format)        discounts#edit
-              discount GET    /:permalink/descuentos/:id(.:format)             discounts#show
-                       PATCH  /:permalink/descuentos/:id(.:format)             discounts#update
-                       PUT    /:permalink/descuentos/:id(.:format)             discounts#update
-                       DELETE /:permalink/descuentos/:id(.:format)             discounts#destroy
-            categories GET    /:permalink/categories(.:format)                 categories#index
-                       POST   /:permalink/categories(.:format)                 categories#create
-          new_category GET    /:permalink/categories/new(.:format)             categories#new
-         edit_category GET    /:permalink/categories/:permalink/edit(.:format) categories#edit
-              category GET    /:permalink/categories/:permalink(.:format)      categories#show
-                       PATCH  /:permalink/categories/:permalink(.:format)      categories#update
-                       PUT    /:permalink/categories/:permalink(.:format)      categories#update
-                       DELETE /:permalink/categories/:permalink(.:format)      categories#destroy
-        post_permalink GET    /:permalink/:post_permalink(.:format)            posts#show
-    sections_permalink GET    /:permalink(.:format)                            sections#show
-             error_404 GET    /404(.:format)                                   application#error_404
+                Prefix Verb   URI Pattern                                               Controller#Action
+                  root GET    /                                                         application#index
+                 login GET    /login(.:format)                                          sessions#new
+                       POST   /login(.:format)                                          sessions#create
+                logout GET    /logout(.:format)                                         sessions#logout
+               contact GET    /contacto(.:format)                                       application#contact
+                  team GET    /equipo(.:format)                                         application#team
+              sections POST   /sections(.:format)                                       sections#create
+           new_section GET    /sections/new(.:format)                                   sections#new
+          edit_section GET    /sections/:permalink/edit(.:format)                       sections#edit
+               section GET    /sections/:permalink(.:format)                            sections#show
+                       PATCH  /sections/:permalink(.:format)                            sections#update
+                       PUT    /sections/:permalink(.:format)                            sections#update
+                       DELETE /sections/:permalink(.:format)                            sections#destroy
+              settings GET    /settings(.:format)                                       settings#index
+                       POST   /settings(.:format)                                       settings#create
+           new_setting GET    /settings/new(.:format)                                   settings#new
+          edit_setting GET    /settings/:permalink/edit(.:format)                       settings#edit
+               setting GET    /settings/:permalink(.:format)                            settings#show
+                       PATCH  /settings/:permalink(.:format)                            settings#update
+                       PUT    /settings/:permalink(.:format)                            settings#update
+                       DELETE /settings/:permalink(.:format)                            settings#destroy
+edit_app_configuration GET    /app_configurations/:id/edit(.:format)                    app_configurations#edit
+     app_configuration PATCH  /app_configurations/:id(.:format)                         app_configurations#update
+                       PUT    /app_configurations/:id(.:format)                         app_configurations#update
+          prices_index GET    /tarifas(.:format)                                        application#tarifas
+                 posts GET    /:permalink/posts(.:format)                               posts#index
+                       POST   /:permalink/posts(.:format)                               posts#create
+              new_post GET    /:permalink/posts/new(.:format)                           posts#new
+             edit_post GET    /:permalink/posts/:post_permalink/edit(.:format)          posts#edit
+                  post PATCH  /:permalink/posts/:post_permalink(.:format)               posts#update
+                       PUT    /:permalink/posts/:post_permalink(.:format)               posts#update
+                       DELETE /:permalink/posts/:post_permalink(.:format)               posts#destroy
+                prices GET    /:permalink/precios(.:format)                             sections#precios
+             discounts GET    /:permalink/descuentos(.:format)                          discounts#index
+                       POST   /:permalink/descuentos(.:format)                          discounts#create
+          new_discount GET    /:permalink/descuentos/new(.:format)                      discounts#new
+         edit_discount GET    /:permalink/descuentos/:discount_permalink/edit(.:format) discounts#edit
+              discount GET    /:permalink/descuentos/:discount_permalink(.:format)      discounts#show
+                       PATCH  /:permalink/descuentos/:discount_permalink(.:format)      discounts#update
+                       PUT    /:permalink/descuentos/:discount_permalink(.:format)      discounts#update
+                       DELETE /:permalink/descuentos/:discount_permalink(.:format)      discounts#destroy
+            categories GET    /:permalink/categorias(.:format)                          categories#index
+                       POST   /:permalink/categorias(.:format)                          categories#create
+          new_category GET    /:permalink/categorias/new(.:format)                      categories#new
+         edit_category GET    /:permalink/categorias/:category_permalink/edit(.:format) categories#edit
+              category GET    /:permalink/categorias/:category_permalink(.:format)      categories#show
+                       PATCH  /:permalink/categorias/:category_permalink(.:format)      categories#update
+                       PUT    /:permalink/categorias/:category_permalink(.:format)      categories#update
+                       DELETE /:permalink/categorias/:category_permalink(.:format)      categories#destroy
+        post_permalink GET    /:permalink/:post_permalink(.:format)                     posts#show
+               sitemap GET    /sitemap(.:format)                                        application#sitemap {:format=>"xml"}
+             error_404 GET    /404(.:format)                                            application#error_404
+    sections_permalink GET    /:permalink(.:format)                                     sections#show

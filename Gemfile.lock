@@ -75,6 +75,9 @@ GEM
     capistrano-rails (1.1.3)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     ckeditor (4.1.2)
       cocaine
       orm_adapter (~> 0.5.0)
@@ -225,6 +228,7 @@ DEPENDENCIES
   bootstrap-sass
   capistrano-passenger
   capistrano-rails
+  capistrano-rvm
   ckeditor
   coffee-rails (~> 4.1.0)
   dotenv-rails
