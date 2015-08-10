@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-RAILS_ENV = ENV["RAILS_ENV"]
+
 APP_NAME = 'confisio'
 
 APP_META_KEYWORDS = %w[fisioterapia madrid cefalea tratamiento psicología osteopatía posturólogo posturología cognitivo-conductual ansiedad estrés ]

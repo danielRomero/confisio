@@ -29,7 +29,7 @@ app_configuration_images = %w(http://res.cloudinary.com/confisio/image/upload/v1
 puts 'failed app config' if !(app_configuration = AppConfiguration.find_or_create_by(telefono_fijo: '918273320', telefono_movil: '664476055', calle: 'Avenida de Badajoz', numero: '3', cp: '28027', ciudad: 'Madrid', email: 'confianzayfisioterapia@gmail.com'))
 if app_configuration.landing_images.empty?
   app_configuration.landing_images = app_configuration_images
-  puts 'failed load images app config' if !app.configuration.save
+  puts 'failed load images app config' if !app_configuration.save
 end
 
 puts "\nseed finished"
