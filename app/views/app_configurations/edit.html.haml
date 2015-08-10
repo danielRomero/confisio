@@ -1,0 +1,46 @@
+.page-header
+  %h1 Configurar Web
+
+= form_for @app_configuration do |f|
+  - if @app_configuration.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@app_configuration.errors.count, "error")} prohibited this discount from being saved:"
+      %ul
+        - @app_configuration.errors.full_messages.each do |msg|
+          %li= msg
+  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+    .form-group
+      = f.label :telefono_movil
+      = f.text_field :telefono_movil, class: 'form-control'
+    .form-group
+      = f.label :telefono_fijo
+      = f.text_field :telefono_fijo, class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'form-control'
+  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+    .form-group
+      = f.label :calle
+      = f.text_field :calle, class: 'form-control'
+    .form-group
+      = f.label :numero
+      = f.text_field :numero, class: 'form-control'
+    .form-group
+      = f.label :cp
+      = f.text_field :cp, class: 'form-control'
+    .form-group
+      = f.label :ciudad
+      = f.text_field :ciudad, class: 'form-control'
+  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+    .form-group
+      = f.label :landing_images, 'Imágenes página principal'
+      =render partial: 'form_landing_image', locals: { value: nil }
+      
+      -@app_configuration.landing_images.each do |landing_image|
+        =render partial: 'form_landing_image', locals: { value: landing_image }
+
+  .clearfix
+  %hr
+  .actions.pull-right
+    = f.submit 'Guardar', class: 'btn btn-primary'
+  =link_to 'Volver', settings_path

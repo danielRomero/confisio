@@ -1,0 +1,16 @@
+.page-header
+  %h1=@section.name
+=render 'form'
+.col-xs-12.col-sm-6.col-md-4.col-lg-4
+  =link_to 'Nuevo Artículo', new_post_path(@section.permalink)
+  -@posts.each do |post|
+    %h3=post.title
+    =link_to 'Editar', edit_post_path(@section.permalink, post.permalink)
+    =link_to 'Borrar', post_path(@section.permalink, post.permalink), method: :delete, data: {confirm: '¿Quieres borrar este artículo?'}
+.clearfix
+
+=link_to "Gestionar descuentos (#{@section.discounts.count})", discounts_path(@section.permalink)
+%br
+=link_to "Gestionar categorías (#{@section.categories.count})", categories_path(@section.permalink)
+%hr
+=link_to 'Volver', settings_path

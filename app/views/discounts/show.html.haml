@@ -1,0 +1,14 @@
+.page-header
+  %h1
+    =@discount.title
+    %small
+      ="#{'%.2f' % @discount.value.round(2)} €"
+%p
+  %b Descripción
+%p
+  =@discount.description
+%p
+  %b Condiciones
+%p
+  %small=@discount.conditions
+=link_to 'Volver', prices_path(@section.permalink)

@@ -1,0 +1,56 @@
+-if !flash.blank?
+  -if flash[:notice]
+    .alert.alert-success.auto_close
+      .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
+        .fa.fa-times
+      .fa.fa-check
+      =raw flash[:notice]
+  -if flash[:alert]
+    .alert.alert-warning.auto_close
+      .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
+        .fa.fa-times
+      .fa.fa-check
+      =raw flash[:alert]
+
+  -if flash[:error]
+    .alert.alert-danger.auto_close
+      .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
+        .fa.fa-times
+      .fa.fa-check
+      =raw flash[:error]
+  -if flash[:application]
+    -for fl in flash[:application]
+      -case fl['type']
+        -when 'info'
+          .alert.alert-info.auto_close
+            .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
+              .fa.fa-times
+            .fa.fa-info-circle
+            =raw fl['message']
+
+        -when 'warning'
+          .alert.alert-warning.auto_close
+            .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
+              .fa.fa-times
+            .fa.fa-bullseye
+            =raw fl['message']
+
+        -when 'success'
+          .alert.alert-success.auto_close
+            .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
+              .fa.fa-times
+            .fa.fa-check
+            =raw fl['message']
+
+        -when 'danger'
+          .alert.alert-danger
+            .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
+              .fa.fa-times
+            .fa.fa-hand-o-right
+            =raw fl['message']
+  -flash.discard
+
+  :javascript
+    $.each($('.alert.auto_close'),function(k,v){
+      setTimeout(function(){v.remove()}, 8000);
+    });

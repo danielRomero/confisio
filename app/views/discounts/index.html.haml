@@ -1,0 +1,21 @@
+.page-header
+  %h1= "Descuentos de #{@section.name}"
+-@discounts.each do |discount|
+  %p=discount.title
+  %b
+    ="#{'%.2f' % discount.value.round(2)} €"
+  %p
+    =discount.description
+    =link_to 'Condiciones', discount_path(@section.permalink, discount.permalink)
+  
+  -if admin?
+    =link_to('Editar', edit_discount_path(@section.permalink, discount.permalink))
+    |
+    =link_to 'Borrar', discount_path(@section.permalink, discount.permalink), method: :delete, data: {confirm: '¿Quieres borrar este descuento?'}
+  %hr  
+-if admin?
+  =link_to 'Volver (Panel de control)', setting_path(@section.permalink)
+  |
+  =link_to 'Nuevo descuento', new_discount_path(@section.permalink)
+-else
+  =link_to 'Volver', prices_path(@section.permalink)

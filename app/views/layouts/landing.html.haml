@@ -1,0 +1,19 @@
+!!!
+%html.confisio{lang: I18n.locale}
+  %head{:itemscope => '', :itemtype => 'http://schema.org/WebSite'}
+    =render partial: 'layouts/common_head'
+  %body
+    =render partial: 'application/header'
+    %section#application_content
+      -if cookies[:cookies_policy] != 'true'
+        .alert.alert-info.auto_close
+          .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
+            %small{onclick: "document.cookie='cookies_policy=true; expires=Thu, 18 Dec 2203 12:00:00 UTC';"}
+              Aceptar
+          .fa.fa-info-circle
+          %small
+            ="Esta web utiliza <b>#{link_to('cookies', 'http://es.wikipedia.org/wiki/Cookie_%28inform%C3%A1tica%29')}</b> propias y de terceros para ofrecerle una mejor experiencia y servicio. Al navegar el usuario acepta el uso que hacemos de las <b>#{link_to('cookies', 'http://es.wikipedia.org/wiki/Cookie_%28inform%C3%A1tica%29')}</b>.".html_safe
+      #application_flashes
+        =render partial: 'application/flashes'
+      = yield
+    =render partial: 'application/footer'

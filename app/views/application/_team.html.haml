@@ -1,0 +1,55 @@
+-psicologia = Setting.joins(:section).find_by(sections: {name: 'Psicología'})
+-fisioterapia = Setting.joins(:section).find_by(sections: {name: 'Fisioterapia'})
+.pages-team
+  .container
+    .row
+      .col-xs-12.col-xs-offset-1.col-sm-12.col-sm-offset-0.col-md-12.col-md-offset-0.col-lg-12.col-lg-offset-0
+        .col-xs-10.col-sm-4.col-md-4.col-lg-4
+          .card
+            %canvas.header-bg{:height => "70", :width => "250"}
+            .avatar
+              =image_tag('http://res.cloudinary.com/confisio/image/upload/v1434194403/empleados/rodrigo_2.jpg', alt: 'Rofrigo Guerrero Corral ')
+            .content{style: 'padding: 5px'}
+              %p
+                Fisioterapeuta
+                %br/
+                Osteópata, posturólogo
+              %p.contact
+                Rodrigo Guerrero Corral
+                %br/
+                Contacto:
+                =link_to(fisioterapia.email, "mailto:#{fisioterapia.email}")
+        .col-xs-10.col-sm-4.col-md-4.col-lg-4
+          .card{style: 'min-height: 210px;'}
+            %canvas.header-bg{:height => "70", :width => "250"}
+            .avatar
+              =image_tag('http://res.cloudinary.com/confisio/image/upload/v1433876735/empleados/ines_1.jpg', alt: 'Inés Santos Martínez')
+            .content{style: 'padding: 5px'}
+              %p
+                Psicóloga Sanitaria
+                %br/
+                Especializada en Psicología Clínica y de la salud
+                %br/
+                y en Intervención Clínica Infanto-Juvenil
+              %p.contact{style: 'margin-top: 15px'}
+                Inés Santos Martínez
+                %br/
+                Contacto:
+                =link_to(psicologia.email, "mailto:#{psicologia.email}")
+        .col-xs-10.col-sm-4.col-md-4.col-lg-4
+          .card
+            %canvas.header-bg{:height => "70", :width => "250"}
+            .avatar
+              =image_tag('http://res.cloudinary.com/confisio/image/upload/v1434192996/empleados/carlos_2.jpg', alt: 'Carlos Salas Merino')
+            .content{style: 'padding: 5px'}
+              %p
+                Psicólogo Sanitario
+                %br/
+                Especializado en Psicología Clínica y de la salud
+                %br/
+                y en Terapia Cognitivo-Conductual
+              %p.contact
+                Carlos Salas Merino
+                %br/
+                Contacto:
+                =link_to(psicologia.email, "mailto:#{psicologia.email}")

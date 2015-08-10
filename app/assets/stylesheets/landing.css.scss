@@ -1,0 +1,142 @@
+@import 'bootstrap-custom';
+body {
+  background-color:#f2f2f2;
+  font-family:Lato;
+  font-weight:300;
+  font-size:16px;
+  color:#555;
+  -webkit-font-smoothing:antialiased;
+  -webkit-overflow-scrolling:touch;
+  margin-top:70px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family:Raleway;
+  font-weight:300;
+  color:#333;
+}
+.address-little{
+  position: absolute;
+  top: 80px;
+  right: 0px;
+  margin-right: 40px;
+  margin-top: 10px;
+}
+.contact-little{
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  margin-left: 40px;
+  margin-top: 10px;
+}
+.full-width{
+  width: 100%;
+  iframe{
+    width: 100%;
+    height: 300px;
+  }
+}
+p {
+  line-height:28px;
+  margin-bottom:25px;
+}
+
+.centered {
+  text-align:center;
+}
+
+.mt {
+  margin-top:40px;
+}
+
+a {
+  color:#f85c37;
+  word-wrap:break-word;
+  -webkit-transition:color .1s ease-in, background .1s ease-in;
+  -moz-transition:color .1s ease-in, background .1s ease-in;
+  -ms-transition:color .1s ease-in, background .1s ease-in;
+  -o-transition:color .1s ease-in, background .1s ease-in;
+  transition:color .1s ease-in, background .1s ease-in;
+}
+
+a:focus, a:hover {
+  color:#7b7b7b;
+  text-decoration:none;
+  outline:0;
+}
+
+a:after, a:before {
+  -webkit-transition:color .1s ease-in, background .1s ease-in;
+  -moz-transition:color .1s ease-in, background .1s ease-in;
+  -ms-transition:color .1s ease-in, background .1s ease-in;
+  -o-transition:color .1s ease-in, background .1s ease-in;
+  transition:color .1s ease-in, background .1s ease-in;
+}
+
+hr {
+  display:block;
+  height:1px;
+  border:0;
+  border-top:1px solid #ccc;
+  margin:1em 0;
+  padding:0;
+}
+
+.lead {
+  letter-spacing:1px;
+}
+
+#hello {
+  width:100%;
+  padding-top:100px;
+  padding-bottom:300px;
+}
+
+#hello h1 {
+  font-size:90px;//hacer que este tamaño de letra se adapte a la pantalla
+  font-weight:700;
+  letter-spacing:3px;
+  color: $brand-color;
+  //word-wrap:break-word;
+}
+
+#hello h2 {
+  color:silver;
+  font-weight:400;
+}
+
+#green {
+  background-color: $brand-color;
+  margin-bottom:0;
+}
+
+#green h3 {
+  color:#fff;
+  font-weight:400;
+  margin-bottom:35px;
+}
+
+#green p {
+  color:#fff;
+  font-weight:400;
+  font-size:20px;
+}
+
+#skills {
+  background-color:#4e4e4e;
+  padding-top:50px;
+  padding-bottom:50px;
+  margin-top:50px;
+}
+
+#skills h3 {
+  color:#fff;
+}
+
+.grid img {
+  opacity:.7;
+}
+
+.grid img:hover {
+  opacity:1;
+}

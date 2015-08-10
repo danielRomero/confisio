@@ -1,0 +1,30 @@
+-url = @post.new_record? ? posts_path(@section.permalink) : post_path(@section.permalink, @post.permalink)
+= form_for @post, url: url do |f|
+  - if @post.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this discount from being saved:"
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+  
+  .form-group
+    = f.label :title, 'Título'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :primary_image, 'Foto principal (en blanco se coge la primera del contenido)'
+    = f.text_field :primary_image, class: 'form-control'
+  .form-group
+    = f.label :body, 'Contenido'
+    = f.cktext_area :body, :cols => 40, :ckeditor => {:toolbar => 'mini', :language => 'es'}
+  .form-group
+    = f.label :keywords, 'Palabras clave (separadas por coma)'
+    = f.text_field :keywords, class: 'form-control'
+  .form-group
+    = f.label :category_ids, 'Categorías (puedes seleccionar varias manteniendo pulsado ctrl'
+    %br
+    = f.collection_select :category_ids, @section.categories, :id, :name, {}, {:multiple => true}
+  %hr
+  .actions.pull-right
+    = f.submit 'Guardar', class: 'btn btn-primary'
+  =link_to 'Volver', setting_path(@section.permalink)
+.clearfix
