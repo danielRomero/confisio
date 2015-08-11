@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get   :equipo, to: 'application#team', as: :team
 
   resources :sections, except: [:index], param: :permalink
+  resources :users, only: [:edit, :update]
 
   resources :settings, param: :permalink #### ADMIN
   resources :app_configurations, only: [:edit, :update] #### ADMIN

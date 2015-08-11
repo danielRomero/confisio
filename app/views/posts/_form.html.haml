@@ -14,7 +14,7 @@
     = f.label :primary_image, 'Foto principal (en blanco se coge la primera del contenido)'
     = f.text_field :primary_image, class: 'form-control'
   .form-group
-    = f.label :body, 'Contenido'
+    = f.label :body, 'Contenido (si aquí no carga una caja de texto con botones, recarga la página)'
     = f.cktext_area :body, :cols => 40, :ckeditor => {:toolbar => 'mini', :language => 'es'}
   .form-group
     = f.label :keywords, 'Palabras clave (separadas por coma)'

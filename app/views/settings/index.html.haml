@@ -1,6 +1,8 @@
 .page-header
   %h1 Admin
 .content
+  =link_to("Editar mi usuario", edit_user_path(current_user))
+  %br
   -Section.all.each do |section|
     =link_to section.name, setting_path(section.permalink)
     %br
