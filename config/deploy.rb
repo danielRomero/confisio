@@ -22,8 +22,8 @@ set :repo_url, 'git@github.com:danielRomero/confisio.git'
 # Default value for :pty is false
 # set :pty, true
 
-set :rails_env, 'production'                  # If the environment differs from the stage name
-set :migration_role, 'db'            # Defaults to 'db'
+set :rails_env, 'production'               # If the environment differs from the stage name
+set :migration_role, 'db'                  # Defaults to 'db'
 set :conditionally_migrate, true           # Defaults to false. If true, it's skip migration if files in db/migrate not modified
 set :assets_roles, [:web, :app]            # Defaults to [:web]
 set :assets_prefix, 'assets'   # Defaults to 'assets' this should match config.assets.prefix in your rails config/application.rb

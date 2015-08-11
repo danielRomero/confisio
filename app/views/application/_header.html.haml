@@ -13,8 +13,6 @@
         -Section.all.each do |section|
           %li
             =link_to section.name, sections_permalink_path(section.permalink)
-        %li
-          =link_to 'Tarifas y promociones', prices_index_path
       %ul.nav.navbar-nav.navbar-right
         %li
           =link_to 'Equipo', team_path
