@@ -8,7 +8,7 @@
   .col-xs-12.col-sm-6.col-md-4.col-lg-4
     .form-group
       = f.label :base_price, 'Precio por sesión'
-      = f.number_field :base_price, class: 'form-control', min: 0, max: 999, step: 0.01
+      = f.number_field :base_price, class: 'form-control', min: 0, max: 999, step: 0.01, required: true
     .form-group
       = f.label :meta_keywords, 'Palabras clave (separadas por coma)'
       = f.text_field :meta_keywords, class: 'form-control'

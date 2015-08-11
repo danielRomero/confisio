@@ -1,5 +1,5 @@
 class AppConfigurationsController < ApplicationController
-  skip_before_filter :login_required, only: [:show, :index]
+  
   before_action :set_app_configuration, only: [:edit, :update]
   
   def update

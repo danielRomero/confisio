@@ -1,5 +1,7 @@
 class SectionsController < ApplicationController
+  skip_before_filter :only_admin, only: [:show, :precios]
   skip_before_filter :login_required, only: [:show, :precios]
+  
   before_action :set_section, only: [:show, :edit, :update, :destroy, :precios]
   def show
     @titulo = @section.name

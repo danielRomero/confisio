@@ -1,4 +1,5 @@
 class DiscountsController < ApplicationController
+  skip_before_filter :only_admin, only: [:show, :index]
   skip_before_filter :login_required, only: [:show, :index]
   before_action :set_section
   before_action :set_discount, only: [:edit, :update, :show, :destroy]
