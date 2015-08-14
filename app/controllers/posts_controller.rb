@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def show
     @titulo = "#{@section.name} · #{@post.title}"
     @meta_image = @post.primary_image
-    @description = @post.body_preview || @section.description
+    @description = @post.body_preview
   end
 
   def index

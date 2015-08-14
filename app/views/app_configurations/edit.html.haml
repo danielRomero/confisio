@@ -10,6 +10,9 @@
           %li= msg
   .col-xs-12.col-sm-6.col-md-4.col-lg-4
     .form-group
+      = f.label :descrpition, 'Descripción de la web (para redes sociales y Google)'
+      = f.text_area :description, class: 'form-control'
+    .form-group
       = f.label :telefono_movil
       = f.text_field :telefono_movil, class: 'form-control'
     .form-group

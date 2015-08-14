@@ -2,7 +2,7 @@
 %meta{:content => "http://#{ENV['HOST']}", :property => "og:url"}/
 %meta{:content => @meta_url || APP_NAME, :property => "og:site_name"}/
 %meta{:content => @titulo ? "#{APP_NAME} · #{@titulo}" : APP_NAME , :property => "og:title"}/
-%meta{:content => @description || APP_META_DESCRIPTION, :property => "og:description"}/
+%meta{:content => @description || AppConfiguration.first.description || APP_META_DESCRIPTION, :property => "og:description"}/
 
 -if @meta_image
   %meta{:content => @meta_image, :property => "og:image"}/
