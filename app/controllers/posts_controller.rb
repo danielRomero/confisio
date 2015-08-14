@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   def create
     @post = @section.posts.build
     if @post.update(post_params)
-      redirect_to post_permalink_path(@section.permalink, @post.permalink), notice: "Artículo creado."
+      redirect_to post_permalink_path(@section.permalink, !@post.categories.empty? ? @post.categories.first.permalink : 'artículo', @post.permalink), notice: "Artículo creado."
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   
   def update
     if @post.update(post_params)
-      redirect_to post_permalink_path(@section.permalink, @post.permalink), notice: "Artículo actualizado."
+      redirect_to post_permalink_path(@section.permalink, !@post.categories.empty? ? @post.categories.first.permalink : 'artículo', @post.permalink), notice: "Artículo actualizado."
     else
       render :edit
     end

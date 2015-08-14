@@ -29,9 +29,10 @@
     .mt
     -Post.by_create_date.limit(6).each do |post|
       .col-xs-12.col-sm-6.col-md-4.col-lg-4
-        =link_to post_permalink_path(post.section.permalink, post.permalink) do
-          =image_tag(post.primary_image, alt: post.title, class: 'img-responsive', style: 'max-height: 200px; width: auto;')
-          =post.title
+        =link_to post_permalink_path(post.section.permalink, !post.categories.empty? ? post.categories.first.permalink : 'artículo', post.permalink) do
+          .text-center
+            =image_tag(post.primary_image, alt: post.title, class: 'img-responsive', style: 'max-height: 200px; width: auto; margin: 0 auto;')
+            =post.title
 #skills
   .container
     .row.centered

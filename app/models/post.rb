@@ -53,7 +53,11 @@ class Post < ActiveRecord::Base
 
     def check_body_preview
       doc = Nokogiri::HTML(self.body)
-      self.body_preview = doc.css('p').first.text
+      self.body_preview = ''
+      doc.css('p').each do |elem|
+        self.body_preview = self.body_preview + elem.text
+        break if self.body_preview.length >= 250
+      end
     end
 
     def generate_permalink

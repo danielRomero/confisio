@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :discounts, param: :discount_permalink, path: 'descuentos'
     resources :categories, param: :category_permalink, path: 'categorias'
     get 'precios', to: 'sections#precios', as: :prices
-    get ':post_permalink', to: 'posts#show', as: :post_permalink
+    get ':category_parmalink/:post_permalink', to: 'posts#show', as: :post_permalink
   end
   get '/sitemap', to: 'application#sitemap', as: 'sitemap', defaults: { format: 'xml' }
   

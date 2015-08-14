@@ -40,13 +40,13 @@
         <loc><%= category_url(section.permalink, category.permalink) %></loc>
         <lastmod><%= I18n.l(category.updated_at, :format => :w3c) %></lastmod>
       </url>
-    <% end %>
+      <% category.posts.all.each do |post| %>
+        <url>
+          <loc><%= post_permalink_url(section.permalink, category.permalink, post.permalink) %></loc>
+          <lastmod><%= I18n.l(post.updated_at, :format => :w3c) %></lastmod>
+        </url>
+      <% end %>
 
-    <% section.posts.all.each do |post| %>
-      <url>
-        <loc><%= post_permalink_url(section.permalink, post.permalink) %></loc>
-        <lastmod><%= I18n.l(post.updated_at, :format => :w3c) %></lastmod>
-      </url>
     <% end %>
 
   <% end %>

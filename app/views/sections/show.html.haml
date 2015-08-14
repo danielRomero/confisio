@@ -11,4 +11,4 @@
       -if category.posts
         %ul
           -category.posts.each do |post|
-            %li=link_to post.title, post_permalink_path(@section.permalink, post.permalink)
+            %li=link_to post.title, post_permalink_path(@section.permalink, category.permalink, post.permalink)
