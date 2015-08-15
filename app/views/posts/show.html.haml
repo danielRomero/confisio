@@ -1,20 +1,21 @@
-.page-header
-  %h1=@post.title
-=@post.body.html_safe
--if admin?
-  =link_to 'Volver (Panel de control)', setting_path(@section.permalink)
--else
-  =link_to 'Volver', sections_permalink_path(@section.permalink)
-%script{:type => "application/ld+json"}
-  :cdata
-    {
-      "@context": "http://schema.org",
-      "@type": "NewsArticle",
-      "headline": "#{@post.title}",
-      "image": [
-        "#{@post.primary_image}"
-      ],
-      "datePublished": "#{I18n.l(@post.updated_at, :format => :w3c)}",
-      "description": "#{strip_html_tags(@post.body_preview)}",
-      "articleBody": "#{strip_html_tags(@post.body)}"
-    }
+- cache ['v1', 'post', @post, @section] do
+  .page-header
+    %h1=@post.title
+  =@post.body.html_safe
+  -if admin?
+    =link_to 'Volver (Panel de control)', setting_path(@section.permalink)
+  -else
+    =link_to 'Volver', sections_permalink_path(@section.permalink)
+  %script{:type => "application/ld+json"}
+    :cdata
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "#{@post.title}",
+        "image": [
+          "#{@post.primary_image}"
+        ],
+        "datePublished": "#{I18n.l(@post.updated_at, :format => :w3c)}",
+        "description": "#{strip_html_tags(@post.body_preview)}",
+        "articleBody": "#{strip_html_tags(@post.body)}"
+      }

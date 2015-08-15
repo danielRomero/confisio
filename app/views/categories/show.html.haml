@@ -1,11 +1,12 @@
-%h1=@category.name
-%p=@category.description
-.col-xs-12.col-sm-6.col-md-4.col-lg-4
-  -@category.posts.by_create_date.each do |post|
-    =image_tag post.primary_image, style: 'width: 100%; height: auto; margin: 0 auto;', alt: post.title
-    %h2
-      =link_to post.title, post_permalink_path(@section.permalink, @category.permalink, post.permalink)
-    %p
-      =post.body_preview.html_safe
-      %br
-      =link_to '... leer completo', post_permalink_path(@section.permalink, @category.permalink, post.permalink)
+- cache ['v1', 'category', 'show', @category] do
+  %h1=@category.name
+  %p=@category.description
+  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+    -@category.posts.by_create_date.each do |post|
+      =image_tag post.primary_image, style: 'width: 100%; height: auto; margin: 0 auto;', alt: post.title
+      %h2
+        =link_to post.title, post_permalink_path(@section.permalink, @category.permalink, post.permalink)
+      %p
+        =post.body_preview.html_safe
+        %br
+        =link_to '... leer completo', post_permalink_path(@section.permalink, @category.permalink, post.permalink)

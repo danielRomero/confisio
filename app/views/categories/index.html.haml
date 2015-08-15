@@ -1,10 +1,11 @@
-%h1="Categorías de #{@section.name}"
-=link_to 'Nueva categoría', new_category_path(@section.permalink)
--@section.categories.each do |category|
-  %br
-  =category.name
-  =link_to 'editar', edit_category_path(@section.permalink, category.permalink)
-  |
-  =link_to 'Borrar', category_path(@section.permalink, category.permalink), method: :delete, data: {confirm: '¿Quieres borrar este descuento?'}
-%hr
-=link_to 'Volver', setting_path(@section.permalink)
+- cache ['v1', 'categories', 'index', @section] do
+  %h1="Categorías de #{@section.name}"
+  =link_to 'Nueva categoría', new_category_path(@section.permalink)
+  -@section.categories.each do |category|
+    %br
+    =category.name
+    =link_to 'editar', edit_category_path(@section.permalink, category.permalink)
+    |
+    =link_to 'Borrar', category_path(@section.permalink, category.permalink), method: :delete, data: {confirm: '¿Quieres borrar este descuento?'}
+  %hr
+  =link_to 'Volver', setting_path(@section.permalink)
