@@ -29,5 +29,10 @@ module Confisio
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.middleware.use Rack::Cache,
+      :verbose => true,
+      :metastore   => 'file:/var/cache/rack/meta',
+      :entitystore => 'file:/var/cache/rack/body'
   end
 end

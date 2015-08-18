@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def index
+    
+
+    begin
+      1/0
+    rescue => e
+      logger.debug "\n\nASDASDASDASD\n\n\n"
+      ExceptionNotifier.notify_exception(e)
+    end
     @app_configuration = AppConfiguration.last
     render layout: 'landing'
   end

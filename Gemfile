@@ -32,9 +32,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 gem 'awesome_print'
 gem 'haml-rails'
 gem 'exception_notification'
@@ -42,6 +39,7 @@ gem 'kaminari'
 gem 'nokogiri-styles'
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'OwlCarousel2'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+gem 'rack-cache'
 
 
 # Use Passenger as the app server
@@ -57,6 +55,7 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
+  gem 'capistrano-faster-assets'
 end
 
 group :development, :test do

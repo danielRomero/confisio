@@ -47,15 +47,65 @@ set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 set :passenger_restart_with_touch, true
 
-namespace :deploy do
+# namespace :deploy do
+#   task :default do
+#     update
+#     assets.precompile
+#     restart
+#     cleanup
+#     # etc
+#   end
+# end
 
-  # after :restart, :clear_cache do
-  #   on roles(:web), in: :groups, limit: 3, wait: 10 do
-  #     # Here we can do anything such as:
-  #     # within release_path do
-  #     #   execute :rake, 'cache:clear'
-  #     # end
-  #   end
-  # end
-
+namespace :assets do
+  desc "Precompile assets locally and then rsync to app servers"
+  task :precompile do
+    run_locally "bundle exec rake assets:precompile;"
+    servers = find_servers :roles => [:app], :except => { :no_release => true }
+    servers.each do |server|
+      run_locally "rsync -av ./public/assets/ #{user}@#{server}:#{current_path}/public/assets/;"
+    end
+    run_locally "rm -rf public/assets"
+  end
 end
+
+namespace :deploy do
+  after :updated, "assets:precompile"
+end
+
+
+# namespace :deploy do
+#   namespace :assets do
+#     desc "Precompile assets locally and then rsync to web servers"
+#     task :precompile do
+#       on roles(:web) do
+#         rsync_host = host.to_s # this needs to be done outside run_locally in order for host to exist
+#         run_locally do
+#           with rails_env: fetch(:stage) do
+#             execute :bundle, "exec rake assets:precompile"
+#           end
+#           execute "rsync -av --delete ./public/assets/ #{fetch(:user)}@#{rsync_host}:#{shared_path}/public/assets/"
+#           execute "rm -rf public/assets"
+#           # execute "rm -rf tmp/cache/assets" # in case you are not seeing changes
+#         end
+#       end
+#     end
+#   end
+# end
+
+# namespace :deploy do
+#   after :updated, "assets:precompile"
+# end
+
+# namespace :deploy do
+
+#   # after :restart, :clear_cache do
+#   #   on roles(:web), in: :groups, limit: 3, wait: 10 do
+#   #     # Here we can do anything such as:
+#   #     # within release_path do
+#   #     #   execute :rake, 'cache:clear'
+#   #     # end
+#   #   end
+#   # end
+
+# end
