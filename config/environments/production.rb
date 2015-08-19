@@ -57,6 +57,9 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store, ENV["MEMCACHIER_SERVER"].split(','),
+                    {:username => ENV["MEMCACHIER_USERNAME"],
+                     :password => ENV["MEMCACHIER_PASSWORD"]}
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -87,6 +90,6 @@ Rails.application.configure do
 
   config.middleware.use Rack::Cache,
       :verbose => true,
-      :metastore   => 'file:/var/cache/rack/meta',
-      :entitystore => 'file:/var/cache/rack/body'
+      :metastore   => "memcached://#{ENV["MEMCACHIER_SERVER"]}/meta",
+      :entitystore => "memcached://#{ENV["MEMCACHIER_SERVER"]}/body"
 end

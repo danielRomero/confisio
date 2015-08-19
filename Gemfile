@@ -39,14 +39,16 @@ gem 'kaminari'
 gem 'nokogiri-styles'
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'OwlCarousel2'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
-gem 'rack-cache'
-
 
 # Use Passenger as the app server
 group :production do
   gem 'passenger'
   # See https://github.com/rails/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
+  
+  gem 'memcachier'
+  gem 'dalli'
+  gem 'rack-cache'
 end
 
 group :development do
