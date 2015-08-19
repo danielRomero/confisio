@@ -69,9 +69,9 @@ namespace :assets do
   end
 end
 
-namespace :deploy do
-  after :updated, "assets:precompile"
-end
+# namespace :deploy do
+#   after :updated, "assets:precompile"
+# end
 
 
 # namespace :deploy do
