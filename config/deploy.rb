@@ -56,7 +56,7 @@ set :passenger_restart_with_touch, true
 #     # etc
 #   end
 # end
-namespace :deploy
+namespace :deploy do
   namespace :assets do
     desc "Precompile assets locally and then rsync to app servers"
     task :precompile do
