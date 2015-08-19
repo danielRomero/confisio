@@ -84,16 +84,9 @@ Rails.application.configure do
     :sender_address => %{"notifier" <#{ENV['DEV_EMAIL_ADDRESS']}>},
     :exception_recipients => [ ENV['DEV_EMAIL_ADDRESS'] ]
   }
-  config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address => ENV['SMTP_ADDRESS'],
-    :port => ENV['SMTP_PORT'],
-    :domain => ENV['DOMAIN'],
-    :user_name => ENV['DEV_EMAIL_ADDRESS'],
-    :password => ENV['DEV_EMAIL_PASS'],
-    :authentication => ENV['SMTP_AUTHENTICATION'],
-    :enable_starttls_auto => true
-  }
+  config.middleware.use Rack::Cache,
+      :verbose => true,
+      :metastore   => 'file:/var/cache/rack/meta',
+      :entitystore => 'file:/var/cache/rack/body'
 end
