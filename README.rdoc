@@ -1,28 +1,36 @@
-== README
+== confisio.es
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web oficial de la clínica de fisioterapia y psicología [Confisio]
 
-Things you may want to cover:
+---------------------------------------------------------------
 
-* Ruby version
+Official website of the physiotherapy and psychology clinic [Confisio]
 
-* System dependencies
+---------------------------------------------------------------
 
-* Configuration
+Database: postgresql on Amazon RDS
 
-* Database creation
+Server: single EC2 t2.micro
+  - Nginx
+  - Passenger
+  - memcachier
 
-* Database initialization
+Deploys:Capistrano.
 
-* How to run the test suite
+Assets:
+  Are served by production server.
+  On upload it compiles the assets locally if are changed and uploaded to server with rsync command.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Cache:
+  Managed by memcachier.
+  Fragment cache.
+  Rack cache with 'rack-cache' gem
+  
+Notifications
+  Managed by exception_notification
+  
+Front:
+  Styles are managed with custom bootstrap.
+  Post forms used ckeditor.
+  HTML templates with Haml.
+  
