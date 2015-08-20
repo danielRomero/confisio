@@ -18,9 +18,20 @@ set :repo_url, 'git@github.com:danielRomero/confisio.git'
 
 # Default value for :log_level is :debug
 # set :log_level, :debug
+SSHKit::Backend::Netssh.configure do |ssh|
+  ssh.connection_timeout = 30
+  ssh.ssh_options = {
+    user: 'ec2-user',
+    keys: ["#{Dir.pwd}/EC2Confisio.pem"],
+    forward_agent: false,
+    auth_methods: %w(publickey)
+  }
+end
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
+
+set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: ["#{Dir.pwd}/EC2Confisio.pem"] }
 
 set :rails_env, 'production'               # If the environment differs from the stage name
 set :migration_role, 'db'                  # Defaults to 'db'
@@ -47,78 +58,5 @@ set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 set :passenger_restart_with_touch, true
 
-# namespace :deploy do
-#   task :default do
-#     update
-#     assets.precompile
-#     restart
-#     cleanup
-#     # etc
-#   end
-# end
-namespace :deploy do
-  namespace :assets do
-    desc "Precompile assets locally and then rsync to app servers"
-    task :precompile do
-      run_locally "bundle exec rake assets:precompile;"
-      servers = find_servers :roles => [:app], :except => { :no_release => true }
-      servers.each do |server|
-        run_locally "rsync -av ./public/assets/ #{user}@#{server}:#{current_path}/public/assets/;"
-      end
-      run_locally "rm -rf public/assets"
-    end
-  end
-end
-
-namespace :memcached do
-  desc 'restart memcached and check status'
-  task :restart do
-    on roles(:web) do
-      execute "sudo service memcached restart"
-      execute "sudo service memcached status"
-    end
-  end
-end
-
-after :deploy, "memcached:restart"
-
-# namespace :deploy do
-#   after :updated, "assets:precompile"
-# end
-
-
-# namespace :deploy do
-#   namespace :assets do
-#     desc "Precompile assets locally and then rsync to web servers"
-#     task :precompile do
-#       on roles(:web) do
-#         rsync_host = host.to_s # this needs to be done outside run_locally in order for host to exist
-#         run_locally do
-#           with rails_env: fetch(:stage) do
-#             execute :bundle, "exec rake assets:precompile"
-#           end
-#           execute "rsync -av --delete ./public/assets/ #{fetch(:user)}@#{rsync_host}:#{shared_path}/public/assets/"
-#           execute "rm -rf public/assets"
-#           # execute "rm -rf tmp/cache/assets" # in case you are not seeing changes
-#         end
-#       end
-#     end
-#   end
-# end
-
-# namespace :deploy do
-#   after :updated, "assets:precompile"
-# end
-
-# namespace :deploy do
-
-#   # after :restart, :clear_cache do
-#   #   on roles(:web), in: :groups, limit: 3, wait: 10 do
-#   #     # Here we can do anything such as:
-#   #     # within release_path do
-#   #     #   execute :rake, 'cache:clear'
-#   #     # end
-#   #   end
-#   # end
-
-# end
+# set the locations that we will look for changed assets to determine whether to precompile
+# set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile config/routes.rb)

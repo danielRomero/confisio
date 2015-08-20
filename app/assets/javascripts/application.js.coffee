@@ -15,7 +15,6 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require ckeditor/init
-#= require owl.carousel
 #= require_tree .
 
 window.confisio = {}

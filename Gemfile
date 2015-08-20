@@ -37,7 +37,6 @@ gem 'haml-rails'
 gem 'exception_notification'
 gem 'kaminari'
 gem 'nokogiri-styles'
-gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'OwlCarousel2'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 # Use Passenger as the app server
@@ -53,11 +52,13 @@ end
 
 group :development do
   # Use Capistrano for deployment
+  gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
-  gem 'capistrano-faster-assets'
+  # gem 'capistrano-faster-assets'
+  #gem 'capistrano-local-precompile'
 end
 
 group :development, :test do
