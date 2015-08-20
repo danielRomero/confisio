@@ -11,7 +11,12 @@
 # about supported directives.
 #
 #= require jquery
-#= require bootstrap-sprockets
+
+#= require bootstrap/alert
+#= require bootstrap/carousel
+#= require bootstrap/affix
+#= require bootstrap/transition
+
 #= require jquery_ujs
 #= require turbolinks
 #= require ckeditor/init

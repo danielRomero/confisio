@@ -57,7 +57,6 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
-  # gem 'capistrano-faster-assets'
 end
 
 group :development, :test do
