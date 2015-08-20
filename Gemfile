@@ -58,7 +58,6 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   # gem 'capistrano-faster-assets'
-  #gem 'capistrano-local-precompile'
 end
 
 group :development, :test do

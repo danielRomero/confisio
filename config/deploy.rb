@@ -18,20 +18,8 @@ set :repo_url, 'git@github.com:danielRomero/confisio.git'
 
 # Default value for :log_level is :debug
 # set :log_level, :debug
-SSHKit::Backend::Netssh.configure do |ssh|
-  ssh.connection_timeout = 30
-  ssh.ssh_options = {
-    user: 'ec2-user',
-    keys: ["#{Dir.pwd}/EC2Confisio.pem"],
-    forward_agent: false,
-    auth_methods: %w(publickey)
-  }
-end
 
 # Default value for :pty is false
-set :pty, true
-
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: ["#{Dir.pwd}/EC2Confisio.pem"] }
 
 set :rails_env, 'production'               # If the environment differs from the stage name
 set :migration_role, 'db'                  # Defaults to 'db'
@@ -59,4 +47,26 @@ set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set :passenger_restart_with_touch, true
 
 # set the locations that we will look for changed assets to determine whether to precompile
-# set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile config/routes.rb)
+set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile config/routes.rb)
+
+# namespace :assets do
+#   desc "Precompile assets locally and then rsync to web servers"
+#   task :precompile do
+#     on roles(:web) do
+#       rsync_host = host.to_s # this needs to be done outside run_locally in order for host to exist
+#       run_locally do
+#         with rails_env: fetch(:stage) do
+#           execute :bundle, "exec rake assets:precompile"
+#         end
+#         execute "rsync -av --delete ./public/assets/ #{fetch(:user)}@#{rsync_host}:#{shared_path}/public/assets/"
+#         execute "rm -rf public/assets"
+#         # execute "rm -rf tmp/cache/assets" # in case you are not seeing changes
+#       end
+#     end
+#   end
+# end
+# namespace :deploy do
+#   after :updated, "assets:precompile"
+# end
+
+class PrecompileRequired < StandardError; end
