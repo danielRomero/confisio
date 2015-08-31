@@ -16,6 +16,7 @@
 #= require bootstrap/carousel
 #= require bootstrap/affix
 #= require bootstrap/transition
+#= require bootstrap/collapse
 
 #= require jquery_ujs
 #= require turbolinks
