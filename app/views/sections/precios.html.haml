@@ -1,4 +1,16 @@
 - cache ['v1', 'section', 'precios', @section] do
+  %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(root_path, property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=APP_NAME.capitalize
+      %meta{property: 'position', content: '1'}
+
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=@section.name.capitalize
+      %meta{property: 'position', content: '2'}
+    %li.active='Precios'
+
   .page-header
     %h1
       ="Precio por sesión de #{@section.name}"
@@ -11,5 +23,5 @@
         =discount.title
         %b="#{'%.2f' % discount.value.round(2)} €"
         =link_to 'Condiciones', discount_path(@section.permalink, discount.permalink)
-    %hr
+      %hr
   =link_to 'Volver', section_path(@section.permalink)

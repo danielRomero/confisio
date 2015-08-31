@@ -1,15 +1,38 @@
 - cache ['v1', 'discount', 'show', @discount] do
+
+  %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(root_path, property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=APP_NAME.capitalize
+      %meta{property: 'position', content: '1'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=@section.name.capitalize
+      %meta{property: 'position', content: '2'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(prices_path(@section.permalink), property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}='Precios'
+      %meta{property: 'position', content: '3'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(discounts_path(@section.permalink), property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}='Descuentos'
+      %meta{property: 'position', content: '4'}
+    %li.active=@discount.title.capitalize
+
+
   .page-header
     %h1
       =@discount.title
       %small
         ="#{'%.2f' % @discount.value.round(2)} €"
-  %p
-    %b Descripción
-  %p
-    =@discount.description
-  %p
-    %b Condiciones
-  %p
-    %small=@discount.conditions
+  -if !@discount.description.blank?
+    %p
+      %b Descripción
+    %p
+      =@discount.description
+  -if !@discount.conditions.blank?
+    %p
+      %b Condiciones
+    %p
+      %small=@discount.conditions
   =link_to 'Volver', prices_path(@section.permalink)

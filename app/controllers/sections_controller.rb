@@ -15,7 +15,7 @@ class SectionsController < ApplicationController
   private
     def set_section
       if !@section = Section.find_by(permalink: params[:permalink])
-        redirect_to error_404_path
+        redirect_to error_404_path if Rails.env.production?
       end
     end
 end

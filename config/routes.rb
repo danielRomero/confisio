@@ -20,10 +20,12 @@ Rails.application.routes.draw do
 
   scope ':permalink' do
     resources :posts, param: :post_permalink, except: :show
-    resources :discounts, param: :discount_permalink, path: 'descuentos'
+    scope 'precios' do
+      resources :discounts, param: :discount_permalink, path: 'descuentos'
+    end
     resources :categories, param: :category_permalink, path: 'categorias'
     get 'precios', to: 'sections#precios', as: :prices
-    get ':category_parmalink/:post_permalink', to: 'posts#show', as: :post_permalink
+    get ':category_permalink/:post_permalink', to: 'posts#show', as: :post_permalink
   end
   get '/sitemap', to: 'application#sitemap', as: 'sitemap', defaults: { format: 'xml' }
   

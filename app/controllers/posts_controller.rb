@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_section
+  before_action :set_category
 
   def show
     @titulo = "#{@section.name} · #{@post.title}"
@@ -46,13 +47,17 @@ class PostsController < ApplicationController
 
   private
     def set_post
-      if !@post = Post.find_by(permalink: params[:post_permalink])
+      if !(@post = Post.find_by(permalink: params[:post_permalink]))
         redirect_to sections_permalink_path(params[:permalink]) # si no encuentra el artículo redirige a la sección a la que debería pertenecer
       end
     end
     
     def set_section
-      !@section = Section.find_by(permalink: params[:permalink])
+      @section = Section.find_by(permalink: params[:permalink])
+    end
+
+    def set_category
+      @category = @section.categories.find_by(permalink: params[:category_permalink])
     end
 
     def post_params
