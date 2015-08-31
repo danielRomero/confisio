@@ -1,4 +1,4 @@
-== confisio.es
+== http://confisio.es
 
 Web oficial de la clínica de fisioterapia y psicología [Confisio]
 
@@ -15,7 +15,7 @@ Server: single EC2 t2.micro
   - Passenger
   - memcachier
 
-Deploys:Capistrano.
+Deploy: Capistrano.
 
 Assets:
   Are served by production server.
