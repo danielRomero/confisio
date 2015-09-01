@@ -8,17 +8,17 @@ class PostsController < ApplicationController
 
   def show
     if @category
-      @titulo = "#{@section.name} · #{@category.name} · #{@post.title}"
+      @titulo = "#{@section.name.capitalize} · #{@category.name} · #{@post.title}"
     else
-      @titulo = "#{@section.name} · #{@post.title}"
+      @titulo = "#{@section.name.capitalize} · #{@post.title}"
     end
     @meta_image = @post.primary_image
     @description = @post.body_preview
-    @meta_url = post_permalink_url(@section.permalink, @category.permalink, post.permalink) if @category
+    @meta_url = post_permalink_url(@section.permalink, @category.permalink, @post.permalink) if @category
   end
 
   def index
-    @titulo = "#{@section.name} · artículos"
+    @titulo = "#{@section.name.capitalize} · artículos"
   end
 
   def new

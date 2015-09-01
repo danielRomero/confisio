@@ -7,13 +7,13 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   
   def show
-    @titulo = "#{@section.name} · #{@category.name}"
+    @titulo = "#{@section.name.capitalize} · #{@category.name}"
     @description = @category.description || AppConfiguration.first.description
     @meta_url = category_url(@section.permalink, @category.permalink)
   end
 
   def index
-    @titulo = "#{@section.name} · categorías"
+    @titulo = "#{@section.name.capitalize} · categorías"
     if !admin?
       redirect_to sections_permalink_path(@section.permalink)
     end

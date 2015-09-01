@@ -23,8 +23,8 @@
 
 %meta{content: "#FFFFFF", name: "msapplication-TileColor"}/
 
-%meta{content: @meta_image || "https://res-5.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183109/logo-marca/mano/logo-confisio-mano_90_144.png", name: "msapplication-TileImage"}/
-%meta{content: @meta_image || "https://res-4.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183103/logo-marca/mano/logo-confisio-mano_44_70.png", name: "msapplication-square70x70logo"}/
-%meta{content: @meta_image || "https://res-1.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183104/logo-marca/mano/logo-confisio-mano_94_150.png", name: "msapplication-square150x150logo"}/
-%meta{content: @meta_image || "https://res-3.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183104/logo-marca/mano/logo-confisio-mano_194_310.png", name: "msapplication-square310x310logo"}/
-%meta{content: @meta_image || "https://res-1.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183104/logo-marca/mano/logo-confisio-mano_94_150.png", name: "msapplication-wide310x150logo"}/
+%meta{content: (@meta_image and !@meta_image.blank?) ? @meta_image : "https://res-5.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183109/logo-marca/mano/logo-confisio-mano_90_144.png", name: "msapplication-TileImage"}/
+%meta{content: (@meta_image and !@meta_image.blank?) ? @meta_image : "https://res-4.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183103/logo-marca/mano/logo-confisio-mano_44_70.png", name: "msapplication-square70x70logo"}/
+%meta{content: (@meta_image and !@meta_image.blank?) ? @meta_image : "https://res-1.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183104/logo-marca/mano/logo-confisio-mano_94_150.png", name: "msapplication-square150x150logo"}/
+%meta{content: (@meta_image and !@meta_image.blank?) ? @meta_image : "https://res-3.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183104/logo-marca/mano/logo-confisio-mano_194_310.png", name: "msapplication-square310x310logo"}/
+%meta{content: (@meta_image and !@meta_image.blank?) ? @meta_image : "https://res-1.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183104/logo-marca/mano/logo-confisio-mano_94_150.png", name: "msapplication-wide310x150logo"}/
