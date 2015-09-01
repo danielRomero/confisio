@@ -7,10 +7,14 @@ class DiscountsController < ApplicationController
   def index
     @discounts = @section.discounts
     @titulo = "#{@section.name} · descuentos"
+    @description = "Mira los últimos descuentos en #{@section.name}"
+    @meta_url = discounts_path(@section.permalink)
   end
 
   def show
-    @titulo = "#{@section.name} · #{@discount.title}"
+    @titulo = "#{@section.name} · Descuentos · #{@discount.title}"
+    @description = "Mira los últimos descuentos en #{@section.name}. #{@discount.title.capitalize}"
+    @meta_url = discount_path(@section.permalink, @discount.permalink)
   end
 
   def new

@@ -1,6 +1,6 @@
 %meta{:content => ENV['FB_APP_ID'], :property => "fb:app_id"}/
-%meta{:content => "http://#{ENV['HOST']}", :property => "og:url"}/
-%meta{:content => @meta_url || APP_NAME, :property => "og:site_name"}/
+%meta{:content => @meta_url || "http://#{ENV['HOST']}", :property => "og:url"}/
+%meta{:content => APP_NAME, :property => "og:site_name"}/
 %meta{:content => @titulo ? "#{APP_NAME} · #{@titulo}" : APP_NAME , :property => "og:title"}/
 %meta{:content => @description || AppConfiguration.first.description || APP_META_DESCRIPTION, :property => "og:description"}/
 

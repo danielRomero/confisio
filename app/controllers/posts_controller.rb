@@ -7,9 +7,14 @@ class PostsController < ApplicationController
   before_action :set_category
 
   def show
-    @titulo = "#{@section.name} · #{@post.title}"
+    if @category
+      @titulo = "#{@section.name} · #{@category.name} · #{@post.title}"
+    else
+      @titulo = "#{@section.name} · #{@post.title}"
+    end
     @meta_image = @post.primary_image
     @description = @post.body_preview
+    @meta_url = post_permalink_path(@section.permalink, @category.permalink, post.permalink) if @category
   end
 
   def index

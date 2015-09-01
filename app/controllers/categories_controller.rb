@@ -8,6 +8,8 @@ class CategoriesController < ApplicationController
   
   def show
     @titulo = "#{@section.name} · #{@category.name}"
+    @description = @category.description || AppConfiguration.first.description
+    @meta_url = category_path(@section.permalink, @category.permalink)
   end
 
   def index

@@ -13,6 +13,15 @@ class ApplicationController < ActionController::Base
 
   def contact
     @app_configuration = AppConfiguration.first
+    @titulo = "#{APP_NAME} · contacto"
+    @description = "Te resolvemos cualquier duda, contacta ahora con nosotros y recibe las mejores ofertas. #{@app_configuration.telefono_fijo} --- #{@app_configuration.email}"
+    @meta_url = contact_path
+  end
+
+  def team
+    @titulo = "#{APP_NAME} · equipo"
+    @description = "Conoce al equipo de #{APP_NAME} y contacta con quien necesites. Profesionales cualificados con experiencia en constante formación para ofrecerte el mejor servicio."
+    @meta_url = team_path
   end
 
   # Type can be: info, success, warning, danger

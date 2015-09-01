@@ -5,12 +5,15 @@ class SectionsController < ApplicationController
   before_action :set_section, only: [:show, :edit, :update, :destroy, :precios]
   def show
     @titulo = @section.name
-    @description = @section.setting.description
+    @description = @section.setting.description || AppConfiguration.first.description
+    @meta_url = sections_permalink_path(@section.permalink)
   end
   
   def precios
     @setting = @section.setting
     @titulo = "#{@section.name} · precios"
+    @description = "Los mejores precios y descuentos en #{@section.name}"
+    @meta_url = prices_path(@section.permalink)
   end
   private
     def set_section
