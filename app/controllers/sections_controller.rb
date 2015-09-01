@@ -6,14 +6,14 @@ class SectionsController < ApplicationController
   def show
     @titulo = @section.name
     @description = @section.setting.description || AppConfiguration.first.description
-    @meta_url = sections_permalink_path(@section.permalink)
+    @meta_url = sections_permalink_url(@section.permalink)
   end
   
   def precios
     @setting = @section.setting
     @titulo = "#{@section.name} · precios"
     @description = "Los mejores precios y descuentos en #{@section.name}"
-    @meta_url = prices_path(@section.permalink)
+    @meta_url = prices_url(@section.permalink)
   end
   private
     def set_section

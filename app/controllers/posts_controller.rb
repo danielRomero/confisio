@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     end
     @meta_image = @post.primary_image
     @description = @post.body_preview
-    @meta_url = post_permalink_path(@section.permalink, @category.permalink, post.permalink) if @category
+    @meta_url = post_permalink_url(@section.permalink, @category.permalink, post.permalink) if @category
   end
 
   def index
