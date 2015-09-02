@@ -10,7 +10,7 @@
     %h1
       =@section.name
     =link_to 'Precios y descuentos', prices_path(@section.permalink)
-  %p=@section.setting.description
+  %p=@section.setting.description.html_safe
 
   -if @section.categories
     %ul.list-unstyled

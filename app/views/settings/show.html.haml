@@ -3,7 +3,7 @@
 =render 'form'
 .col-xs-12.col-sm-6.col-md-4.col-lg-4
   =link_to 'Nuevo Artículo', new_post_path(@section.permalink)
-  - cache ['v1', 'setting', 'show', 'posts', cache_key_for_posts] do
+  - cache ['v1', 'setting', 'show', 'posts', @section, cache_key_for_posts] do
     -@posts.each do |post|
       %h3=post.title
       =link_to 'Editar', edit_post_path(@section.permalink, post.permalink)
