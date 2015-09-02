@@ -11,6 +11,8 @@
 # about supported directives.
 #
 #= require jquery
+#= require jquery_ujs
+#= require turbolinks
 
 #= require bootstrap/alert
 #= require bootstrap/carousel
@@ -19,8 +21,6 @@
 #= require bootstrap/collapse
 #= require bootstrap/dropdown
 
-#= require jquery_ujs
-#= require turbolinks
 #= require ckeditor/init
 #= require_tree .
 
