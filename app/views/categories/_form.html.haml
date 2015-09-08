@@ -6,12 +6,12 @@
       %ul
         - @category.errors.full_messages.each do |msg|
           %li= msg
-  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+  .col-xs-12.col-sm-12.col-md-8.col-lg-8
     .form-group
       = f.label :name, 'Nombre'
       = f.text_field :name, class: 'form-control'
     .form-group
-      = f.label :description, 'Descripción'
-      = f.text_area :description, class: 'form-control'
+      = f.label :description, 'Descripción (si aquí no carga una caja de texto con botones, recarga la página)'
+      = f.cktext_area :description, :cols => 40, :ckeditor => {:toolbar => 'mini', :language => 'es'}
     .actions
       = f.submit 'Guardar', class: 'btn btn-primary'
