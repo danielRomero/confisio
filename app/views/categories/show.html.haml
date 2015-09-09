@@ -12,7 +12,7 @@
     %li.active=@category.name.capitalize
 
   %h1=@category.name
-  %p=@category.description
+  %p=simple_format @category.description.html_safe
   .col-xs-12.col-sm-6.col-md-4.col-lg-4
     -@category.posts.by_create_date.each do |post|
       =image_tag post.primary_image, style: 'width: 100%; height: auto; margin: 0 auto;', alt: post.title
