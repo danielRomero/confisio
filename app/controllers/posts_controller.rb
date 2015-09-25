@@ -15,6 +15,8 @@ class PostsController < ApplicationController
     @meta_image = @post.primary_image
     @description = @post.body_preview
     @meta_url = post_permalink_url(@section.permalink, @category.permalink, @post.permalink) if @category
+    @author = @post.user ? @post.user : User.employers.first
+    @app_configuration = AppConfiguration.last
   end
 
   def index
@@ -27,6 +29,7 @@ class PostsController < ApplicationController
 
   def create
     @post = @section.posts.build
+    @post.user_id = current_user.id
     if @post.update(post_params)
       redirect_to post_permalink_path(@section.permalink, !@post.categories.empty? ? @post.categories.first.permalink : 'artículo', @post.permalink), notice: "Artículo creado."
     else

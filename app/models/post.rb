@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :category, touch: true
   belongs_to :section, touch: true
+  belongs_to :user, touch: true
 
   has_and_belongs_to_many :categories
 

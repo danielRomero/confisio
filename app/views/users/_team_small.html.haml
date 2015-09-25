@@ -1,0 +1,22 @@
+- cache ['v1', 'team', cache_key_for_employers, cache_key_for_sections] do
+  .pages-team
+    .container
+      .row
+        .col-xs-12.col-xs-offset-1.col-sm-12.col-sm-offset-0.col-md-12.col-md-offset-0.col-lg-12.col-lg-offset-0
+          -User.employers.each do |employee|
+            =link_to(employee_path(employee.section.permalink, employee.permalink)) do
+              .col-xs-10.col-sm-4.col-md-4.col-lg-4
+                .card
+                  %canvas.header-bg{:height => "70", :width => "250"}
+                  .avatar
+                    =image_tag(employee.avatar_url, alt: employee.full_name)
+                  .content{style: 'padding: 5px'}
+                    %p.text-blue
+                      =employee.degree
+                      %br/
+                      =employee.specialty
+                    %p.contact
+                      %span.text-blue=employee.full_name
+                      %br/
+                      %span.text-blue Contacto:
+                      =link_to(employee.contact_email, "mailto:#{employee.contact_email}")

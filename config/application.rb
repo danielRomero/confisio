@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 APP_NAME = 'confisio'
 
+APP_LOGO = 'https://res-4.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183432/logo-marca/logo-nombre-mano/logo-confisio-def_200_64.png'
+
 APP_META_KEYWORDS = %w[fisioterapia madrid cefalea tratamiento psicología osteopatía posturólogo posturología cognitivo-conductual ansiedad estrés ]
 
 APP_META_DESCRIPTION = "Clínica de fisioterapia y psicología. Para nosotros es importante resolver tus dudas, y que entiendas las causas del problema, para hacerte participe del tratamiento y evitar recaidas. Fisioterapeutas y psicólogos colegiados en constante formación."

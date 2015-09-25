@@ -18,12 +18,6 @@ class ApplicationController < ActionController::Base
     @meta_url = contact_url
   end
 
-  def team
-    @titulo = 'Equipo'
-    @description = "Conoce al equipo de #{APP_NAME} y contacta con quien necesites. Profesionales cualificados con experiencia en constante formación para ofrecerte el mejor servicio."
-    @meta_url = team_url
-  end
-
   # Type can be: info, success, warning, danger
   def apply_flash(type='info', message='')
     flash[:application] ||= []

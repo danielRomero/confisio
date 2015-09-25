@@ -5,6 +5,9 @@
 %meta{ name: 'Description', content: (@description and !@description.blank?) ? @description : AppConfiguration.first.description || APP_META_DESCRIPTION }
 %title{itemprop: 'name'}= @titulo ? "#{APP_NAME} · #{@titulo}" : "#{APP_NAME} · Fisioterapia y Psicología"
 
+-if @author and !@author.google_plus_url.blank?
+  %link{ rel: 'author', href: @author.google_plus_url }
+
 =render partial: 'layouts/opengraph'
 =render partial: 'layouts/icon'
 

@@ -1,4 +1,4 @@
-- cache ['v1', 'landing', @app_configuration, cache_key_for_posts, cache_key_for_settings, cache_key_for_sections] do
+- cache ['v1', 'landing', @app_configuration, cache_key_for_posts, cache_key_for_employers, cache_key_for_sections] do
   .application_landing 
     .row.landing-principal
       .jumbotron.vertical-center
@@ -44,7 +44,8 @@
           %p.text-center.text-white
             Personal colegiado altamente cualificado en constante formación a tu servicio
           .mt
-          =render 'team'
+          =render 'users/team_small'
     =link_to 'https://maps.google.com/maps?ll=40.441418,-3.65584&z=16&t=m&hl=es-ES&gl=ES&mapclient=embed&cid=15265252100196118758' do
       .full-width.scrolloff
         %iframe.embed-responsive-item{ frameborder: "0", style: "border:0", src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3036.5294147265954!2d-3.65584!3d40.44141799999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422f31137e4ebb%3A0xd3d911e806f9b0e6!2sConfisio!5e0!3m2!1ses!2ses!4v1433542867501" }}
+  =render partial: 'organization_json_ld'

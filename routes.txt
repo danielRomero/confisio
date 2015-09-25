@@ -4,7 +4,8 @@
                        POST   /login(.:format)                                                  sessions#create
                 logout GET    /logout(.:format)                                                 sessions#logout
                contact GET    /contacto(.:format)                                               application#contact
-                  team GET    /equipo(.:format)                                                 application#team
+                  team GET    /equipo(.:format)                                                 users#team
+              employee GET    /equipo/:permalink(.:format)                                      users#employee
               sections POST   /sections(.:format)                                               sections#create
            new_section GET    /sections/new(.:format)                                           sections#new
           edit_section GET    /sections/:permalink/edit(.:format)                               sections#edit

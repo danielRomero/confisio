@@ -13,10 +13,41 @@
       = f.label :name, 'Nombre'
       = f.text_field :name, class: 'form-control'
     .form-group
+      = f.label :surname, 'Apellidos'
+      = f.text_field :surname, class: 'form-control'
+    .form-group
+      = f.label :section_id, 'Sección'
+      = f.select :section_id, Section.all.collect { |p| [ p.name, p.id ] }, class: 'form-control'
+    .form-group
+      = f.label :avatar_url, 'Avatar URL'
+      = f.text_field :avatar_url, class: 'form-control'
+    .form-group
+      = f.label :contact_email, 'Email de contacto'
+      = f.text_field :contact_email, class: 'form-control'
+    .form-group
+      = f.label :contact_phone, 'Teléfono de contacto'
+      = f.text_field :contact_phone, class: 'form-control'
+    .form-group
+      = f.label :degree, 'Carrera que has estudiado'
+      = f.text_field :degree, class: 'form-control'
+    .form-group
+      = f.label :specialty, 'Especialidad'
+      = f.text_field :specialty, class: 'form-control'
+    .form-group
+      = f.label :google_plus_url, "Google Puls (Pinchas en tu foto gmail > perfil > coges la URL quitando la palabra 'posts'"
+      = f.url_field :google_plus_url, class: 'form-control', placeholder: "https://plus.google.com/u/0/113661394799137299959/"
+    .form-group
+      = f.label :password_confirmation, 'Google+ URL'
+      = f.text_field :password_confirmation, class: 'form-control'
+    .form-group
       = f.label :password, 'Contraseña'
       = f.password_field :password, class: 'form-control'
     .form-group
       = f.label :password_confirmation, 'Confirmar contraseña'
       = f.password_field :password_confirmation, class: 'form-control'
+  .col-xs-12.col-sm-12.col-md-8.col-lg-8
+    .form-group
+      = f.label :cv, 'Currículum'
+      = f.cktext_area :cv, :cols => 40, :ckeditor => {:toolbar => 'mini', :language => 'es'}
     .actions
       = f.submit 'Guardar', class: 'btn btn-primary'

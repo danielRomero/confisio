@@ -24,11 +24,14 @@ html.confisio {
   body {
     .scrolloff {
         pointer-events: none;
-    }
-    
+    }    
     .text-white{
       color: white;
     }
+    .text-blue{
+      color: #88ACD9;
+    }
+    
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     section#application_content.container{

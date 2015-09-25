@@ -1,5 +1,6 @@
 class Section < ActiveRecord::Base
   has_one :setting, dependent: :destroy
+  has_many :users
   has_many :posts
   has_many :discounts
   has_many :categories

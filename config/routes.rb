@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   get   :logout, to: 'sessions#logout'
 
   get   :contacto, to: 'application#contact', as: :contact
-  get   :equipo, to: 'application#team', as: :team
+  get   :equipo, to: 'users#team', as: :team
+  scope 'equipo' do
+    get ':section_permalink/:employee_permalink', to: 'users#employee', as: :employee
+  end
 
   resources :sections, except: [:index], param: :permalink
   resources :users, only: [:edit, :update]

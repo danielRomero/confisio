@@ -1,0 +1,43 @@
+%script{:type => "application/ld+json"}
+  :cdata
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Organization",
+      "url" : "http://#{ENV['HOST']}",
+      "logo": "#{APP_LOGO}",
+      "email": "#{@app_configuration.email}",
+      "legalName": "#{APP_NAME.capitalize}",
+      "numberOfEmployees": "#{User.employers.count}",
+      "contactPoint" : [
+        {
+          "@type" : "ContactPoint",
+          "telephone" : "+34-#{@app_configuration.telefono_movil}",
+          "contactType" : "customer service",
+          "areaServed" : "ES",
+          "availableLanguage" : "Spanish",
+          "postalCode": "#{@app_configuration.cp}",
+          "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
+          "addressCountry": "Spain",
+          "addressLocality": "#{@app_configuration.ciudad}"
+        },
+        {
+          "@type" : "ContactPoint",
+          "telephone" : "+34-#{@app_configuration.telefono_fijo}",
+          "contactType" : "customer service",
+          "areaServed" : "ES",
+          "availableLanguage" : "Spanish",
+          "postalCode": "#{@app_configuration.cp}",
+          "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
+          "addressCountry": "Spain",
+          "addressLocality": "#{@app_configuration.ciudad}"
+        }
+      ],
+      "sameAs" : [
+        "https://www.facebook.com/clinicaconfisio",
+        "https://plus.google.com/111880488504173820946"
+      ],
+      "brand": {
+        "@type": "PostalAddress",
+        "logo": "#{APP_LOGO}"
+      }
+    }
