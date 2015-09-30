@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   
+  skip_before_filter :only_admin, only: [:employee, :team]
+  skip_before_filter :login_required, only: [:employee, :team]
+
   before_action :set_user, except: [:team, :employee]
   before_action :set_employee, only: [:employee]
 

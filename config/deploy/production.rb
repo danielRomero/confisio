@@ -50,8 +50,8 @@
 # The server-based syntax can be used to override options:
 # ------------------------------------
 #server '52.26.230.124',
-server 'ec2-user@ec2-52-19-27-55.eu-west-1.compute.amazonaws.com',
-  user: 'ec2-user',
+server 'ubuntu@52.16.79.110',
+  user: 'ubuntu',
   roles: %w{web app db},
   ssh_options: {
     user: 'ec2-user', # overrides user setting above
