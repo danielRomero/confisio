@@ -11,7 +11,7 @@
           %span.icon-bar
       .collapse.navbar-collapse{id: 'bs-example-navbar-collapse-1'}
         %ul.nav.navbar-nav
-          -Section.all.each do |section|
+          -Section.all.order(created_at: :asc).each do |section|
             %li
               =link_to section.name, sections_permalink_path(section.permalink)
         %ul.nav.navbar-nav.navbar-right
