@@ -1,4 +1,4 @@
-== http://confisio.es  beta => http://ec2-52-19-27-55.eu-west-1.compute.amazonaws.com/
+== http://confisio.es/
 
 Web oficial de la clínica de fisioterapia y psicología [Confisio]
 
@@ -10,7 +10,7 @@ Official website of the physiotherapy and psychology clinic [Confisio]
 
 Database: postgresql on Amazon RDS
 
-Server: single EC2 t2.micro
+Server:
   - Nginx
   - Passenger
   - memcachier
@@ -19,12 +19,12 @@ Deploy: Capistrano.
 
 Assets:
   Are served by production server.
-  On upload it compiles the assets locally if are changed and uploaded to server with rsync command.
+  On upload it compiles the assets locally if are changed and are uploaded to server with rsync command.
 
 Cache:
   Managed by memcachier.
   Fragment cache.
-  Rack cache with 'rack-cache' gem
+  Rack cache with 'rack-cache'
   
 Notifications
   Managed by exception_notification
