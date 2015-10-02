@@ -43,7 +43,8 @@ namespace :deploy do
             with rails_env: fetch(:stage) do
               execute :bundle, "exec rake assets:precompile"
             end
-            execute "rsync -av --delete ./public/assets/ ubuntu@#{rsync_host}:#{shared_path}/public/assets/"
+            #execute "rsync -av --delete ./public/assets/ ubuntu@#{rsync_host}:#{shared_path}/public/assets/"
+            execute "rsync -avz --delete -e 'ssh -i #{Dir.pwd}/EC2Confisio.pem' ./public/assets/ ubuntu@#{rsync_host}:#{shared_path}/public/assets/"
             execute "rm -rf public/assets"
             # execute "rm -rf tmp/cache/assets" # in case you are not seeing changes
           end

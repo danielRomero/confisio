@@ -1,4 +1,4 @@
-- cache ['v1', 'discounts', 'index', cache_key_for_discounts] do
+- cache ['v1', 'discounts', 'index', cache_key_for_discounts, current_user] do
   %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
