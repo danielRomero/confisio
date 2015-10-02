@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <% cache ['v2', 'sitemap' , :expires_in => 1.day] do %>
+  <% cache ['v2', 'sitemap'], :expires_in => 1.day do %>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
     <url>
       <loc><%= root_url %></loc>
-      <lastmod><%= I18n.l(7.days.ago, :format => :w3c) %></lastmod>
-      
+      <lastmod><%= I18n.l(7.days.ago, :format => :w3c) %></lastmod>      
+    </url>
+
+    <url>
+      <loc><%= tarifas_url %></loc>
+      <lastmod><%= I18n.l(Category.maximum(:updated_at), :format => :w3c) %></lastmod>
     </url>
     
     <url>

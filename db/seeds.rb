@@ -14,6 +14,7 @@ puts 'Fisioterapia:'
 puts 'section failed' if !(section = Section.find_or_create_by(name: 'Fisioterapia'))
 setting = section.setting || Setting.new(email: 'confianzayfisioterapia@gmail.com', section: section)
 setting.description ||= description
+setting.base_price ||= 38
 #section.setting = Setting.new(email: 'confianzayfisioterapia@gmail.com') #if !section.setting
 puts 'setting failed' if !setting.save
 
@@ -22,6 +23,7 @@ puts 'Psicología:'
 puts 'section failed' if !(section = Section.find_or_create_by(name: 'Psicología'))
 setting = section.setting || Setting.new(email: 'confisiopsi@gmail.com')
 setting.description ||= description
+setting.base_price ||= 48
 puts 'setting failed' if !setting.save
 
 app_configuration_images = %w(http://res.cloudinary.com/confisio/image/upload/v1433795114/landing_equipo_1_pslvvq.jpg http://res.cloudinary.com/confisio/image/upload/v1434033298/IMG_20150528_142811_zlfr94.jpg http://res.cloudinary.com/confisio/image/upload/v1433794588/landing_camilla_1_pqbmzp.jpg http://res.cloudinary.com/confisio/image/upload/v1433794672/landing_logo_1_esgxyy.png http://res.cloudinary.com/confisio/image/upload/v1433794802/landing_sofa_1_izqrzy.jpg)

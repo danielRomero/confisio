@@ -78,11 +78,10 @@ ActiveRecord::Schema.define(version: 20150925103914) do
   add_index "posts", ["section_id"], name: "index_posts_on_section_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
-    t.string   "name"
-    t.string   "permalink"
-    t.float    "session_price"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "name",       null: false
+    t.string   "permalink",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "sections", ["permalink"], name: "index_sections_on_permalink", using: :btree

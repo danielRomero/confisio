@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter :login_required, except: [:index, :sitemap, :contact, :team]
-  before_filter :only_admin, except: [:index, :sitemap, :contact, :team]
+  before_filter :login_required, except: [:index, :sitemap, :contact, :team, :tarifas]
+  before_filter :only_admin, except: [:index, :sitemap, :contact, :team, :tarifas]
   include SessionsHelper
 
   def index
@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
     @titulo = 'Contacto'
     @description = "Te resolvemos cualquier duda, contacta ahora con nosotros y recibe las mejores ofertas. #{@app_configuration.telefono_fijo} --- #{@app_configuration.email}"
     @meta_url = contact_url
+  end
+
+  def tarifas
+    @app_configuration = AppConfiguration.first
+    @titulo = 'Tarifas'
+    @meta_url = tarifas_url
   end
 
   # Type can be: info, success, warning, danger

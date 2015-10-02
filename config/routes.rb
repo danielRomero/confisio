@@ -30,7 +30,8 @@ Rails.application.routes.draw do
     get 'precios', to: 'sections#precios', as: :prices
     get ':category_permalink/:post_permalink', to: 'posts#show', as: :post_permalink
   end
-  get '/sitemap', to: 'application#sitemap', as: 'sitemap', defaults: { format: 'xml' }
+  get 'tarifas', to: 'application#tarifas', as: :tarifas
+  get 'sitemap', to: 'application#sitemap', as: 'sitemap', defaults: { format: 'xml' }
   
 
   get '404', to: 'application#error_404', as: :error_404 # renderiza public/404.html
