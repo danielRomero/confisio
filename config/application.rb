@@ -44,5 +44,7 @@ module Confisio
       :authentication => ENV['SMTP_AUTHENTICATION'],
       :enable_starttls_auto => true
     }
+
+    config.middleware.use Rack::Deflater
   end
 end
