@@ -40,10 +40,9 @@
       {
         "@context": "http://schema.org",
         "@type": "Person",
-        "headline": "#{@employee.full_name}",
+        "additionalName": "#{@employee.full_name}",
         "jobTitle": "#{@employee.degree}",
         "affiliation": "#{APP_NAME}",
-        "additionalName": "#{@employee.name}",
         "url": "#{employee_url(@employee.section.permalink, @employee.permalink)}",
         "email": "#{@employee.contact_email}",
         "telephone": "#{@employee.contact_phone}",
@@ -71,10 +70,7 @@
             "addressLocality": "#{@app_configuration.ciudad}",
             "postalCode": "#{@app_configuration.cp}",
             "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
-          },
-          "brand": {
-            "@type": "PostalAddress",
-            "logo": "#{APP_LOGO}"
           }
         }
       }
+    </script>
