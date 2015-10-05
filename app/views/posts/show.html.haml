@@ -33,55 +33,57 @@
     =link_to 'Volver (Panel de control)', setting_path(@section.permalink)
   -else
     =link_to 'Volver', sections_permalink_path(@section.permalink)
-  %script{:type => "application/ld+json"}
-    {
-      "@context": "http://schema.org",
-      "@type": "NewsArticle",
-      "headline": "#{@post.title}",
-      "image": [
-        "#{@post.primary_image}"
-      ],
-      "datePublished": "#{I18n.l(@post.updated_at, :format => :w3c)}",
-      "description": "#{strip_html_tags(@post.body_preview)}",
-      "articleBody": "#{strip_html_tags(@post.body)}",
-      "author": {
-        "@type": "Person",
-        "headline": "#{@author.full_name}",
-        "jobTitle": "#{@author.degree}",
-        "affiliation": "#{APP_NAME}",
-        "additionalName": "#{@author.name}",
-        "url": "#{employee_url(@author.section.permalink, @author.permalink)}",
-        "email": "#{@author.contact_email}",
-        "telephone": "#{@author.contact_phone}",
-        "workLocation": {
-          "@type": "Place",
-          "address": {
-            "@type" : "PostalAddress",
-            "addressCountry": "Spain",
-            "addressLocality": "#{@app_configuration.ciudad}",
-            "postalCode": "#{@app_configuration.cp}",
-            "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
-          }
-        },
-        "worksFor": {
-          "@type": "Organization",
-          "url" : "http://#{ENV['HOST']}",
-          "logo": "#{APP_LOGO}",
-          "numberOfEmployees": "#{User.employers.count}",
-          "telephone": "+34-#{@app_configuration.telefono_fijo}",
-          "email": "#{@app_configuration.email}",
-          "legalName": "#{APP_NAME.capitalize}",
-          "location": {
-            "@type" : "PostalAddress",
-            "addressCountry": "Spain",
-            "addressLocality": "#{@app_configuration.ciudad}",
-            "postalCode": "#{@app_configuration.cp}",
-            "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
+  :plain
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "#{@post.title}",
+        "image": [
+          "#{@post.primary_image}"
+        ],
+        "datePublished": "#{I18n.l(@post.updated_at, :format => :w3c)}",
+        "description": "#{strip_html_tags(@post.body_preview)}",
+        "articleBody": "#{strip_html_tags(@post.body)}",
+        "author": {
+          "@type": "Person",
+          "headline": "#{@author.full_name}",
+          "jobTitle": "#{@author.degree}",
+          "affiliation": "#{APP_NAME}",
+          "additionalName": "#{@author.name}",
+          "url": "#{employee_url(@author.section.permalink, @author.permalink)}",
+          "email": "#{@author.contact_email}",
+          "telephone": "#{@author.contact_phone}",
+          "workLocation": {
+            "@type": "Place",
+            "address": {
+              "@type" : "PostalAddress",
+              "addressCountry": "Spain",
+              "addressLocality": "#{@app_configuration.ciudad}",
+              "postalCode": "#{@app_configuration.cp}",
+              "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
+            }
           },
-          "brand": {
-            "@type": "PostalAddress",
-            "logo": "#{APP_LOGO}"
+          "worksFor": {
+            "@type": "Organization",
+            "url" : "http://#{ENV['HOST']}",
+            "logo": "#{APP_LOGO}",
+            "numberOfEmployees": "#{User.employers.count}",
+            "telephone": "+34-#{@app_configuration.telefono_fijo}",
+            "email": "#{@app_configuration.email}",
+            "legalName": "#{APP_NAME.capitalize}",
+            "location": {
+              "@type" : "PostalAddress",
+              "addressCountry": "Spain",
+              "addressLocality": "#{@app_configuration.ciudad}",
+              "postalCode": "#{@app_configuration.cp}",
+              "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
+            },
+            "brand": {
+              "@type": "PostalAddress",
+              "logo": "#{APP_LOGO}"
+            }
           }
         }
       }
-    }
+    </script>
