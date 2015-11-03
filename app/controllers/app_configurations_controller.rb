@@ -11,10 +11,6 @@ class AppConfigurationsController < ApplicationController
   end
 
   private
-    def set_app_configuration
-      @app_configuration = AppConfiguration.find(params[:id])
-    end
-
     def app_configuration_params
       params.require(:app_configuration).permit(:description, :telefono_movil, :telefono_fijo, :calle, :numero, :cp, :ciudad, :email, { landing_images: [] })
     end

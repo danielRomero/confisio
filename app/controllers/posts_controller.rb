@@ -16,7 +16,6 @@ class PostsController < ApplicationController
     @description = @post.body_preview
     @meta_url = post_permalink_url(@section.permalink, @category.permalink, @post.permalink) if @category
     @author = @post.user ? @post.user : User.employers.first
-    @app_configuration = AppConfiguration.last
   end
 
   def index

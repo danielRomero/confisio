@@ -1,0 +1,13 @@
+- cache ['v1', 'footer', @app_configuration] do
+  %nav.navbar.navbar-default{style: 'margin-bottom: 0px'}
+    .container-fluid
+      .collapse.navbar-collapse{id: 'bs-example-navbar-collapse-2'}
+        .text-center{style: 'margin-top: 15px;'}
+          ="#{@app_configuration.calle}, #{@app_configuration.numero}, "
+          %span
+            =@app_configuration.cp
+          %span=@app_configuration.ciudad
+          |
+          %span=format_phone_number @app_configuration.telefono_fijo
+          |
+          %span=mail_to(@app_configuration.email, @app_configuration.email, subject: 'Consulta información')

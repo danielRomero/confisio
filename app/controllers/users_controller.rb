@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     @description = "#{@employee.full_name}. #{@employee.degree}. #{@employee.specialty}. #{@employee.cv[0..300]} ..."
     @meta_url = employee_path(@employee.section.permalink, @employee.permalink)
     @meta_image = @employee.avatar_url
-    @app_configuration = AppConfiguration.last
   end
 
   private

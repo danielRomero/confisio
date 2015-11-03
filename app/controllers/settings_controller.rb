@@ -1,10 +1,6 @@
 class SettingsController < ApplicationController
   before_action :set_section, only: [:show, :edit, :update]
   before_action :set_setting, only: [:show, :edit, :update]
-
-  def index
-    @app_configuration = AppConfiguration.first
-  end
   
   def show
     @posts = @section.posts.by_create_date

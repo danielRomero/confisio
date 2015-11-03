@@ -4,22 +4,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :login_required, except: [:index, :sitemap, :contact, :team, :tarifas]
   before_filter :only_admin, except: [:index, :sitemap, :contact, :team, :tarifas]
+  before_filter :set_app_configuration
   include SessionsHelper
 
   def index
-    @app_configuration = AppConfiguration.last
     render layout: 'landing'
   end
 
   def contact
-    @app_configuration = AppConfiguration.first
     @titulo = 'Contacto'
     @description = "Te resolvemos cualquier duda, contacta ahora con nosotros y recibe las mejores ofertas. #{@app_configuration.telefono_fijo} --- #{@app_configuration.email}"
     @meta_url = contact_url
   end
 
   def tarifas
-    @app_configuration = AppConfiguration.first
     @titulo = 'Tarifas'
     @meta_url = tarifas_url
   end
@@ -47,5 +45,9 @@ class ApplicationController < ActionController::Base
         apply_flash(type='warning', message='No tienes permisos para acceder a esta sección')
         redirect_to root_path
       end
+    end
+
+    def set_app_configuration
+      @app_configuration = AppConfiguration.last
     end
 end

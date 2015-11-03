@@ -3,26 +3,9 @@
     .row.landing-principal
       .jumbotron.vertical-center
         .container.text-center
-          .col-xs-12.col-sm-12.col-md-12.col-lg-9
+          .col-xs-12.col-sm-6.col-sm-offset-3.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
             =image_tag 'http://res.cloudinary.com/confisio/image/upload/v1443786531/logo-confisio-def-01_etim1y.png', class: 'img-responsive', alt: APP_NAME.capitalize
-            %p Clínica de fisioterapia y psicología
-          .col-xs-12.col-sm-12.col-md-12.col-lg-3
-            .address-little
-              %iframe.embed-responsive-item{ frameborder: "0", style: "border:0; padding-top: 60px;", src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3036.5294147265954!2d-3.65584!3d40.44141799999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422f31137e4ebb%3A0xd3d911e806f9b0e6!2sConfisio!5e0!3m2!1ses!2ses!4v1433542867501" }
-              %br/
-              ="#{@app_configuration.calle}, #{@app_configuration.numero}, "
-              %span
-                =@app_configuration.cp
-              %span=@app_configuration.ciudad
-              %br/
-              .fa.fa-phone
-              =format_phone_number @app_configuration.telefono_fijo
-              %br/
-              .fa.fa-whatsapp
-              =format_phone_number @app_configuration.telefono_movil
-              %br/
-              .fa.fa-envelope-o
-              =mail_to(@app_configuration.email, @app_configuration.email, subject: 'Consulta información')
+            %p="Clínica de #{link_to 'fisioterapia', Section.first.permalink} y #{link_to 'psicología', Section.last.permalink}".html_safe
     #green
       .row{style: 'padding: 0px; margin: 0px'}
         .col-xs-12.col-xs-offset-0.col-sm-8.col-sm-offset-2.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3{style: 'padding: 0px; background-color: white;'}
