@@ -13,7 +13,7 @@
 
 %link{rel: 'canonical', href: (@meta_url and !@meta_url.blank?) ? @meta_url : root_url, itemprop: 'url', hreflang: I18n.locale}
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true, async: true
-= javascript_include_tag 'application', 'data-turbolinks-track' => true, async: true
+= javascript_include_tag 'application', 'data-turbolinks-track' => true
 = csrf_meta_tags
 
 :javascript
