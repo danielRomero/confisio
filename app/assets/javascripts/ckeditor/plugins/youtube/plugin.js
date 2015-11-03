@@ -14,7 +14,7 @@
 				allowedContent: 'iframe[!width,!height,!src,!frameborder,!allowfullscreen]; object param[*]'
 			}));
 
-			editor.ui.addButton( 'Youtube',
+			editor.ui.addButton( 'youtube',
 			{
 				label : editor.lang.youtube.button,
 				toolbar : 'insert',
