@@ -13,13 +13,13 @@
 			editor.addCommand( 'youtube', new CKEDITOR.dialogCommand( 'youtube', {
 				allowedContent: 'iframe[!width,!height,!src,!frameborder,!allowfullscreen]; object param[*]'
 			}));
-
-			editor.ui.addButton( 'youtube',
+			
+			editor.ui.addButton('youtube',
 			{
 				label : editor.lang.youtube.button,
 				toolbar : 'insert',
 				command : 'youtube',
-				icon : this.path + 'images/icon.png'
+				icon : "<%= asset_url('ckeditor/plugins/youtube/images/icon.png') %>"
 			});
 
 			CKEDITOR.dialog.add( 'youtube', function ( instance )
