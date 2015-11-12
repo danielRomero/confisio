@@ -1,8 +1,16 @@
 GIT
-  remote: git://github.com/rails/activerecord-session_store.git
-  revision: 5ed65ed0206b04cea12c46b3dfa2e464024f2785
+  remote: git://github.com/galetahub/ckeditor.git
+  revision: a69dcdbe0babbd49085e9dc17efffc63297ab0b4
   specs:
-    activerecord-session_store (0.1.1)
+    ckeditor (4.1.4)
+      cocaine
+      orm_adapter (~> 0.5.0)
+
+GIT
+  remote: git://github.com/rails/activerecord-session_store.git
+  revision: e7bcf7f849fa39b5581f51a2162efe6701eb0d4f
+  specs:
+    activerecord-session_store (0.1.2)
       actionpack (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
       railties (>= 4.0.0, < 5)
@@ -46,14 +54,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    autoprefixer-rails (6.0.3)
-      execjs
-      json
     awesome_print (1.6.1)
     bcrypt (3.1.10)
-    bootstrap-sass (3.3.5.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.3.0)
     builder (3.2.2)
     capistrano (3.4.0)
       i18n
@@ -70,9 +72,6 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    ckeditor (4.1.4)
-      cocaine
-      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -83,7 +82,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1.1)
+    coffee-script-source (1.10.0)
     colorize (0.7.7)
     dalli (2.7.4)
     dotenv (2.0.2)
@@ -189,7 +188,7 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.6.0)
-    spring (1.4.0)
+    spring (1.4.1)
     sprockets (3.4.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
@@ -221,13 +220,12 @@ DEPENDENCIES
   activerecord-session_store!
   awesome_print
   bcrypt (~> 3.1.7)
-  bootstrap-sass
   capistrano
   capistrano-bundler
   capistrano-passenger
   capistrano-rails
   capistrano-rvm
-  ckeditor
+  ckeditor!
   coffee-rails (~> 4.1.0)
   dalli
   dotenv-rails

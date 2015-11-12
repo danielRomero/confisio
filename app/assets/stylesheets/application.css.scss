@@ -10,7 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require landing
+ *= require posts
+ *= require team
+ *= require font-awesome
  *= require_self
  */
 html.confisio {
@@ -22,6 +25,9 @@ html.confisio {
   @import "bootstrap";
 
   body {
+    section.application#application_content{
+      padding-bottom: 60px;
+    }
     .scrolloff {
         pointer-events: none;
     }    
