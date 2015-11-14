@@ -1,4 +1,4 @@
-- cache ['v1', 'header', cache_key_for_sections, current_user] do
+- cache ['v2', 'header', cache_key_for_sections, current_user] do
   %nav.navbar.navbar-default
     .container-fluid
       .navbar-header
@@ -17,6 +17,8 @@
         %ul.nav.navbar-nav.navbar-right
           %li
             =link_to 'Tarifas', tarifas_path
+          %li
+            =link_to 'Descuentos', discounts_path(Section.order(created_at: :asc).first.permalink)
           %li
             =link_to 'Equipo', team_path
           %li
