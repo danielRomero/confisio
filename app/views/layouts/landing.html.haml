@@ -5,6 +5,10 @@
   %body
     =render partial: 'application/header'
     %section#application_content
+      #application_flashes
+        =render partial: 'application/flashes'
+      = yield
+    %footer.footer
       -if cookies[:cookies_policy] != 'true'
         .alert.alert-info.auto_close
           .close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
@@ -13,8 +17,4 @@
           .fa.fa-info-circle
           %small
             ="Esta web utiliza <b>#{link_to('cookies', 'http://es.wikipedia.org/wiki/Cookie_%28inform%C3%A1tica%29', target: '_blank')}</b> propias y de terceros para ofrecerle una mejor experiencia y servicio. Al navegar el usuario acepta el uso que hacemos de las <b>#{link_to('cookies', 'http://es.wikipedia.org/wiki/Cookie_%28inform%C3%A1tica%29', target: '_blank')}</b>.".html_safe
-      #application_flashes
-        =render partial: 'application/flashes'
-      = yield
-    %footer.footer
       =render partial: 'application/footer'
