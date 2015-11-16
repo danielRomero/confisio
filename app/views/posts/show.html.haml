@@ -1,4 +1,4 @@
-- cache ['v1', 'post', @post, @section, @app_configuration, @post.user] do
+- cache ['v1', 'post', @post, @section, @app_configuration, @post.user, admin?] do
   %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
