@@ -29,10 +29,10 @@
     %p
       %b Descripción
     %p
-      =@discount.description
+      =@discount.description.html_safe
   -if !@discount.conditions.blank?
     %p
       %b Condiciones
     %p
-      %small=@discount.conditions
+      %small=@discount.conditions.html_safe
   =link_to 'Volver', prices_path(@section.permalink)

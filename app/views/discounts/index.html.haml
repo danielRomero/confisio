@@ -17,7 +17,7 @@
   .page-header
     %h1= "Descuentos de #{@section.name}"
   -@discounts.each do |discount|
-    %p=discount.title
+    %p=discount.title.html_safe
     %b
       ="#{'%.2f' % discount.value.round(2)} €"
     %p
