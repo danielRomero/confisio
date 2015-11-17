@@ -61,9 +61,9 @@ class Post < ActiveRecord::Base
     def generate_permalink
       times = 0
       loop do
-        self.permalink = "#{self.title.parameterize}#{times == 0 ? nil : times}"
+        self.permalink = "#{self.title.parameterize}#{times == 0 ? nil : '-' + times.to_s}"
         times += 1
-        break unless Post.find_by(permalink: self.permalink) or !(Rails.application.routes.recognize_path(self.permalink) rescue nil)
+        break unless Post.find_by(permalink: self.permalink, section_id: self.section_id)
       end
     end
 end

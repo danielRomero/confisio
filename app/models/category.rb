@@ -8,9 +8,9 @@ class Category < ActiveRecord::Base
     def generate_permalink
       times = 0
       loop do
-        self.permalink = "#{self.name.parameterize}#{times == 0 ? nil : times}"
+        self.permalink = "#{self.name.parameterize}#{times == 0 ? nil : '-' + times.to_s}"
         times += 1
-        break unless !(Rails.application.routes.recognize_path(self.permalink) rescue nil)
+        break unless Category.find_by(permalink: self.permalink, section_id: self.section_id)
       end
     end
 end

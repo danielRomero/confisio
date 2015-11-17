@@ -29,9 +29,9 @@ class User < ActiveRecord::Base
     def generate_permalink
       times = 0
       loop do
-        self.permalink = "#{self.full_name.parameterize}#{times == 0 ? nil : times}"
+        self.permalink = "#{self.full_name.parameterize}#{times == 0 ? nil : '-' + times.to_s}"
         times += 1
-        break unless User.find_by(permalink: self.permalink) or !(Rails.application.routes.recognize_path(self.permalink) rescue nil)
+        break unless User.find_by(permalink: self.permalink)
       end
     end
 end
