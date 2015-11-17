@@ -21,7 +21,7 @@
     %b
       ="#{'%.2f' % discount.value.round(2)} €"
     %p
-      =discount.description
+      =discount.description.html_safe
       =link_to 'Condiciones', discount_path(@section.permalink, discount.permalink)
     
     -if admin?
