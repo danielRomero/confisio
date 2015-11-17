@@ -4,6 +4,9 @@ class Category < ActiveRecord::Base
   validates :name, presence: true
 
   before_create :generate_permalink
+
+  scope :with_posts, -> { joins(:posts) }
+  
   private
     def generate_permalink
       times = 0

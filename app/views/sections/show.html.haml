@@ -13,7 +13,7 @@
   %p=simple_format @section.setting.description.html_safe
   -if @section.permalink != "psicologia" and @section.categories
     %ul.list-unstyled
-      -@section.categories.each do |category|
+      -@section.categories.with_posts.each do |category|
         %li=link_to category.name, category_path(@section.permalink, category.permalink)
         -if category.posts
           %ul
