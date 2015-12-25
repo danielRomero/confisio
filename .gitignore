@@ -14,3 +14,5 @@
 EC2Confisio.pem
 .env
 zcredentials
+
+config/ec2.yml
