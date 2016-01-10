@@ -12,7 +12,7 @@
 !/log/.keep
 /tmp
 EC2Confisio.pem
-.env
+.env*
 zcredentials
-
 config/ec2.yml
+db/backups*

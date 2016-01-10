@@ -40,13 +40,14 @@ gem 'exception_notification'
 gem 'kaminari'
 gem 'nokogiri-styles'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+gem 'dropbox-api'
 
 # Use Passenger as the app server
 group :production do
   gem 'passenger'
   # See https://github.com/rails/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
-  
+
   gem 'memcachier'
   gem 'dalli'
   gem 'rack-cache'
@@ -66,4 +67,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
