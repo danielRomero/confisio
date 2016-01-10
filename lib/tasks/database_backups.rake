@@ -6,7 +6,7 @@ namespace :db do
     backup_dir = backup_directory true
     cmd = nil
     with_config do |app, host, db, user|
-      file_name = Time.now.strftime('%Y%m%d%H%M%S') + '_' + db + '.' + dump_sfx
+      file_name = Time.now.strftime('%Y%m%d%H%M%S') + '_' + Rails.application.class.parent_name + Rails.env.downcase + '.' + dump_sfx
       cmd = "pg_dump -F #{dump_fmt} -v -h #{host} -d #{db} -f #{backup_dir}/#{file_name}"
     end
     puts cmd
@@ -102,7 +102,7 @@ namespace :db do
 
   def backup_directory(create = false)
     if Rails.env.production?
-      backup_dir = '/var/www/confisio/shared/backups'
+      backup_dir = "/var/www/#{Rails.application.class.parent_name.downcase}/shared/backups"
     else
       backup_dir = "#{Rails.root}/db/backups"
     end
