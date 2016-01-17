@@ -2,12 +2,12 @@ namespace :db do
   # USAGE => $ rake db:dump PGPASSWORD='my_database_password'
   desc 'Dumps the database to backups'
   task dump: :environment do
-    dump_fmt = 'c' # or 'p', 't', 'd'
+    dump_fmt = ENV['FORMAT'] || 'c' # or 'p', 't', 'd'
     dump_sfx = suffix_for_format dump_fmt
     backup_dir = backup_directory true
     cmd = nil
     with_config do |_app, host, db, _user|
-      file_name = Time.now.strftime('%Y%m%d%H%M%S') + '_' + Rails.application.class.parent_name + '_' + Rails.env.downcase + '.' + dump_sfx
+      file_name = Time.now.strftime('%Y%m%d%H%M%S') + '_' + Rails.application.class.parent_name.downcase + '_' + Rails.env.downcase + '.' + dump_sfx
       cmd = "pg_dump -F #{dump_fmt} -v -h #{host} -d #{db} -f #{backup_dir}/#{file_name}"
     end
     puts cmd
@@ -55,10 +55,11 @@ namespace :db do
       end
       unless cmd.nil?
         Rake::Task['db:drop'].invoke
-        Rake::Task['db:create'].invoke
+        # Rake::Task['db:create'].invoke
         puts 'Restoring...'
         puts cmd.to_s
         exec cmd
+        puts cmd.to_s
       end
     else
       puts 'Please pass a pattern to the task'
