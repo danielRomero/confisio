@@ -7,11 +7,13 @@ namespace :db do
     backup_dir = backup_directory true
     cmd = nil
     with_config do |_app, host, db, _user|
-      file_name = Time.now.strftime('%Y%m%d%H%M%S') + '_' + Rails.application.class.parent_name + Rails.env.downcase + '.' + dump_sfx
+      file_name = Time.now.strftime('%Y%m%d%H%M%S') + '_' + Rails.application.class.parent_name + '_' + Rails.env.downcase + '.' + dump_sfx
       cmd = "pg_dump -F #{dump_fmt} -v -h #{host} -d #{db} -f #{backup_dir}/#{file_name}"
     end
     puts cmd
     exec cmd
+    puts 'uploading to Dropbox'
+    Rake::Task['db:upload_all_database_backups'].invoke
   end
 
   desc 'Show the existing database backups'
@@ -68,7 +70,7 @@ namespace :db do
     client = Dropbox::API::Client.new(:token  => ENV['DROPBOX_CLIENT_TOKEN'], :secret => ENV['DROPBOX_CLIENT_SECRET'])
     files = Dir.glob("#{backup_directory}/*")
     files.each do |file|
-      client.chunked_upload file.split('/').last, File.open(file)
+      client.upload file.split('/').last, File.open(file).read
     end
     Rake::Task['db:remove_database_backups'].invoke
   end
