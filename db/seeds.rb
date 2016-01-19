@@ -28,7 +28,7 @@ puts 'setting failed' if !setting.save
 
 app_configuration_images = %w(http://res.cloudinary.com/confisio/image/upload/v1433795114/landing_equipo_1_pslvvq.jpg http://res.cloudinary.com/confisio/image/upload/v1434033298/IMG_20150528_142811_zlfr94.jpg http://res.cloudinary.com/confisio/image/upload/v1433794588/landing_camilla_1_pqbmzp.jpg http://res.cloudinary.com/confisio/image/upload/v1433794672/landing_logo_1_esgxyy.png http://res.cloudinary.com/confisio/image/upload/v1433794802/landing_sofa_1_izqrzy.jpg)
 
-puts 'failed app config' if !(app_configuration = AppConfiguration.find_or_create_by(telefono_fijo: '918273320', telefono_movil: '664476055', calle: 'Avenida de Badajoz', numero: '3', cp: '28027', ciudad: 'Madrid', email: 'confianzayfisioterapia@gmail.com'))
+puts 'failed app config' if !(app_configuration = AppConfiguration.find_or_create_by(telefono_fijo: '918273320', telefono_movil: '664476055', calle: 'Avenida de Badajoz', numero: '3', cp: '28027', ciudad: 'Madrid', email: 'confianzayfisioterapia@gmail.com', metro: 'Barrio de la concepción', barrio: 'San Pascual, Ciudad Lineal, Arturo Soria'))
 if app_configuration.landing_images.empty?
   app_configuration.landing_images = app_configuration_images
   puts 'failed load images app config' if !app_configuration.save

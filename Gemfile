@@ -41,6 +41,7 @@ gem 'kaminari'
 gem 'nokogiri-styles'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'dropbox-api'
+gem 'whenever', require: false
 
 # Use Passenger as the app server
 group :production do

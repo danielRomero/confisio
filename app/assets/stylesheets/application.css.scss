@@ -25,6 +25,12 @@ html.confisio {
   @import "bootstrap";
 
   body {
+    .fa.fa-whatsapp{
+      color: $brand-color;
+    }
+    b{
+      color: black;
+    }
     section.application#application_content{
       padding-bottom: 60px;
     }

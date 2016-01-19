@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925103914) do
+ActiveRecord::Schema.define(version: 20160117192108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(version: 20150925103914) do
     t.string   "cp"
     t.string   "ciudad"
     t.string   "email"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.text     "landing_images", default: [],              array: true
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+    t.text     "landing_images", default: [],                                                      array: true
     t.text     "description"
+    t.string   "metro",          default: "Barrio de la concepción"
+    t.string   "barrio",         default: "San Pascual, Ciudad Lineal, Arturo Soria"
   end
 
   create_table "categories", force: :cascade do |t|

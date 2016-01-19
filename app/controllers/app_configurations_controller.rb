@@ -12,6 +12,6 @@ class AppConfigurationsController < ApplicationController
 
   private
     def app_configuration_params
-      params.require(:app_configuration).permit(:description, :telefono_movil, :telefono_fijo, :calle, :numero, :cp, :ciudad, :email, { landing_images: [] })
+      params.require(:app_configuration).permit(:description, :telefono_movil, :telefono_fijo, :calle, :numero, :cp, :metro, :barrio, :ciudad, :email, { landing_images: [] })
     end
 end

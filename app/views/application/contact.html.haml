@@ -29,6 +29,11 @@
         %br/
         .fa.fa-envelope-o
         =mail_to(@app_configuration.email, @app_configuration.email, subject: 'Consulta información')
+        %br/
+        ="Barrios cercanos: #{@app_configuration.barrio}"
+        %br/
+        =image_tag('MetroMadridLogo.svg', size: '35x20')
+        %span=@app_configuration.metro
 
     .col-xs-12.col-sm-6.col-md-6.col-lg-6
       .embed-responsive.embed-responsive-16by9

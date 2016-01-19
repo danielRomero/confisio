@@ -46,6 +46,8 @@ set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 set :passenger_restart_with_touch, true
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 # set the locations that we will look for changed assets to determine whether to precompile
 set :assets_dependencies, %w(app/assets/ lib/assets vendor/assets Gemfile config/routes.rb)
 
