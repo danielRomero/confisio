@@ -32,8 +32,11 @@
         %br/
         ="Barrios cercanos: #{@app_configuration.barrio}"
         %br/
-        =image_tag('MetroMadridLogo.svg', size: '35x20')
-        %span=@app_configuration.metro
+        =link_to('https://www.metromadrid.es/export/sites/metro/comun/documentos/planos/Planoesquematicoespanol.pdf') do
+          =image_tag('MetroMadridLogo.svg', size: '35x20')
+        %span
+          =link_to 'https://www.google.es/maps/dir/Barrio+de+la+Concepci%C3%B3n,+28027+Madrid/Confisio,+Avenida+de+Badajoz,+Madrid/@40.4402363,-3.6560694,17z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0xd422f39e3b11b87:0x801e84be096d7d60!2m2!1d-3.6519981!2d40.4390955!1m5!1m1!1s0xd422f31137e4ebb:0xd3d911e806f9b0e6!2m2!1d-3.6558397!2d40.4414183' do
+            =@app_configuration.metro
 
     .col-xs-12.col-sm-6.col-md-6.col-lg-6
       .embed-responsive.embed-responsive-16by9
