@@ -12,8 +12,6 @@ namespace :db do
     end
     puts cmd
     exec cmd
-    puts 'uploading to Dropbox'
-    Rake::Task['db:upload_all_database_backups'].invoke
   end
 
   desc 'Show the existing database backups'
