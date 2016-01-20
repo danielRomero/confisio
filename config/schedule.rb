@@ -20,7 +20,7 @@ Dotenv.load
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 30.minutes, roles: [:app] do
+every '0 3 * * 6', roles: [:app] do
   rake "PGPASSWORD='#{ENV['DATABASE_PASSWORD']}' db:dump"
   rake 'db:upload_all_database_backups'
 end
