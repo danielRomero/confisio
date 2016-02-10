@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
           sign_in user
           apply_flash('success', "Bienvenido #{current_user.name}")
           if admin?
-            redirect_to settings_path
+            redirect_to admin_admin_path
           else
             #redirect_to user
             redirect_to root_path

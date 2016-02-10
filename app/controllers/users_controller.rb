@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to settings_path, notice: "Usuario #{@user.name} actualizado."
+      redirect_to admin_user_path(@user), notice: "Usuario #{@user.name} actualizado."
     else
       render :edit
     end
