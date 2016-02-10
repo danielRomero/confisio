@@ -1,0 +1,21 @@
+%nav.navbar.navbar-inverse{style: 'border-radius: 0px;'}
+  .container-fluid
+    .navbar-header
+      =link_to root_path, class: 'navbar-brand' do
+        =image_tag(APP_LOGO, alt: APP_NAME, style: 'width: auto; height: 20px;')
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+    .collapse.navbar-collapse{id: 'bs-example-navbar-collapse-1'}
+      %ul.nav.navbar-nav
+        %li=link_to 'Admin', admin_admin_path
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            =current_user.name
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              =link_to 'Salir',  logout_path

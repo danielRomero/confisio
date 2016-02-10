@@ -25,15 +25,13 @@
     %h4="#{@employee.degree}. #{@employee.specialty}"
     %p=simple_format @employee.cv.html_safe
   .clearfix
-  -if !@employee.posts.blank?
+  -if @employee.posts.with_categories.any?
     %h3 Artículos
     %ul.list-unstyled
       %ul
-        -@employee.posts.each do |post|
-          -if post.categories.any?
-            %li=link_to post.title, post_permalink_path(@employee.section.permalink, post.categories.first.permalink, post.permalink)
-          -else
-            =post.id
+        -@employee.posts.with_categories.each do |post|
+          %li
+            =link_to post.title, post_permalink_path(@employee.section.permalink, post.categories.first.permalink, post.permalink)
 
   :plain
     <script type="application/ld+json">

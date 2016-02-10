@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
   before_create :generate_permalink
 
-  scope :employers, -> {where.not(degree: nil)}
+  scope :employers, -> {where.not(degree: nil).where.not(degree: '')}
 
   def is_employee?
     !self.degree.nil?

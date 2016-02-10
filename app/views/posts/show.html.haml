@@ -1,4 +1,6 @@
-- cache ['v1', 'post', @post, @section, @app_configuration, @post.user, admin?] do
+- cache [ 'v1', 'post', @post, @section, @app_configuration, @post.user ] do
+  
+  -######### Breadcrumbs #########
   %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
@@ -16,23 +18,31 @@
         %meta{property: 'position', content: '3'}
     %li.active=@post.title
 
-
+  -######### POST #########
   .page-header.posts
     %h1
       =@post.title
+    -######### Author #########
     %small
-      -#%span.first.glyphicon.glyphicon-user
       %span.author
         =image_tag(@author.avatar_url, class: 'img-circle', alt: @author.full_name)
       =link_to @author.full_name, employee_path(@author.section.permalink, @author.permalink)
       %span.glyphicon.glyphicon-folder-open
       -@post.categories.each do |category|
         =link_to category.name.capitalize, category_url(@section.permalink, category.permalink)
-  =@post.body.html_safe
-  -if admin?
-    =link_to 'Volver (Panel de control)', setting_path(@section.permalink)
-  -else
-    =link_to 'Volver', sections_permalink_path(@section.permalink)
+  .row
+    .content
+      .col-xs-12.col-sm-9.col-md-9.col-lg-9
+        -######### Body #########
+        =@post.body.html_safe
+        =link_to 'Volver', sections_permalink_path(@section.permalink)
+      .hidden-xs.col-sm-3.col-md-3.col-lg-3.text-center
+        %h5 Otros artículos
+        -@post.latest_posts.each do |post|
+          =link_to post_permalink_path(post.section.permalink, !post.categories.empty? ? post.categories.first.permalink : 'artículo', post.permalink), class: 'thumbnail' do
+            =image_tag post.primary_image, alt: post.title
+            =post.title
+
   :plain
     <script type="application/ld+json">
       {

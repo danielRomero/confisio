@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_filter :login_required
-  skip_before_filter :only_admin
-  
   def create
     if params[:session] and params[:session][:email] and params[:session][:password]
       if user = User.find_by(email: params[:session][:email])
@@ -29,7 +26,7 @@ class SessionsController < ApplicationController
 
   def logout
     sign_out
-    apply_flash('info', "Has cerrado la sesión")
+    apply_flash('info', 'Has cerrado la sesión')
     redirect_to root_path
   end
 end

@@ -1,5 +1,4 @@
--url = @post.new_record? ? posts_path(@section.permalink) : post_path(@section.permalink, @post.permalink)
-= form_for @post, url: url do |f|
+= form_for [:admin, @post] do |f|
   - if @post.errors.any?
     #error_explanation
       %h2= "#{pluralize(@post.errors.count, "error")} prohibited this discount from being saved:"
@@ -26,5 +25,5 @@
   %hr
   .actions.pull-right
     = f.submit 'Guardar', class: 'btn btn-primary'
-  =link_to 'Volver', setting_path(@section.permalink)
+  =link_to 'Volver', admin_posts_path
 .clearfix

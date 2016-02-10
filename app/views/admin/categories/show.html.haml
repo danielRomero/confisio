@@ -1,0 +1,24 @@
+- cache ['v1', 'category', 'show', @category] do
+  %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(root_path, property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=APP_NAME.capitalize
+      %meta{property: 'position', content: '1'}
+
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=@section.name.capitalize
+      %meta{property: 'position', content: '2'}
+    %li.active=@category.name.capitalize
+
+  %h1=@category.name
+  %p=simple_format @category.description.html_safe
+  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+    -@category.posts.by_create_date.each do |post|
+      =image_tag post.primary_image, style: 'width: 100%; height: auto; margin: 0 auto;', alt: post.title
+      %h2
+        =link_to post.title, post_permalink_path(@section.permalink, @category.permalink, post.permalink)
+      %p
+        =post.body_preview.html_safe
+        %br
+        =link_to '... leer completo', post_permalink_path(@section.permalink, @category.permalink, post.permalink)

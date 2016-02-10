@@ -1,3 +1,9 @@
+-unless (params[:action] == 'contact')
+  - cache ['v1', 'footer', 'free_calls'] do
+    %hr
+    .row.row-custom.free-calls-block
+      .container
+        =render partial: 'free_calls/form'
 - cache ['v1', 'footer', @app_configuration] do
   %nav.navbar.navbar-default{style: 'margin-bottom: 0px'}
     .container-fluid

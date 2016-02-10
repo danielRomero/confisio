@@ -1,0 +1,31 @@
+%h1
+  ="Artículos de #{@section.name}"
+  .pull-right
+    =link_to new_admin_post_path, class: 'btn btn-primary' do
+      Nuevo artículo
+      .fa.fa-pencil
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        ='#'
+      %th
+        Título
+      %th
+        Editar
+      %th
+        Borrar
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %th
+          =post.id
+        %td
+          =post.title
+        %td
+          =link_to edit_admin_post_path(post), class: 'btn btn-default' do
+            .fa.fa-pencil
+        %td
+          =link_to admin_post_path(post), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará el elemento para siempre ¿estás seguro?' } do
+            .fa.fa-trash
+= paginate @posts

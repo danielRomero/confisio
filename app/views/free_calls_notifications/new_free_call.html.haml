@@ -1,0 +1,4 @@
+%p Alguien ha dejado su contacto en la web para que le llamemos
+-if @free_call.section
+  %p="Se ha interesado por #{@free_call.section.name}"
+=link_to('ver', 'www.confisio.es/admin/free_calls')

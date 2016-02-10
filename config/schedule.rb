@@ -7,7 +7,7 @@ Dotenv.load
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, '/var/www/confisio/shared/log/cron_log.log'
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -22,5 +22,8 @@ Dotenv.load
 # Learn more: http://github.com/javan/whenever
 every '0 3 * * 6', roles: [:app] do
   rake "PGPASSWORD='#{ENV['DATABASE_PASSWORD']}' db:dump"
+end
+
+every '15 3 * * 6', roles: [:app] do
   rake 'db:upload_all_database_backups'
 end

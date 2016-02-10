@@ -1,0 +1,81 @@
+- cache ['v1', 'post', @post, @section, @app_configuration, @post.user] do
+  %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(root_path, property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=APP_NAME.capitalize
+      %meta{property: 'position', content: '1'}
+
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=@section.name.capitalize
+      %meta{property: 'position', content: '2'}
+    -if @category
+      %li{property: 'itemListElement', typeof: 'ListItem'}
+        =link_to(category_url(@section.permalink, @category.permalink), property: 'item', typeof: 'WebPage') do
+          %span{property: 'name'}=@category.name.capitalize
+        %meta{property: 'position', content: '3'}
+    %li.active=@post.title
+
+
+  .page-header.posts
+    %h1
+      =@post.title
+    %small
+      -#%span.first.glyphicon.glyphicon-user
+      %span.author
+        =image_tag(@author.avatar_url, class: 'img-circle', alt: @author.full_name)
+      =link_to @author.full_name, employee_path(@author.section.permalink, @author.permalink)
+      %span.glyphicon.glyphicon-folder-open
+      -@post.categories.each do |category|
+        =link_to category.name.capitalize, category_url(@section.permalink, category.permalink)
+  =@post.body.html_safe
+  =link_to 'Volver', sections_permalink_path(@section.permalink)
+  :plain
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "#{@post.title}",
+        "image": [
+          "#{@post.primary_image}"
+        ],
+        "datePublished": "#{I18n.l(@post.updated_at, :format => :w3c)}",
+        "description": "#{strip_html_tags(@post.body_preview)}",
+        "articleBody": "#{strip_html_tags(@post.body).html_safe.gsub('"', '“') }",
+        "author": {
+          "@type": "Person",
+          "additionalName": "#{@author.full_name}",
+          "jobTitle": "#{@author.degree}",
+          "affiliation": "#{APP_NAME}",
+          "url": "#{employee_url(@author.section.permalink, @author.permalink)}",
+          "email": "#{@author.contact_email}",
+          "telephone": "#{@author.contact_phone}",
+          "workLocation": {
+            "@type": "Place",
+            "address": {
+              "@type" : "PostalAddress",
+              "addressCountry": "Spain",
+              "addressLocality": "#{@app_configuration.ciudad}",
+              "postalCode": "#{@app_configuration.cp}",
+              "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
+            }
+          },
+          "worksFor": {
+            "@type": "Organization",
+            "url" : "http://#{ENV['HOST']}",
+            "logo": "#{APP_LOGO}",
+            "numberOfEmployees": "#{User.employers.count}",
+            "telephone": "+34-#{@app_configuration.telefono_fijo}",
+            "email": "#{@app_configuration.email}",
+            "legalName": "#{APP_NAME.capitalize}",
+            "location": {
+              "@type" : "PostalAddress",
+              "addressCountry": "Spain",
+              "addressLocality": "#{@app_configuration.ciudad}",
+              "postalCode": "#{@app_configuration.cp}",
+              "streetAddress": "#{@app_configuration.calle}, #{@app_configuration.numero}"
+            }
+          }
+        }
+      }
+    </script>

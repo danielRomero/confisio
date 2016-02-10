@@ -1,0 +1,35 @@
+%h1
+  Te llamamos gratis!
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        ='#'
+      %th
+        Número
+      %th
+        Nombre
+      %th
+        Sección
+      %th
+        Estado
+  %tbody
+    - @free_calls.each do |free_call|
+      %tr{ class: class_for_status_table(free_call) }
+        %th
+          =free_call.id
+        %td
+          =free_call.phone
+        %td
+          =free_call.name.titleize
+        %td
+          =free_call.section.try(:name)
+        %td
+          = form_for [:admin, free_call], html: { class: 'form-inline' } do |f|
+            = f.select :status, FreeCall.statuses.keys.map {|status| [status.titleize, status]}, {}, class: 'form-control', required: true
+            =f.button :submit, class: 'btn btn-primary' do
+              .fa.fa-save
+        %td
+          =link_to admin_free_call_path(free_call), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará el elemento para siempre ¿estás seguro?' } do
+            .fa.fa-trash
+= paginate @free_calls

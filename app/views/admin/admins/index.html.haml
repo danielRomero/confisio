@@ -1,0 +1,40 @@
+%h1 Recursos
+
+- #### Free Calls ####
+=link_to admin_free_calls_path, class: 'btn btn-primary' do
+  .fa.fa-phone
+  Te llamamos gratis
+  %span.badge=FreeCall.status_new.count
+
+- #### POSTS ####
+=link_to admin_posts_path, class: 'btn btn-primary' do
+  .fa.fa-folder-open-o
+  Artículos
+  %span.badge=@section.posts.count
+
+- #### Section Categories ####
+=link_to admin_categories_path, class: 'btn btn-primary' do
+  .fa.fa-tags
+  Categorías
+  %span.badge=@section.categories.count
+
+- #### Section Discounts ####
+=link_to admin_discounts_path, class: 'btn btn-primary' do
+  .fa.fa-percent
+  Descuentos
+  %span.badge=@section.discounts.count
+
+- #### Section config ####
+=link_to edit_admin_setting_path(@section.setting), class: 'btn btn-primary' do
+  .fa.fa-wrench
+  Configuración
+
+- #### Web config ####
+=link_to edit_admin_app_configuration_path(@app_configuration), class: 'btn btn-warning' do
+  .fa.fa-cogs
+  Configuración de la web
+
+- #### Current user edit ####
+=link_to edit_admin_user_path(current_user), class: 'btn btn-primary' do
+  .fa.fa-user
+  Editar usuario

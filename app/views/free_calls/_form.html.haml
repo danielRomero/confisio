@@ -1,0 +1,69 @@
+.col-xs-12.col-sm-4.col-md-4.col-lg-4
+  .text-center
+    .fa.fa-phone.fa-border.fa-5x
+    %h3
+      ¡Te llamamos gratis!
+    %p
+      Completa el siguiente formulario y te llamamos gratis.
+    %small
+      %small
+        %small{data: {target: '#myModal', toggle: 'modal'}}
+          %b{style: 'cursor: pointer'} Términos y condiciones del formulario
+
+.col-xs-12.col-sm-4.col-md-4.col-lg-4
+  =form_for FreeCall.new  do |f|
+    .form-group
+      = f.label :name, 'Nombre'
+      = f.text_field :name, required: true, class: 'form-control'
+    .form-group
+      = f.label :phone, 'Número de teléfono'
+      = f.text_field :phone, required: true, class: 'form-control'
+    .form-group
+      = f.label :section, '¿Con quién quieres hablar?'
+      = f.select :section, Section.ordered.collect { |s| [ s.name, s.id ] }, { include_blank: true }, class: 'form-control'
+    .form-group
+      = f.submit 'Enviar', class: 'btn btn-primary btn-block'
+
+-################## ADDRESS ########################
+.col-xs-12.col-sm-4.col-md-4.col-lg-4
+  %address{:itemscope => '', :itemtype => 'http://schema.org/LocalBusiness'}
+    %span.hidden{:itemprop => 'name'}=APP_NAME
+    %div{:itemprop => 'address', :itemscope => '', :itemtype => 'http://schema.org/PostalAddress'}
+      %span{:itemprop => 'streetAddress'}="#{@app_configuration.calle}, #{@app_configuration.numero}"
+      = succeed ',' do
+        %span.hidden{:itemprop => 'addressLocality'}=@app_configuration.ciudad
+      %span{:itemprop => 'postalCode'}=@app_configuration.cp
+      %span{:itemprop => 'addressRegion'}=@app_configuration.ciudad
+    %br/
+    .fa.fa-phone
+    %span{:itemprop => 'telephone', title: @app_configuration.telefono_fijo}=format_phone_number @app_configuration.telefono_fijo
+    %br/
+    %br/
+    %span{title: @app_configuration.telefono_movil}
+      %b.fa.fa-whatsapp
+      =format_phone_number @app_configuration.telefono_movil
+      %span
+      ¡Pide cita por Whatsapp!
+    %br/
+    %br/
+    .fa.fa-envelope-o
+    =mail_to(@app_configuration.email, @app_configuration.email, subject: 'Consulta información')
+    %br/
+    %br/
+    =link_to('https://www.metromadrid.es/export/sites/metro/comun/documentos/planos/Planoesquematicoespanol.pdf', target: :blank) do
+      =image_tag('MetroMadridLogo.svg', size: '35x20')
+    %span
+      =link_to 'https://www.google.es/maps/dir/Barrio+de+la+Concepci%C3%B3n,+28027+Madrid/Confisio,+Avenida+de+Badajoz,+Madrid/@40.4402363,-3.6560694,17z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0xd422f39e3b11b87:0x801e84be096d7d60!2m2!1d-3.6519981!2d40.4390955!1m5!1m1!1s0xd422f31137e4ebb:0xd3d911e806f9b0e6!2m2!1d-3.6558397!2d40.4414183', target: :blank do
+        =@app_configuration.metro
+
+
+#myModal.modal.fade{'aria-labelledby' => 'myModalLabel', role: 'dialog', tabindex: '-1'}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %h4#myModalLabel.modal-title Términos y condiciones de formulario de contacto
+      .modal-body
+        =simple_format "Los datos de carácter personal que nos remita a través de este formulario electrónico de contacto quedarán incorporados en los sistemas de información de Confisio\n\nConfisio garantiza la confidencialidad de todos los datos facilitados. Además de los mínimos establecidos por la legislación, la recogida y tratamiento de los datos se efectúan bajo niveles de seguridad que impiden la pérdida o manipulación de los datos.\n\nDe acuerdo con lo establecido en el artículo 5.1 de la vigente Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal (LOPD), le informamos que sus datos quedan incorporados en un fichero del que es titular Confisio debidamente inscrito en el Registro General de Protección de Datos con la finalidad de atender su petición y remitirle la información solicitada, así como enviarle comunicaciones comerciales, por medios electrónicos, sobre nuestros servicios que puedan ser de su interés.\n\nMediante la indicación de sus datos, y de conformidad con lo establecido en el artículo 6 de la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, usted otorga su consentimiento inequívoco a Confisio para que proceda, en cumplimiento de los fines mencionados en el apartado anterior, al tratamiento de los datos personales facilitados.\n\nPodrá ejercer sus derechos de acceso, rectificación, cancelación y oposición al tratamiento de sus datos, mediante las formas legalmente establecidas, a través de escrito dirigido a la dirección postal de Confisio #{@app_configuration.calle}, #{@app_configuration.numero}, #{@app_configuration.cp} #{@app_configuration.ciudad} o enviando un correo electrónico a la dirección electrónica #{@app_configuration.email}.\n\nAdemás, en cualquier momento, y de acuerdo con lo dispuesto en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, puede manifestar su deseo de NO recibir comunicaciones comerciales electrónicas, de forma sencilla y gratuita, enviando una solicitud por correo electrónico a #{@app_configuration.email} indicando BAJA en el asunto del mensaje."
+      .modal-footer
+        %button.btn.btn-primary{'data-dismiss' => 'modal', type: 'button'}
+          Entendido

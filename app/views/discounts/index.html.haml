@@ -1,4 +1,4 @@
-- cache ['v1', 'discounts', 'index', cache_key_for_discounts, current_user] do
+- cache ['v1', 'discounts', 'index', cache_key_for_discounts] do
   %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
@@ -23,15 +23,5 @@
     %p
       =discount.description.html_safe
       =link_to 'Condiciones', discount_path(@section.permalink, discount.permalink)
-    
-    -if admin?
-      =link_to('Editar', edit_discount_path(@section.permalink, discount.permalink))
-      |
-      =link_to 'Borrar', discount_path(@section.permalink, discount.permalink), method: :delete, data: {confirm: '¿Quieres borrar este descuento?'}
-    %hr  
-  -if admin?
-    =link_to 'Volver (Panel de control)', setting_path(@section.permalink)
-    |
-    =link_to 'Nuevo descuento', new_discount_path(@section.permalink)
-  -else
-    =link_to 'Volver', prices_path(@section.permalink)
+    %hr
+  =link_to 'Volver', prices_path(@section.permalink)

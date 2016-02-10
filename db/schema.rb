@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117192108) do
+ActiveRecord::Schema.define(version: 20160122232411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 20160117192108) do
   end
 
   add_index "discounts", ["section_id"], name: "index_discounts_on_section_id", using: :btree
+
+  create_table "free_calls", force: :cascade do |t|
+    t.string   "phone"
+    t.string   "name"
+    t.integer  "section_id"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "permalink",     null: false

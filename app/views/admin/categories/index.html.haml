@@ -1,0 +1,35 @@
+%h1
+  ="Categorías de #{@section.name}"
+  .pull-right
+    =link_to new_admin_category_path, class: 'btn btn-primary' do
+      Nueva categoría
+      .fa.fa-pencil
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        ='#'
+      %th
+        Título
+      %th
+        Artículos
+      %th
+        Editar
+      %th
+        Borrar
+  %tbody
+    - @categories.each do |category|
+      %tr
+        %th
+          =category.id
+        %td
+          =category.name
+        %td
+          =category.posts.count
+        %td
+          =link_to edit_admin_category_path(category), class: 'btn btn-default' do
+            .fa.fa-pencil
+        %td
+          =link_to admin_category_path(category), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará el elemento para siempre ¿estás seguro?' } do
+            .fa.fa-trash
+= paginate @categories

@@ -1,0 +1,35 @@
+%h1
+  ="Descuentos de #{@section.name}"
+  .pull-right
+    =link_to new_admin_discount_path, class: 'btn btn-primary' do
+      Nuevo descuento
+      .fa.fa-pencil
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        ='#'
+      %th
+        Título
+      %th
+        Cantidad
+      %th
+        Editar
+      %th
+        Borrar
+  %tbody
+    - @discounts.each do |discount|
+      %tr
+        %th
+          =discount.id
+        %td
+          =discount.title
+        %td
+          =discount.value
+        %td
+          =link_to edit_admin_discount_path(discount), class: 'btn btn-default' do
+            .fa.fa-pencil
+        %td
+          =link_to admin_discount_path(discount), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará el elemento para siempre ¿estás seguro?' } do
+            .fa.fa-trash
+= paginate @discounts

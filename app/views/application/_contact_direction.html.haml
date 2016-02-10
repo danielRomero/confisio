@@ -1,0 +1,31 @@
+.col-xs-12.col-sm-6.col-md-6.col-lg-4
+  %address{:itemscope => '', :itemtype => 'http://schema.org/LocalBusiness'}
+    %span.hidden{:itemprop => 'name'}=APP_NAME
+    %div{:itemprop => 'address', :itemscope => '', :itemtype => 'http://schema.org/PostalAddress'}
+      %span{:itemprop => 'streetAddress'}="#{@app_configuration.calle}, #{@app_configuration.numero}"
+      = succeed ',' do
+        %span.hidden{:itemprop => 'addressLocality'}=@app_configuration.ciudad
+      %span{:itemprop => 'postalCode'}=@app_configuration.cp
+      %span{:itemprop => 'addressRegion'}=@app_configuration.ciudad
+    %div{style: 'height: 5px;'}
+    .fa.fa-phone
+    %span{:itemprop => 'telephone', title: @app_configuration.telefono_fijo}=format_phone_number @app_configuration.telefono_fijo
+    %br/
+    %span{title: @app_configuration.telefono_movil}
+      %b.fa.fa-whatsapp
+      =format_phone_number @app_configuration.telefono_movil
+      %span
+      ¡Pide cita por Whatsapp!
+    %br/
+    %div{style: 'height: 5px;'}
+    .fa.fa-envelope-o
+    =mail_to(@app_configuration.email, @app_configuration.email, subject: 'Consulta información')
+    %br/
+    %div{style: 'height: 5px;'}
+    =link_to('https://www.metromadrid.es/export/sites/metro/comun/documentos/planos/Planoesquematicoespanol.pdf', target: :blank) do
+      =image_tag('MetroMadridLogo.svg', size: '35x20')
+    %span
+      =link_to 'https://www.google.es/maps/dir/Barrio+de+la+Concepci%C3%B3n,+28027+Madrid/Confisio,+Avenida+de+Badajoz,+Madrid/@40.4402363,-3.6560694,17z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0xd422f39e3b11b87:0x801e84be096d7d60!2m2!1d-3.6519981!2d40.4390955!1m5!1m1!1s0xd422f31137e4ebb:0xd3d911e806f9b0e6!2m2!1d-3.6558397!2d40.4414183', target: :blank do
+        =@app_configuration.metro
+    %div{style: 'height: 5px;'}
+    ="Barrios cercanos: #{@app_configuration.barrio}"

@@ -62,6 +62,8 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'cap-ec2'
+
+  gem 'pry'
 end
 
 group :development, :test do

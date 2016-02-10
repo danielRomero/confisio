@@ -1,5 +1,4 @@
--url = @discount.new_record? ? discounts_path(@section.permalink) : discount_path(@section.permalink, @discount.permalink)
-= form_for @discount, url: url do |f|
+= form_for [:admin, @discount] do |f|
   .col-xs-12.col-sm-6.col-md-6.col-lg-6
     - if @discount.errors.any?
       #error_explanation
@@ -21,5 +20,5 @@
       = f.text_area :conditions, class: 'form-control', value: @discount.conditions || 'Descuento por sesión, no acumulables a otros descuentos u otras ofertas. Descuento válido hasta FECHA'
     .actions.pull-right
       = f.submit 'Guardar', class: 'btn btn-primary'
-    =link_to 'Volver', discounts_path(@section.permalink)
+    =link_to 'Volver', admin_discounts_path
   .clearfix
