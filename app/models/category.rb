@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
 
   before_create :generate_permalink
 
-  scope :with_posts, -> { joins(:posts) }
+  scope :with_posts, -> { joins(:posts).uniq }
   
   private
     def generate_permalink
