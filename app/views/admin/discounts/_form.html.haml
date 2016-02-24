@@ -16,8 +16,11 @@
       = f.label :description, 'Descripción (si aquí no carga una caja de texto con botones, recarga la página)'
       = f.cktext_area :description, :cols => 40, :ckeditor => {:toolbar => 'mini', :language => 'es'}
     .form-group
+      = f.label :valid_to, 'Válido hasta'
+      = f.date_select :valid_to, class: 'form-control', value: @discount.valid_to || 1.year.from_now
+    .form-group
       = f.label :conditions, 'Condiciones'
-      = f.text_area :conditions, class: 'form-control', value: @discount.conditions || 'Descuento por sesión, no acumulables a otros descuentos u otras ofertas. Descuento válido hasta FECHA'
+      = f.text_area :conditions, class: 'form-control', value: @discount.conditions || 'Descuento por sesión, no acumulables a otros descuentos u otras ofertas.'
     .actions.pull-right
       = f.submit 'Guardar', class: 'btn btn-primary'
     =link_to 'Volver', admin_discounts_path

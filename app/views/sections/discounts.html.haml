@@ -1,0 +1,27 @@
+- cache ['v1', 'discounts', 'index', cache_key_for_discounts] do
+  %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(root_path, property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=APP_NAME.capitalize
+      %meta{property: 'position', content: '1'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=@section.name.capitalize
+      %meta{property: 'position', content: '2'}
+    %li.active Descuentos
+
+.page-header
+  %h1
+    Descuentos
+    %small=@section.name
+.grid
+  -@discounts.each do |discount|
+    .col-xs-12.col-sm-6.col-md-6.col-lg-6.elem
+      =render partial: 'discounts/box', locals: { discount: discount }
+:javascript
+  $('.grid').masonry({
+    // options
+    itemSelector: '.col-xs-12.col-sm-6.col-md-6.col-lg-6.elem',
+    columnWidth: '.col-xs-12.col-sm-6.col-md-6.col-lg-6.elem',
+    percentPosition: true
+  });

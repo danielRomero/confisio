@@ -1,5 +1,5 @@
 namespace :db do
-  # USAGE => $ rake db:dump PGPASSWORD='my_database_password'
+  # USAGE => $ RAILS_ENV=environment bundle exec rake db:dump PGPASSWORD='my_database_password'
   desc 'Dumps the database to backups'
   task dump: :environment do
     dump_fmt = ENV['FORMAT'] || 'c' # or 'p', 't', 'd'
@@ -21,7 +21,7 @@ namespace :db do
     exec "/bin/ls -lt #{backup_dir}"
   end
 
-  # USAGE => $ rake db_restore[name_backup_to_restore.dump]
+  # USAGE => $ RAILS_ENV=environment bundle exec rake db_restore[name_backup_to_restore.dump]
   desc 'Restores the database from a backup using PATTERN'
   task :restore, [:pat] => :environment do |_task, args|
     if args.pat.present?

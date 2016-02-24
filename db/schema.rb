@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122232411) do
+ActiveRecord::Schema.define(version: 20160223204756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160122232411) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "permalink"
+    t.datetime "valid_to"
   end
 
   add_index "discounts", ["section_id"], name: "index_discounts_on_section_id", using: :btree
@@ -108,13 +109,14 @@ ActiveRecord::Schema.define(version: 20160122232411) do
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "settings", force: :cascade do |t|
-    t.integer  "section_id",    null: false
+    t.integer  "section_id",       null: false
     t.float    "base_price"
     t.text     "meta_keywords"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "email"
     t.text     "description"
+    t.time     "session_duration"
   end
 
   add_index "settings", ["section_id"], name: "index_settings_on_section_id", using: :btree

@@ -20,6 +20,6 @@ class Admin::SettingsController < Admin::AdminsController
   end
 
   def setting_params
-    params.require(:setting).permit(:meta_keywords, :base_price, :email, :description, :id)
+    params.require(:setting).permit(:meta_keywords, :base_price, :session_duration, :email, :description, :id)
   end
 end

@@ -12,6 +12,7 @@
  *
  *= require landing
  *= require posts
+ *= require free_calls
  *= require team
  *= require font-awesome
  *= require_self
@@ -45,8 +46,10 @@ html.confisio {
       color: #88ACD9;
     }
     footer{
-      .row.row-custom.free-calls-block{
-        margin-bottom: 90px;
+      margin-bottom: 50px; //footer height
+      .footer, .alert.alert-info.cookies_alert{
+        margin: 0px;
+        padding: 10px;
       }
       nav.navbar.navbar-default{
         position: absolute;

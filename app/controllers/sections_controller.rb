@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  before_action :set_section, only: [:show, :precios]
+  before_action :set_section, only: [:show, :precios, :discounts]
   def show
     @titulo = @section.name.capitalize
     @description = @section.setting.description || AppConfiguration.first.description
@@ -11,6 +11,12 @@ class SectionsController < ApplicationController
     @titulo = "#{@section.name.capitalize} · Precios"
     @description = "Los mejores precios y descuentos en #{@section.name}"
     @meta_url = prices_url(@section.permalink)
+  end
+
+  def discounts
+    @discounts = @section.discounts
+    @titulo = "#{@section.name.capitalize} · descuentos"
+    @meta_url = discounts_url(@section.permalink)
   end
 
   private

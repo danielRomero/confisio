@@ -1,12 +1,12 @@
 class DiscountsController < ApplicationController
-  before_action :set_section
+  before_action :set_section, only: [:show]
   before_action :set_discount, only: [:show]
 
   def index
-    @discounts = @section.discounts
-    @titulo = "#{@section.name.capitalize} · descuentos"
-    @description = "Mira los últimos descuentos en #{@section.name}"
-    @meta_url = discounts_url(@section.permalink)
+    # @discounts = @section.discounts
+    # @titulo = "#{@section.name.capitalize} · descuentos"
+    # @description = "Mira los últimos descuentos en #{@section.name}"
+    # @meta_url = discounts_url(@section.permalink)
   end
 
   def show

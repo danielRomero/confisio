@@ -1,0 +1,14 @@
+.panel.panel-info
+  .panel-heading
+    =link_to discount_path(discount.section.permalink, discount_permalink: discount.permalink) do
+      %b.pull-left
+        =discount.title
+      %b.pull-right
+        ="#{'%.2f' % discount.value.round(2)} €"
+      .clearfix
+  -if discount.description.present?
+    .panel-body
+      =discount.description.html_safe
+  -if discount.conditions.present?
+    .panel-footer
+      =discount.conditions

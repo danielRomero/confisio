@@ -6,7 +6,6 @@
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
         %span{property: 'name'}=APP_NAME.capitalize
       %meta{property: 'position', content: '1'}
-
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
         %span{property: 'name'}=@section.name.capitalize
@@ -35,7 +34,6 @@
       .col-xs-12.col-sm-9.col-md-9.col-lg-9
         -######### Body #########
         =@post.body.html_safe
-        =link_to 'Volver', sections_permalink_path(@section.permalink)
       -if @post.latest_posts.any?
         .hidden-xs.col-sm-3.col-md-3.col-lg-3.text-center
           %h5 Otros artículos

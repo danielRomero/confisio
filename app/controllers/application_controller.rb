@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
     @meta_url = contact_url
   end
 
-  def tarifas
-    @titulo = 'Tarifas'
-    @meta_url = tarifas_url
+  def precios
+    @titulo = 'Precios  / Tarifas'
+    @meta_url = prices_url
   end
 
   # Type can be: info, success, warning, danger
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
       return true
     else
       apply_flash('warning', 'No tienes permisos para acceder a esta sección')
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 

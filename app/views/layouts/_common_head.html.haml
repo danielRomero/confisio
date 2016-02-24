@@ -9,7 +9,7 @@
   %link{ rel: 'author', href: @author.google_plus_url }
 
 =render partial: 'layouts/opengraph'
-=render partial: 'layouts/icon'
+=render partial: 'layouts/icon' unless Rails.env.development?
 
 %link{rel: 'canonical', href: (@meta_url and !@meta_url.blank?) ? @meta_url : root_url, itemprop: 'url', hreflang: I18n.locale}
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true, async: true

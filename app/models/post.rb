@@ -7,7 +7,8 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :categories
 
   scope :by_create_date, -> { order(created_at: :desc) }
-  scope :with_categories, -> { joins(:categories) }
+  scope :with_categories, -> { joins(:categories).includes(:section) }
+  scope :latest_related_for_section, -> (section) { by_create_date.where(section_id: section.id).includes(:section).limit(4) }
 
   validates_presence_of :section_id, :body, :title
 
@@ -17,7 +18,7 @@ class Post < ActiveRecord::Base
   before_create :generate_permalink
 
   def latest_posts
-    Post.by_create_date.where(section_id: section_id).where.not(id: id).limit(4)
+    Post.by_create_date.latest_related_for_section(section).where.not(id: id)
   end
 
   private

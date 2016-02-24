@@ -9,13 +9,23 @@
   .page-header
     %h1
       =@section.name
-    =link_to 'Precios y descuentos', prices_path(@section.permalink)
-  %p=simple_format @section.setting.description.html_safe
-  -if @section.permalink != "psicologia" and @section.categories
-    %ul.list-unstyled
-      -@section.categories.with_posts.each do |category|
-        %li=link_to category.name, category_path(@section.permalink, category.permalink)
-        -if category.posts
-          %ul
-            -category.posts.each do |post|
-              %li=link_to post.title, post_permalink_path(@section.permalink, category.permalink, post.permalink)
+    =link_to 'Precios y descuentos', prices_permalink_path(@section.permalink)
+  .row
+    .content
+      .col-xs-12.col-sm-9.col-md-9.col-lg-9
+        %p= @section.setting.description.html_safe
+        -if !@section.is_psicologia? and @section.categories
+          %ul.list-unstyled
+            -@section.categories.with_posts.each do |category|
+              %li=link_to category.name, category_path(@section.permalink, category.permalink)
+              -if category.posts
+                %ul
+                  -category.posts.each do |post|
+                    %li=link_to post.title, post_permalink_path(@section.permalink, category.permalink, post.permalink)
+      -if Post.latest_related_for_section(@section).any?
+        .hidden-xs.col-sm-3.col-md-3.col-lg-3.text-center
+          %h5 Últimos artículos
+          -Post.latest_related_for_section(@section).each do |post|
+            =link_to post_permalink_path(post.section.permalink, !post.categories.empty? ? post.categories.first.permalink : 'artículo', post.permalink), class: 'thumbnail' do
+              =image_tag post.primary_image, alt: post.title
+              =post.title

@@ -4,24 +4,14 @@
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
         %span{property: 'name'}=APP_NAME.capitalize
       %meta{property: 'position', content: '1'}
-    %li{property: 'itemListElement', typeof: 'ListItem'}
-      =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
-        %span{property: 'name'}=@section.name.capitalize
-      %meta{property: 'position', content: '2'}
-    %li{property: 'itemListElement', typeof: 'ListItem'}
-      =link_to(prices_path(@section.permalink), property: 'item', typeof: 'WebPage') do
-        %span{property: 'name'}='Precios'
-      %meta{property: 'position', content: '3'}
     %li.active Descuentos
 
-  .page-header
-    %h1= "Descuentos de #{@section.name}"
-  -@discounts.each do |discount|
-    %p=discount.title.html_safe
-    %b
-      ="#{'%.2f' % discount.value.round(2)} €"
-    %p
-      =discount.description.html_safe
-      =link_to 'Condiciones', discount_path(@section.permalink, discount.permalink)
-    %hr
-  =link_to 'Volver', prices_path(@section.permalink)
+  %h1 Descuentos
+  .row
+    -Section.all.each do |section|
+      .col-xs-12.col-sm-4.col-md-4.col-lg-6
+        -if section.discounts.any?
+          .page-header
+            %h3=section.name
+          -section.discounts.each do |discount|
+            =render partial: 'box', locals: { discount: discount }

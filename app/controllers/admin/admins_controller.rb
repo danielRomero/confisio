@@ -4,6 +4,9 @@ class Admin::AdminsController < ApplicationController
   layout 'admin'
 
   def index
+    unless admin?
+      redirect_to login_path
+    end
   end
 
   private

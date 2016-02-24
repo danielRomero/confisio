@@ -1,0 +1,27 @@
+- cache ['v1', 'precios', cache_key_for_sections] do
+  %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
+    %li{property: 'itemListElement', typeof: 'ListItem'}
+      =link_to(root_path, property: 'item', typeof: 'WebPage') do
+        %span{property: 'name'}=APP_NAME.capitalize
+      %meta{property: 'position', content: '1'}
+    %li.active Precios
+
+  %h1
+    Precios
+    %small
+      por sesión
+  .row
+    -Section.all.each do |section|
+      .col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .well.text-center
+          %h3 
+            %b=section.name
+          %hr
+          -if section.setting.session_duration.present?
+            Duración de la sesión
+            %p= time_to_hour_minute section.setting.session_duration
+            %hr
+          %p
+            %b="#{'%.2f' % section.setting.base_price.round(2)} € / sesión"
+          %hr
+          =link_to 'Descuentos', section_discounts_path(section.permalink), class: 'btn btn-primary btn-block'

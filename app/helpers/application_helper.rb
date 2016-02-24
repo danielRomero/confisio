@@ -8,4 +8,14 @@ module ApplicationHelper
     doc = Nokogiri::HTML(text)
     return doc.xpath("//text()").to_s
   end
+
+  def time_to_hour_minute(time)
+    if time.hour.zero?
+      time.strftime "%-M #{I18n.t(:minute, count: time.min)}"
+    elsif time.min.zero?
+      time.strftime "%-H #{I18n.t(:hour, count: time.hour)}"
+    else
+      time.strftime "%-H #{I18n.t(:hour, count: time.hour)} y %M #{I18n.t(:minute, count: time.min)}"
+    end
+  end
 end

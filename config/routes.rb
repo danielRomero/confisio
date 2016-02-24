@@ -28,17 +28,20 @@ Rails.application.routes.draw do
 
   resources :sections, except: [:index], param: :permalink
   resources :free_calls, only: [:create]
-
+  resources :discounts, only: [:index], path: 'descuentos'
   scope ':permalink' do
     resources :posts, param: :post_permalink, except: :show
     scope 'precios' do
       resources :discounts, param: :discount_permalink, path: 'descuentos'
     end
-    resources :categories, param: :category_permalink, path: 'categorias'
-    get 'precios', to: 'sections#precios', as: :prices
+    get 'descuentos', to: 'sections#discounts', as: :section_discounts
+    resources :categories, param: :category_permalink, path: 'categorias', only: :show
+    get 'precios', to: 'sections#precios', as: :prices_permalink
     get ':category_permalink/:post_permalink', to: 'posts#show', as: :post_permalink
   end
-  get 'tarifas', to: 'application#tarifas', as: :tarifas
+  #get 'precios', to: 'application#tarifas'
+  get 'precios', to: 'application#precios', as: :prices
+  get 'tarifas', to: redirect('/precios')
   get 'sitemap', to: 'application#sitemap', as: 'sitemap', defaults: { format: 'xml' }
 
   get '404', to: 'application#error_404', as: :error_404 # renderiza public/404.html

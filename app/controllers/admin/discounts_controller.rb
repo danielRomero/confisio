@@ -45,6 +45,6 @@ class Admin::DiscountsController < Admin::AdminsController
   end
 
   def discount_params
-    params.require(:discount).permit(:title, :value, :description, :conditions, :id, :section_id)
+    params.require(:discount).permit(:title, :value, :description, :conditions, :id, :section_id, :valid_to)
   end
 end
