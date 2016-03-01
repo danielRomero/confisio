@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 
   def set_category
     unless @category = @section.categories.find_by(permalink: params[:category_permalink])
-      redirect_to categories_path(@section.permalink)
+      redirect_to sections_permalink_path(@section.permalink)
     end
   end
 
