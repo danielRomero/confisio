@@ -16,3 +16,5 @@ EC2Confisio.pem
 zcredentials
 config/ec2.yml
 db/backups*
+.ruby-gemset
+.ruby-version
