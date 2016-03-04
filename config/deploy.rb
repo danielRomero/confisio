@@ -51,4 +51,6 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 # set the locations that we will look for changed assets to determine whether to precompile
 set :assets_dependencies, %w(app/assets/ lib/assets vendor/assets Gemfile config/routes.rb)
 
+set :rvm_ruby_version, '2.3.0'
+
 class PrecompileRequired < StandardError; end
