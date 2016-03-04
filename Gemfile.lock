@@ -59,7 +59,7 @@ GEM
     aws-sdk-v1 (1.66.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
-    bcrypt (3.1.10)
+    bcrypt-ruby (3.0.1)
     builder (3.2.2)
     cap-ec2 (1.0.0)
       aws-sdk-v1
@@ -248,7 +248,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store!
   awesome_print
-  bcrypt (~> 3.1.1)
+  bcrypt-ruby (~> 3.0.0)
   cap-ec2
   capistrano
   capistrano-bundler
