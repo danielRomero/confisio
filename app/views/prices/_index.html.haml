@@ -1,0 +1,25 @@
+.well.text-center
+  %h3 
+    %b=section.name
+  %hr
+  -if section.prices.count == 1
+    -section.prices.each do |price|
+      -if price.duration.present?
+        Duración de la sesión
+        %p= time_to_hour_minute section.setting.session_duration
+        %hr
+      %p
+        %b="#{'%.2f' % price.value.round(2)} € / #{price.unit_name.capitalize}"
+      %hr
+  -else
+    -#### Versión compacta
+    -section.prices.by_create_date.each do |price|
+      -if price.name.present?
+        %span=price.name.capitalize
+      %span
+        %b="#{'%.2f' % price.value.round(2)} € / #{price.unit_name.capitalize}"
+      -if price.duration.present?
+        %span= time_to_hour_minute section.setting.session_duration
+      %hr
+  -if section.discounts.any?
+    =link_to 'Descuentos', section_discounts_path(section.permalink), class: 'btn btn-primary btn-block'
