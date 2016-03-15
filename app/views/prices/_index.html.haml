@@ -23,7 +23,7 @@
         %span
           = 'desde'
       %span.separate
-        %b= pretty_price
+        %b= pretty_price(price)
       -if price.duration.present? && time_to_hour_minute(price.duration).strip != '0'
         %span= time_to_hour_minute section.setting.session_duration
       %hr
