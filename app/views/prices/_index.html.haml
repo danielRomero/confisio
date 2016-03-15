@@ -25,7 +25,7 @@
       %span.separate
         %b= pretty_price(price)
       -if price.duration.present? && time_to_hour_minute(price.duration).strip != '0'
-        %span= time_to_hour_minute section.setting.session_duration
+        %span= time_to_hour_minute price.duration
       %hr
   -if section.discounts.any?
     =link_to 'Descuentos', section_discounts_path(section.permalink), class: 'btn btn-primary btn-block'
