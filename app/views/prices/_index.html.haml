@@ -1,6 +1,6 @@
 .well.text-center
   %h3 
-    %b=section.name
+    %b=link_to section.name, prices_permalink_path(section.permalink)
   %hr
   -if section.prices.count == 1
     -section.prices.each do |price|

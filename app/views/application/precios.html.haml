@@ -10,5 +10,12 @@
     Precios
   .row
     -Section.joins(:prices).includes(:prices).ordered.each do |section|
-      .col-xs-12.col-sm-6.col-md-6.col-lg-6
+      .col-xs-12.col-sm-6.col-md-6.col-lg-6.elem
         =render partial: 'prices/index', locals: {section: section}
+  :javascript
+    $('.row').masonry({
+      // options
+      itemSelector: '.col-xs-12.col-sm-6.col-md-6.col-lg-6.elem',
+      columnWidth: '.col-xs-12.col-sm-6.col-md-6.col-lg-6.elem',
+      percentPosition: true
+    });
