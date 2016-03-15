@@ -10,6 +10,7 @@ module ApplicationHelper
   end
 
   def time_to_hour_minute(time)
+    return '' unless time
     if time.hour.zero?
       time.strftime "%-M #{I18n.t(:minute, count: time.min)}"
     elsif time.min.zero?

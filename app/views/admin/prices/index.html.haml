@@ -27,7 +27,7 @@
         %td
           =price.name
         %td
-          = time_to_hour_minute price.duration
+          = time_to_hour_minute(price.duration).strip == '0' ? '' : time_to_hour_minute(price.duration)
         %td
           =price.unit_name
         %td
