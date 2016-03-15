@@ -46,6 +46,6 @@ class Admin::PricesController < Admin::AdminsController
   end
 
   def price_params
-    params.require(:price).permit(:duration, :value, :name, :unit_name, :id)
+    params.require(:price).permit(:duration, :value, :name, :unit_name, :from, :id)
   end
 end

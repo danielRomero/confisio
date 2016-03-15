@@ -26,6 +26,11 @@ html.confisio {
   @import "bootstrap";
 
   body {
+    .well{
+      span.separate{
+        padding-right: 10px;
+      }
+    }
     .row.row-custom{
       margin-right: 0px;
       margin-left: 0px;
