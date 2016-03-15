@@ -8,10 +8,9 @@
 
   %h1 Descuentos
   .row
-    -Section.all.each do |section|
+    -Section.ordered.joins(:discounts).includes(:discounts).each do |section|
       .col-xs-12.col-sm-4.col-md-4.col-lg-6
-        -if section.discounts.any?
-          .page-header
-            %h3=section.name
-          -section.discounts.each do |discount|
-            =render partial: 'box', locals: { discount: discount }
+        .page-header{id: section.name.parameterize}
+          %h3=section.name
+        -section.discounts.by_create_date.each do |discount|
+          =render partial: 'box', locals: { discount: discount }

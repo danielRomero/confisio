@@ -10,7 +10,7 @@
         %span.icon-bar
     .collapse.navbar-collapse{id: 'bs-example-navbar-collapse-1'}
       %ul.nav.navbar-nav
-        %li=link_to 'Admin', admin_admin_path
+        %li=link_to "Admin #{@section.name}", admin_admin_path
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

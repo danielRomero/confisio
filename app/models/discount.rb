@@ -3,6 +3,8 @@ class Discount < ActiveRecord::Base
   validates :title, presence: true
   validates :value, presence: true
 
+  scope :by_create_date, -> () { order(created_at: :asc) }
+
   before_create :generate_permalink
 
   private

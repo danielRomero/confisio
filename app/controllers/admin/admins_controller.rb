@@ -9,9 +9,17 @@ class Admin::AdminsController < ApplicationController
     end
   end
 
+  def change_section
+    if is_super_admin? && (section = Section.find(params[:id]))
+      session[:section_id] = section.id
+    end
+    redirect_to admin_admin_path
+  end
+
   private
 
   def set_section
-    @section = current_user.section || Section.first
+    @section = Section.find(session[:section_id] || current_user.section)
+    session[:section_id] = @section.id
   end
 end

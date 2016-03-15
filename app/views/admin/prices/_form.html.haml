@@ -1,0 +1,26 @@
+= form_for [:admin, @price] do |f|
+  - if @price.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@price.errors.count, "error")} prohibited this discount from being saved:"
+      %ul
+        - @price.errors.full_messages.each do |msg|
+          %li= msg
+  
+  .form-group
+    = f.label :name, 'Nombre'
+    = f.text_field :name, class: 'form-control', placeholder: 'Sesión individual, Terapia de pareja, Papiloma, Quiropodia...'
+  .form-group
+    = f.label :duration, 'Duración (Horas:Minutos)'
+    = f.time_select :duration, class: 'form_control'
+  .form-group
+    = f.label :value, 'Precio*'
+    = f.number_field :value, class: 'form-control', min: 0, max: 999, step: 0.01, required: true, placeholder: '38'
+  .form-group
+  .form-group
+    = f.label :unit_name, 'Nombre Unidades*'
+    = f.text_field :unit_name, class: 'form-control', required: true, placeholder: 'Sesión, Tratamiento, Consulta...'
+  %hr
+  .actions.pull-right
+    = f.submit 'Guardar', class: 'btn btn-primary'
+  =link_to 'Volver', admin_prices_path
+.clearfix

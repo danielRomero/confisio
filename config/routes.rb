@@ -11,10 +11,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'admins#index', as: :admin
+    get 'change_section' => 'admins#change_section', as: :change_section
     resources :free_calls, except: [:create]
     resources :posts, except: [:show]
     resources :discounts, except: [:show]
     resources :categories, except: [:show]
+    resources :prices, except: [:show]
     resources :settings, only: [:edit, :update]
     resources :app_configurations, only: [:edit, :update]
     resources :users, only: [:edit, :update]

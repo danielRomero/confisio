@@ -13,7 +13,7 @@
         %ul.nav.navbar-nav
           -Section.all.order(created_at: :asc).each do |section|
             %li
-              =link_to section.name, sections_permalink_path(section.permalink)
+              =link_to section.name.capitalize, sections_permalink_path(section.permalink)
         %ul.nav.navbar-nav.navbar-right
           %li
             =link_to 'Precios', prices_path

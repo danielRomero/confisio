@@ -1,9 +1,10 @@
 class Section < ActiveRecord::Base
   has_one :setting, dependent: :destroy
   has_many :users
-  has_many :posts
-  has_many :discounts
-  has_many :categories
+  has_many :posts, dependent: :destroy
+  has_many :prices, dependent: :destroy
+  has_many :discounts, dependent: :destroy
+  has_many :categories, dependent: :destroy
 
   validates :name, presence: true
 
@@ -12,11 +13,17 @@ class Section < ActiveRecord::Base
   before_create :generate_permalink
   before_create :create_setting
 
-  SECTIONS_PERMALINK_AVAILABLES = %w(fisioterapia psicologia)
+  SECTIONS_PERMALINK_AVAILABLES = %w(fisioterapia psicologia podologia nutricion)
 
   Section::SECTIONS_PERMALINK_AVAILABLES.each do |permalink|
     define_method("is_#{permalink}?") do
       self.permalink == permalink
+    end
+  end
+
+  Section::SECTIONS_PERMALINK_AVAILABLES.each do |permalink|
+    define_singleton_method("#{permalink}") do
+      Section.find_by(permalink: permalink)
     end
   end
 

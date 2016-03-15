@@ -1,6 +1,5 @@
 class Admin::PostsController < Admin::AdminsController
   before_action :set_post, except: [:index, :new, :create]
-  before_action :set_category
 
   def index
     @titulo = "#{@section.name.capitalize} · artículos"
@@ -41,14 +40,6 @@ class Admin::PostsController < Admin::AdminsController
   end
 
   private
-
-  def set_post
-    @post = Post.find params[:id]
-  end
-
-  def set_category
-    @category = @section.categories.find_by(permalink: params[:category_permalink])
-  end
 
   def post_params
     params.require(:post).permit(:keywords, :body, :title, :primary_image, :id, category_ids: [])

@@ -1,0 +1,39 @@
+%h1
+  ="Precios de #{@section.name}"
+  .pull-right
+    =link_to new_admin_price_path, class: 'btn btn-primary' do
+      Nuevo precio
+      .fa.fa-pencil
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        ='#'
+      %th
+        Precio
+      %th
+        Nombre
+      %th
+        Duración
+      %th
+        Nombre unidades
+  %tbody
+    - @prices.each do |price|
+      %tr
+        %th
+          =price.id
+        %td
+          =price.value
+        %td
+          =price.name
+        %td
+          = time_to_hour_minute price.duration
+        %td
+          =price.unit_name
+        %td
+          =link_to edit_admin_price_path(price), class: 'btn btn-default' do
+            .fa.fa-pencil
+        %td
+          =link_to admin_price_path(price), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará el elemento para siempre ¿estás seguro?' } do
+            .fa.fa-trash
+= paginate @prices

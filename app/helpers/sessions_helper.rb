@@ -30,7 +30,11 @@ module SessionsHelper
   end
 
   def admin?
-    return (signed_in? and (current_user.rank == 5))
+    return (signed_in? and (current_user.rank >= 5))
+  end
+
+  def is_super_admin?
+    return (signed_in? and (current_user.rank >= 6))
   end
 
   private
