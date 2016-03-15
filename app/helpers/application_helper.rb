@@ -19,4 +19,12 @@ module ApplicationHelper
       time.strftime "%-H #{I18n.t(:hour, count: time.hour)} y %M #{I18n.t(:minute, count: time.min)}"
     end
   end
+
+  def pretty_price(price)
+    if price.value.to_i > 0
+      "#{'%.2f' % price.value.round(2)} € / #{price.unit_name.capitalize}"
+    else
+      'Gratis'
+    end
+  end
 end
