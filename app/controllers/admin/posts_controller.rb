@@ -44,4 +44,8 @@ class Admin::PostsController < Admin::AdminsController
   def post_params
     params.require(:post).permit(:keywords, :body, :title, :primary_image, :id, category_ids: [])
   end
+
+  def set_post
+    @post = Post.find params[:id]
+  end
 end
