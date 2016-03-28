@@ -1,9 +1,8 @@
 -unless (params[:action] == 'contact')
-  - cache ['v1', 'footer', 'free_calls'] do
-    %hr
-    .row.row-custom.free-calls-block
-      .container
-        =render partial: 'free_calls/form'
+  %hr
+  .row.row-custom.free-calls-block
+    .container
+      =render partial: 'free_calls/form'
 =render partial: 'application/cookies_message'
 - cache ['v1', 'footer', @app_configuration] do
   %nav.navbar.navbar-default{style: 'margin-bottom: 0px'}
