@@ -6,6 +6,8 @@
       %th
         ='#'
       %th
+        Fecha
+      %th
         Número
       %th
         Nombre
@@ -18,6 +20,8 @@
       %tr{ class: class_for_status_table(free_call) }
         %th
           =free_call.id
+        %th
+          =I18n.l(free_call.created_at, format: :long)
         %td
           =free_call.phone
         %td
