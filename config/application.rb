@@ -38,14 +38,14 @@ module Confisio
 
     config.action_mailer.default_url_options = { host: ENV['HOST'] }
     config.action_mailer.default :charset => "utf-8"
+    
     config.action_mailer.smtp_settings = {
-      :address   => ENV['SMTP_ADDRESS'],
-      :port      => ENV['SMTP_PORT'],
-      :enable_starttls_auto => true,
+      :authentication => :plain,
+      :address => ENV['SMTP_ADDRESS'],
+      :port => 587,
+      :domain => ENV['SMTP_DOMAIN'],
       :user_name => ENV['SMTP_USERNAME'],
-      :password  => ENV['SMTP_PASSWORD'],
-      :authentication => 'login',
-      :domain => ENV['HOST'],
+      :password => ENV['SMTP_PASSWORD']
     }
 
     config.middleware.use Rack::Deflater
