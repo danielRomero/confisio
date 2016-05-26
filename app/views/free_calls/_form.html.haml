@@ -19,8 +19,8 @@
       = f.label :phone, 'Número de teléfono'
       = f.text_field :phone, required: true, class: 'form-control'
     .form-group
-      = f.label :section, '¿Con quién quieres hablar?'
-      = f.select :section, Section.ordered.collect { |s| [ s.name, s.id ] }, { include_blank: true }, class: 'form-control'
+      = f.label :section_id, '¿Con quién quieres hablar?'
+      = f.select :section_id, Section.ordered.collect { |s| [ s.name, s.id ] }, { include_blank: true }, class: 'form-control'
     .form-group
       = f.submit 'Enviar', class: 'btn btn-primary btn-block'
 
