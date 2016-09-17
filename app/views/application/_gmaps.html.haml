@@ -1,0 +1,31 @@
+:javascript
+  function initMap() {
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+      center: { lat: 40.44160, lng: -3.65567 },
+      zoom: 17
+    });
+
+    var infowindowcontent = '<div id="content">'+
+      '<h3 id="firstHeading" class="firstHeading">Confisio</h3>'+
+      '<p> Fisioterapia, podología, nutrición y psicología </p>'
+      '</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+      content: infowindowcontent
+    });
+
+
+    var marker = new google.maps.Marker({
+      map: map,
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      position: { lat: 40.44160, lng: -3.65567 }
+    });
+
+    infowindow.open(map, marker);
+
+  }
+
+%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key= AIzaSyAs3OUWybwAfKA2i1BpKZJF-dHUSuhNTS8&callback=initMap"}
+  :cdata

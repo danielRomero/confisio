@@ -1,10 +1,10 @@
 - cache [ 'v1', 'post', @post, @section, @app_configuration, @post.user ] do
-  
+
   -######### Breadcrumbs #########
   %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
-        %span{property: 'name'}=APP_NAME.capitalize
+        %span{property: 'name'}=APP_NAME
       %meta{property: 'position', content: '1'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
@@ -79,7 +79,7 @@
             "numberOfEmployees": "#{User.employers.count}",
             "telephone": "+34-#{@app_configuration.telefono_fijo}",
             "email": "#{@app_configuration.email}",
-            "legalName": "#{APP_NAME.capitalize}",
+            "legalName": "#{APP_NAME}",
             "location": {
               "@type" : "PostalAddress",
               "addressCountry": "Spain",

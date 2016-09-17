@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-APP_NAME = 'confisio'
+APP_NAME = 'Confisio'
 
 APP_LOGO = 'https://res-4.cloudinary.com/confisio/image/upload/t_media_lib_thumb/v1435183432/logo-marca/logo-nombre-mano/logo-confisio-def_200_64.png'
 
@@ -38,7 +38,7 @@ module Confisio
 
     config.action_mailer.default_url_options = { host: ENV['HOST'] }
     config.action_mailer.default :charset => "utf-8"
-    
+
     config.action_mailer.smtp_settings = {
       :authentication => :plain,
       :address => ENV['SMTP_ADDRESS'],

@@ -1,10 +1,10 @@
 - cache ['v1', 'landing', @app_configuration, cache_key_for_posts, cache_key_for_employers, cache_key_for_sections] do
-  .application_landing 
+  .application_landing
     .row.landing-principal
       .jumbotron.vertical-center
         .container.text-center
           .col-xs-12.col-sm-6.col-sm-offset-3.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
-            =image_tag 'http://res.cloudinary.com/confisio/image/upload/v1443786531/logo-confisio-def-01_etim1y.png', class: 'img-responsive', alt: APP_NAME.capitalize
+            =image_tag 'http://res.cloudinary.com/confisio/image/upload/v1443786531/logo-confisio-def-01_etim1y.png', class: 'img-responsive', alt: APP_NAME
             %p="Clínica de #{link_to 'fisioterapia', Section.fisioterapia.permalink}, #{link_to 'psicología', Section.psicologia.permalink}, #{link_to 'podología', Section.podologia.permalink} y #{link_to 'nutrición', Section.nutricion.permalink} ".html_safe
     #green
       .row{style: 'padding: 0px; margin: 0px'}
@@ -30,5 +30,5 @@
           =render 'users/team_small'
     =link_to 'https://maps.google.com/maps?ll=40.441418,-3.65584&z=16&t=m&hl=es-ES&gl=ES&mapclient=embed&cid=15265252100196118758' do
       .full-width.scrolloff
-        %iframe.embed-responsive-item{ frameborder: "0", style: "border:0", src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3036.5294147265954!2d-3.65584!3d40.44141799999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422f31137e4ebb%3A0xd3d911e806f9b0e6!2sConfisio!5e0!3m2!1ses!2ses!4v1433542867501" }}
+        #map
   =render partial: 'organization_json_ld'

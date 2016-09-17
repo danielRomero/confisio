@@ -135,10 +135,11 @@
   }
 
   .grid img {
-    opacity:.7;
+    opacity: .95;
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
   }
 
   .grid img:hover {
-    opacity:1;
+    opacity: 1;
   }
 }
