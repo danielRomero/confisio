@@ -7,7 +7,8 @@
     - @app_configuration.landing_images.each_with_index do |image, index|
       .item{class: "#{index == 0 ? 'active' : nil}"}
         .carousel_image_holder
-          =image_tag(image, class: 'img-responsive', alt: 'Fisioterapeutas colegiados en constante formación', style: 'max-height: 299px; width: auto;')
+          .image{style: "background-image:url(#{image})"}
+          -#=image_tag(image, class: 'img-responsive', alt: 'Fisioterapeutas colegiados en constante formación')
   
   %a.left.carousel-control{'data-slide' => 'prev', href: '#carousel-example-generic', role: 'button'}
     %span.fa.fa-angle-left{'aria-hidden' => 'true', style: 'margin-top:150%'}

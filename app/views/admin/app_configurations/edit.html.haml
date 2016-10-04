@@ -42,7 +42,7 @@
       = f.text_field :metro, class: 'form-control'
   .col-xs-12.col-sm-6.col-md-4.col-lg-4
     .form-group
-      = f.label :landing_images, 'Imágenes página principal'
+      = f.label :landing_images, 'Imágenes página principal [ 640x310 px] Tienes que recortarla para que tenga una relación de aspecto 2 de ancho x 1 de alto'
       =render partial: 'form_landing_image', locals: { value: nil }
       
       -@app_configuration.landing_images.each do |landing_image|
