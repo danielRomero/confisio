@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get 'precios', to: 'application#precios', as: :prices
   get 'tarifas', to: redirect('/precios')
   get 'sitemap', to: 'application#sitemap', as: 'sitemap', defaults: { format: 'xml' }
+  get 'sitemap_index', to: 'application#sitemap', as: 'sitemap_index', defaults: { format: 'xml' }
 
   get '404', to: 'application#error_404', as: :error_404 # renderiza public/404.html
 
