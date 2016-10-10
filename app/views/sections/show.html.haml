@@ -7,8 +7,15 @@
     %li.active=@section.name.capitalize
 
   .page-header
-    %h1
-      =@section.name
+    -if @section.is_psicologia?
+      .text-center
+        =image_tag(APP_LOGO)
+      %h1.text-center
+        %small Clínica especializada en atención Psicológica
+    -else
+      %h1
+        =@section.name
+
     =link_to 'Precios y descuentos', prices_permalink_path(@section.permalink)
   .row
     .content
