@@ -16,3 +16,6 @@ EC2Confisio.pem
 zcredentials
 config/ec2.yml
 db/backups*
+backup*
+nginx.conf
+*.production

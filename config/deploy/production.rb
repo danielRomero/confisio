@@ -55,7 +55,7 @@ server 'ubuntu@confisio.es',
   roles: %w{web app db},
   ssh_options: {
     user: 'ec2-user', # overrides user setting above
-    keys: ["../.ec2confisio3.pem"],
+    keys: ["../LightsailDefaultPrivateKey.pem"],
     forward_agent: false,
     auth_methods: %w(publickey password)
     # password: 'please use keys'

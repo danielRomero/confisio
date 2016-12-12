@@ -20,10 +20,10 @@ set :output, '/var/www/confisio/shared/log/cron_log.log'
 # end
 
 # Learn more: http://github.com/javan/whenever
-every '0 3 * * 6', roles: [:app] do
-  rake "PGPASSWORD='#{ENV['DATABASE_PASSWORD']}' db:dump"
-end
+# every '0 3 * * 6', roles: [:app] do
+#   rake "PGPASSWORD='#{ENV['DATABASE_PASSWORD']}' db:dump"
+# end
 
-every '15 3 * * 6', roles: [:app] do
-  rake 'db:upload_all_database_backups'
-end
+# every '15 3 * * 6', roles: [:app] do
+#   rake 'db:upload_all_database_backups'
+# end

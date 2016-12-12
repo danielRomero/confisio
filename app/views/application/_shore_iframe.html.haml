@@ -1,0 +1,22 @@
+<style>
+iframe {
+max-width: 98%;
+}
+
+responseveIframe();
+
+function responseveIframe() {
+$('iframe').height(
+$('iframe').attr("height") / $('iframe').attr("width") * $('iframe').width()
+);
+}
+
+/*this functions is only needed to see the resize as you drag display border*/
+$(window).resize(function() {
+responseveIframe();
+});
+</style>
+
+<div align="center">
+<iframe width="660" height="600" style="border-radius: 6px; padding: 3px; background-color: #ffffff" src="https://connect.shore.com/widget/confisio?locale=es"></iframe>
+</div>
