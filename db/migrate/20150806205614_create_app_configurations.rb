@@ -1,4 +1,4 @@
-class CreateAppConfigurations < ActiveRecord::Migration
+class CreateAppConfigurations < ActiveRecord::Migration[4.2]
   def change
     create_table :app_configurations do |t|
       t.string :telefono_movil

@@ -2,8 +2,8 @@
 %meta{ 'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
 %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }
 %meta{ content: I18n.locale, 'http-equiv' => 'Content-Language' }
-%meta{ name: 'Description', content: (@description and !@description.blank?) ? @description : AppConfiguration.first.description || APP_META_DESCRIPTION }
-%title{itemprop: 'name'}= @titulo ? "#{APP_NAME} · #{@titulo}" : "#{APP_NAME} · Fisioterapia y Psicología"
+%meta{ name: 'Description', content: (@description and !@description.blank?) ? @description : AppConfiguration.first.description || 'Clínica de fisioterapia y psicología en Madrid. Para nosotros es importante resolver tus dudas, y que entiendas las causas del problema, para hacerte participe del tratamiento y evitar recaidas. Fisioterapeutas y psicólogos colegiados en constante formación.' }
+%title{itemprop: 'name'}= @titulo ? "Confisio · #{@titulo}" : "Confisio · Fisioterapia y Psicología"
 
 -if @author and !@author.google_plus_url.blank?
   %link{ rel: 'author', href: @author.google_plus_url }

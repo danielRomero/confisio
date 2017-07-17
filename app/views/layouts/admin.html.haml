@@ -5,7 +5,7 @@
     %meta{ 'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
     %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }
     %meta{ content: I18n.locale, 'http-equiv' => 'Content-Language' }
-    %title{itemprop: 'name'}= @titulo ? "#{APP_NAME} · #{@titulo}" : "#{APP_NAME} · Fisioterapia y Psicología"
+    %title{itemprop: 'name'}= @titulo ? "Confisio · #{@titulo}" : "Confisio · Fisioterapia y Psicología"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true, async: true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags

@@ -1,4 +1,4 @@
-class CreateFreeCalls < ActiveRecord::Migration
+class CreateFreeCalls < ActiveRecord::Migration[4.2]
   def change
     create_table :free_calls do |t|
       t.string :phone, required: true

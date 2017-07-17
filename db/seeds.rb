@@ -54,7 +54,7 @@ if u.new_record?
   u.save!
 end
 
-u = User.find_or_initialize_by(email: "carlossalasmr@gmail.com")
+u = User.find_or_initialize_by(email: "mail3@gmail.com")
 if u.new_record?
   u.name = "Carlos"
   u.surname = "Salas Merino"
@@ -72,7 +72,7 @@ if u.new_record?
   u.save!
 end
 
-u = User.find_or_initialize_by(email: "inessantosmartinez@gmail.com")
+u = User.find_or_initialize_by(email: "mail2@gmail.com")
 if u.new_record?
   u.name = "Inés"
   u.surname = "Santos Martínez"
@@ -90,7 +90,7 @@ if u.new_record?
   u.save!
 end
 
-u = User.find_or_initialize_by(email: "danirocklabel@gmail.com")
+u = User.find_or_initialize_by(email: "mail1@mail.com")
 u.name = "Daniel"
 u.surname = "Romero Esteban"
 u.gender = "Male"

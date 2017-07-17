@@ -1,5 +1,5 @@
 class Admin::FreeCallsController < Admin::AdminsController
-  before_filter :set_free_call, except: [:index]
+  before_action :set_free_call, except: [:index]
 
   def index
     @free_calls = FreeCall.page params[:page]

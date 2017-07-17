@@ -1,8 +1,8 @@
 %meta{:content => ENV['FB_APP_ID'], :property => "fb:app_id"}/
 %meta{:content => (@meta_url and !@meta_url.blank?) ? @meta_url : root_url, :property => "og:url"}/
-%meta{:content => APP_NAME, :property => "og:site_name"}/
-%meta{:content => @titulo ? "#{APP_NAME} · #{@titulo}" : APP_NAME , :property => "og:title"}/
-%meta{:content => (@description and !@description.blank?) ? @description : AppConfiguration.first.description || APP_META_DESCRIPTION , :property => "og:description"}/
+%meta{:content => 'Confisio', :property => "og:site_name"}/
+%meta{:content => @titulo ? "Confisio · #{@titulo}" : 'Confisio' , :property => "og:title"}/
+%meta{:content => (@description and !@description.blank?) ? @description : AppConfiguration.first.description || 'Clínica de fisioterapia y psicología en Madrid. Para nosotros es importante resolver tus dudas, y que entiendas las causas del problema, para hacerte participe del tratamiento y evitar recaidas. Fisioterapeutas y psicólogos colegiados en constante formación.' , :property => "og:description"}/
 
 -if @meta_image and !@meta_image.blank?
   %meta{:content => @meta_image, :property => "og:image"}/

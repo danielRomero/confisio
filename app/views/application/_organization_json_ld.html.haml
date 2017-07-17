@@ -4,9 +4,9 @@
       "@context" : "http://schema.org",
       "@type" : "Organization",
       "url" : "http://#{ENV['HOST']}",
-      "logo": "#{APP_LOGO}",
+      "logo": "#{asset_url('logo-confisio-big.png')}",
       "email": "#{@app_configuration.email}",
-      "legalName": "#{APP_NAME}",
+      "legalName": "Confisio",
       "numberOfEmployees": "#{User.employers.count}",
       "contactPoint" : [
         {

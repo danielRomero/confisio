@@ -4,7 +4,7 @@
   %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
-        %span{property: 'name'}=APP_NAME
+        %span{property: 'name'}='Confisio'
       %meta{property: 'position', content: '1'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do
@@ -58,7 +58,7 @@
           "@type": "Person",
           "additionalName": "#{@author.full_name}",
           "jobTitle": "#{@author.degree}",
-          "affiliation": "#{APP_NAME}",
+          "affiliation": "Confisio",
           "url": "#{employee_url(@author.section.permalink, @author.permalink)}",
           "email": "#{@author.contact_email}",
           "telephone": "#{@author.contact_phone}",
@@ -75,11 +75,11 @@
           "worksFor": {
             "@type": "Organization",
             "url" : "http://#{ENV['HOST']}",
-            "logo": "#{APP_LOGO}",
+            "logo": "#{asset_url('logo-confisio-big.png')}",
             "numberOfEmployees": "#{User.employers.count}",
             "telephone": "+34-#{@app_configuration.telefono_fijo}",
             "email": "#{@app_configuration.email}",
-            "legalName": "#{APP_NAME}",
+            "legalName": "Confisio",
             "location": {
               "@type" : "PostalAddress",
               "addressCountry": "Spain",

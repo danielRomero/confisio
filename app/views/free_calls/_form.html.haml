@@ -27,7 +27,7 @@
 -################## ADDRESS ########################
 .col-xs-12.col-sm-4.col-md-4.col-lg-4
   %address{:itemscope => '', :itemtype => 'http://schema.org/LocalBusiness'}
-    %span.hidden{:itemprop => 'name'}=APP_NAME
+    %span.hidden{:itemprop => 'name'}='Confisio'
     %div{:itemprop => 'address', :itemscope => '', :itemtype => 'http://schema.org/PostalAddress'}
       %span{:itemprop => 'streetAddress'}="#{@app_configuration.calle}, #{@app_configuration.numero}"
       = succeed ',' do

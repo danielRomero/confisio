@@ -1,6 +1,6 @@
 class Admin::AdminsController < ApplicationController
-  before_filter :only_admin
-  before_filter :set_section
+  before_action :only_admin
+  before_action :set_section
   layout 'admin'
 
   def index

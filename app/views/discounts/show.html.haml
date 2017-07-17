@@ -3,7 +3,7 @@
   %ol.breadcrumb{vocab: 'http://schema.org/', typeof: 'BreadcrumbList'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(root_path, property: 'item', typeof: 'WebPage') do
-        %span{property: 'name'}=APP_NAME
+        %span{property: 'name'}='Confisio'
       %meta{property: 'position', content: '1'}
     %li{property: 'itemListElement', typeof: 'ListItem'}
       =link_to(sections_permalink_path(@section.permalink), property: 'item', typeof: 'WebPage') do

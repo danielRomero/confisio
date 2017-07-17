@@ -1,4 +1,4 @@
-class AddSessionDurationToSettings < ActiveRecord::Migration
+class AddSessionDurationToSettings < ActiveRecord::Migration[4.2]
   def self.up
     add_column :settings, :session_duration, :time
     Setting.all.each do |setting|
