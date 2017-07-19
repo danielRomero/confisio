@@ -41,7 +41,7 @@ group :production do
   # gem 'passenger'
   # See https://github.com/rails/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
-
+  gem 'puma'
   gem 'memcachier'
   gem 'dalli'
   # gem 'rack-cache'
