@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to(root_path, class: 'navbar-brand') do %>
+        <h1 class="confisio-logo">Confisio</h1>
+      <% end %>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <% Section.ordered.each do |section| %>
+          <li><%= link_to(section.title.capitalize, section_path(section.permalink)) %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to('Precios',    prices_path) %></li>
+        <li><%= link_to('Descuentos', discounts_path) %></li>
+        <li><%= link_to('Contacto',   contact_path) %></li>
+      </ul>
+    </div>
+  </div>
+</nav>

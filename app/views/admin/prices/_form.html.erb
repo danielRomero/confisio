@@ -1,0 +1,48 @@
+<%= form_for([:admin, price], local: true) do |form| %>
+  <% if price.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(price.errors.count, "error") %> prohibited this price from being saved:</h2>
+
+      <ul>
+      <% price.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, 'Título: ej. "Masage" o "Sesión individual"' %>
+    <%= form.text_field :name, id: :price_name, placeholder: 'Sesión Individual',  class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :value, 'Precio: dejar a cero o vacío para poner Gratis' %>
+    <%= form.text_field :value, id: :price_value,  class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :session_duration, 'Duración de la sesión (horas:minutos). Dejar a 00:00 para no poner nada' %>
+    <%= form.time_select :session_duration, id: :price_session_duration,  class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :from, 'Marca esta opción para que ponga: "DESDE x €"' %>
+    <%= form.check_box :from, id: :price_from %>
+  </div>
+
+  <div class="field">
+    <%= form.label :not_other_discounts, 'Marca esta opción para que ponga: "Otros descuentos no aplicables"' %>
+    <%= form.check_box :not_other_discounts, id: :price_from %>
+  </div>
+
+  <div class="field">
+    <%= form.label :section_id, 'Sección' %>
+    <%= form.select :section_id, Section.ordered.collect { |s| [ s.title.capitalize, s.id ] }, { include_blank: true }, class: 'form-control', id: :price_section_id %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<br/>

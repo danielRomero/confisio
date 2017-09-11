@@ -1,0 +1,81 @@
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  <div class="text-center">
+    <div class="fa fa-phone fa-border fa-5x"></div>
+    <h3>¡Te llamamos gratis!</h3>
+    <p>Completa el siguiente formulario y te llamamos gratis.</p>
+    <small>
+      <small style="cursor: pointer" data-target="#myModal" data-toggle="modal">
+      Términos y condiciones del formulario
+      </small>
+    </small>
+  </div>
+</div>
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  <%= form_for(FreeCall.new, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :name, 'Nombre' %>
+      <%= form.text_field :name, required: true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :phone, 'Número de teléfono' %>
+      <%= form.text_field :phone, required: true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :section_id, '¿Con quién quieres hablar?' %>
+      <%= form.select :section_id, Section.ordered.collect { |s| [ s.title.capitalize, s.id ] }, { include_blank: true }, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.submit 'Enviar', class: 'btn btn-primary btn-block' %>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  <address itemscope itemtype="http://schema.org/LocalBusiness">
+    <span class="hidden" itemprop="name">Confisio</span>
+    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <span itemprop="streetAddress"><%= "#{Settings.address.street}, #{Settings.address.number}"%></span>
+      <span class="hidden" itemprop="addressLocality"><%= Settings.address.city %></span>
+      <span itemprop="postalCode"><%= Settings.address.postal_code %></span>
+      <span itemprop="addressRegion"><%= Settings.address.city %></span>
+    </div>
+    <br/>
+    <div class="fa fa-phone"></div>
+    <span itemprop="telephone" title="<%= Settings.phone.delete(' ') %>"><%= Settings.phone %></span>
+    <br/>
+    <br/>
+    <span title="<%= Settings.mobile_phone.delete(' ') %>">
+      <b class="fa fa-whatsapp"></b>
+      <%= Settings.mobile_phone %>
+      <span>¡Pide cita por Whatsapp!</span>
+    </span>
+    <br/>
+    <br/>
+    <div class="fa fa-envelope-o"></div>
+    <%= mail_to(Settings.email, Settings.email, subject: 'Consulta información') %>
+    <br/>
+    <br/>
+    <%=link_to('https://www.metromadrid.es/export/sites/metro/comun/documentos/planos/Planoesquematicoespanol.pdf', target: :blank) do %>
+      <%=image_tag('icon/metro-madrid.svg', size: '35x20') %>
+    <% end %>
+    <span>
+      <%=link_to('Barrio de la concepción', 'https://www.google.es/maps/dir/Barrio+de+la+Concepci%C3%B3n,+28027+Madrid/Confisio,+Avenida+de+Badajoz,+Madrid/@40.4402363,-3.6560694,17z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0xd422f39e3b11b87:0x801e84be096d7d60!2m2!1d-3.6519981!2d40.4390955!1m5!1m1!1s0xd422f31137e4ebb:0xd3d911e806f9b0e6!2m2!1d-3.6558397!2d40.4414183', target: :blank) %>
+    </span>
+  </address>
+</div>
+
+<div id="myModal" class="modal fade" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="myModalLabel" class="modal-title">Términos y condiciones de formulario de contacto</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_format("Los datos de carácter personal que nos remita a través de este formulario electrónico de contacto quedarán incorporados en los sistemas de información de Confisio\n\nConfisio garantiza la confidencialidad de todos los datos facilitados. Además de los mínimos establecidos por la legislación, la recogida y tratamiento de los datos se efectúan bajo niveles de seguridad que impiden la pérdida o manipulación de los datos.\n\nDe acuerdo con lo establecido en el artículo 5.1 de la vigente Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal (LOPD), le informamos que sus datos quedan incorporados en un fichero del que es titular Confisio debidamente inscrito en el Registro General de Protección de Datos con la finalidad de atender su petición y remitirle la información solicitada, así como enviarle comunicaciones comerciales, por medios electrónicos, sobre nuestros servicios que puedan ser de su interés.\n\nMediante la indicación de sus datos, y de conformidad con lo establecido en el artículo 6 de la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, usted otorga su consentimiento inequívoco a Confisio para que proceda, en cumplimiento de los fines mencionados en el apartado anterior, al tratamiento de los datos personales facilitados.\n\nPodrá ejercer sus derechos de acceso, rectificación, cancelación y oposición al tratamiento de sus datos, mediante las formas legalmente establecidas, a través de escrito dirigido a la dirección postal de Confisio #{Settings.address.street}, #{Settings.address.number}, #{Settings.address.postal_code} #{Settings.address.city} o enviando un correo electrónico a la dirección electrónica #{Settings.email}.\n\nAdemás, en cualquier momento, y de acuerdo con lo dispuesto en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, puede manifestar su deseo de NO recibir comunicaciones comerciales electrónicas, de forma sencilla y gratuita, enviando una solicitud por correo electrónico a #{Settings.email} indicando BAJA en el asunto del mensaje.") %>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" type="button">Entendido</button>
+      </div>
+    </div>
+  </div>
+</div>

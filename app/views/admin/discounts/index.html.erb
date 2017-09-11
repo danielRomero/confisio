@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Discounts</h1>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Title</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discounts.each do |discount| %>
+      <tr>
+        <td><%= discount.section.title %></td>
+        <td><%= discount.title %></td>
+        <td><%= discount.value %></td>
+        <td><%= link_to 'Edit', edit_admin_discount_path(discount) %></td>
+        <td><%= link_to 'Destroy', admin_discount_path(discount), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Discount', new_admin_discount_path %>

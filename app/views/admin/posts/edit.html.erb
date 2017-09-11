@@ -1,0 +1,6 @@
+<h1>Editing Admin Post</h1>
+
+<%= render 'form', post: @post %>
+
+<%= link_to 'Show', post_path(@post.section.permalink, @post.permalink) %> |
+<%= link_to 'Back', admin_posts_path %>

@@ -1,0 +1,9 @@
+.contact_banner{
+  position: fixed;
+  bottom: 15px; right: 15px;
+  margin: auto;
+  z-index: 1000;
+  span:hover{
+    cursor: pointer;
+  }
+}

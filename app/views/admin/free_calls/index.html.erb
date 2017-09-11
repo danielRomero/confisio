@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Free Calls</h1>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Section</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @free_calls.each do |free_call| %>
+      <tr class="<%= class_for_status_table(free_call) %>">
+        <td><%= free_call.id %></td>
+        <td><%= free_call.section.try(:title) %></td>
+        <td><%= free_call.name %></td>
+        <td><%= free_call.phone %></td>
+        <td>
+          <%= form_for [:admin, free_call], html: { class: 'form-inline' } do |f| %>
+            <%= f.select :status, FreeCall.statuses.keys.map {|status| [status.titleize, status]}, {}, class: 'form-control', required: true %>
+            <%=f.button :submit, class: 'btn btn-primary' do %>
+              <div class="fa fa-save"></div>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to admin_free_call_path(free_call), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <div class="fa fa-trash"></div>
+          <% end %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

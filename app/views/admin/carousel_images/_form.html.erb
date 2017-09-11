@@ -1,0 +1,31 @@
+<%= form_for([:admin, carousel_image], html: { multipart: true } ) do |form| %>
+  <% if carousel_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(carousel_image.errors.count, "error") %> prohibited this carousel_image from being saved:</h2>
+
+      <ul>
+      <% carousel_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= image_tag(carousel_image.image_url(:thumbnail)) if carousel_image.image? %>
+    <%= form.file_field :image, required: true %>
+    <%= form.hidden_field :image_cache %>
+  </p>
+
+  <div class="field">
+    <%= form.label :hidden, '¿Oculto? <small>(puedes ocultar una imagen si quieres que por el momento no se muestre en la web)</small>'.html_safe %><br/>
+    <%= form.radio_button :hidden, true %> Si
+    <%= form.radio_button :hidden, false %> No
+  </div>
+  <br/>
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+    <%= link_to 'Borrar', admin_carousel_image_path(carousel_image), method: :delete, class: 'btn btn-danger',data: { confirm: 'Are you sure?' } unless carousel_image.new_record? %>
+  </div>
+<% end %>
+<br/>

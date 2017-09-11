@@ -1,0 +1,15 @@
+<h1>Imágenes de portada <small>Click para editar</small></h1>
+
+<div class="row">
+  <% @carousel_images.each do |carousel_image| %>
+    <div class="col-xs-6 col-md-3">
+      <%= link_to edit_admin_carousel_image_path(carousel_image), class: 'thumbnail' do %>
+        <%= image_tag(carousel_image.image_url(:thumbnail)) if carousel_image.image_url %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'Nueva imagen de portada', new_admin_carousel_image_path %>

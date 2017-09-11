@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h2>Lista de descuentos <small><%= link_to('Pide cita online', contact_path) %> o por teléfono <%= Settings.phone %></small></h2>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+  <% @sections.each_with_index do |section, index| %>
+  <li role="presentation" class="<%= index.zero? ? 'active' : nil %>">
+    <a href="#<%= section.permalink %>" aria-controls="<%= section.permalink %>" role="tab" data-toggle="tab"><%= section.title.capitalize %></a>
+  </li>
+  <% end %>
+</ul>
+
+<div class="tab-content">
+  <% @sections.each_with_index do |section, index| %>
+  <div role="tabpanel" class="tab-pane <%= index.zero? ? 'active' : nil %>" id="<%= section.permalink %>">
+    <div class='row'>
+      <%= render section.discounts %>
+    </div>
+  </div>
+  <% end %>
+</div>

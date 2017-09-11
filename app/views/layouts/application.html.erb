@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= favicon_link_tag('logo/icon/confisio-16.svg') %>
+    <title>Confisio</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+
+    <div class="container application">
+      <%= render 'layouts/flashes' %>
+      <%= yield %>
+      <hr/>
+      <%= render 'free_calls/form' %>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted text-center">
+          <%= Settings.full_address %> | <%= Settings.phone %> | <%= mail_to(Settings.email, Settings.email, subject: 'Consulta información')%>
+        </p>
+      </div>
+    </footer>
+    <%= render('layouts/contact_banner') unless (params['controller'] == 'pages' && params['action'] == 'contact') %>
+  </body>
+</html>

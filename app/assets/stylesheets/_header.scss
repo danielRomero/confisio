@@ -1,0 +1,16 @@
+.navbar .navbar-header{
+  a.navbar-brand{
+    margin: 0;
+    padding: 0;
+  }
+  .confisio-logo{
+    background-image: none, url(image_path('logo/full/confisio-small.svg'));
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    width: 150px;
+    height: 50px;
+    margin: 0px;
+    padding: 0px;
+  }
+}

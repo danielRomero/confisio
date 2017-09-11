@@ -1,0 +1,50 @@
+<%= form_for([:admin, post], html: { multipart: true }) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :section_id, 'Sección' %>
+    <%= form.select :section_id, Section.ordered.collect { |s| [ s.title.capitalize, s.id ] }, { include_blank: true }, class: 'form-control', id: :price_section_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :post_title,  class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: 'tinymce' %>
+  </div>
+  <br/>
+
+  <p>
+    <label>Imagen portada <small>Se ajusta sola, pero el tamaño ideal es 1200x450</small></label><br/>
+    <%= image_tag(post.banner_url(:thumb)) if post.banner? %>
+    <%= form.file_field :banner %>
+    <%= form.hidden_field :banner_cache %>
+  </p>
+
+  <% if post.banner? %>
+    <div class="checkbox">
+      <label>
+        <%= form.check_box :remove_banner %>
+        Remove banner image
+      </label>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<br/>

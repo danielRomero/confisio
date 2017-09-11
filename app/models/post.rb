@@ -1,0 +1,24 @@
+class Post < ApplicationRecord
+  mount_uploader :banner, BannerUploader
+  acts_as_taggable
+  belongs_to :section
+
+  scope :ordered, -> () { order(created_at: :desc) }
+  scope :latest,  -> () { limit(6).ordered }
+  
+  before_create :set_permalink
+
+  validates :title, :body, presence: true
+  validates :permalink, uniqueness: true
+
+  private
+
+  def set_permalink
+    times = 0
+    loop do
+      self.permalink = "#{title.parameterize}#{times == 0 ? nil : '-' + times.to_s}"
+      times += 1
+      break unless Post.find_by(permalink: self.permalink)
+    end
+  end
+end
