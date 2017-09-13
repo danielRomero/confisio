@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   scope ':section_permalink' do
     get '/',          to: 'sections#show',   as: :section
-    get ':permalink', to: 'posts#show',      as: :post
     get 'descuentos', to: 'discounts#index', as: :section_discounts
+    get ':permalink', to: 'posts#show',      as: :post
   end
 end

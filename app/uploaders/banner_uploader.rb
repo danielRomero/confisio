@@ -30,6 +30,11 @@ class BannerUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+
+  version :mini_thumb do
+    process resize_and_pad: [250, 145]
+  end
+
   version :thumb do
     process resize_and_pad: [350, 200]
   end

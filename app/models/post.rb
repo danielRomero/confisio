@@ -5,6 +5,7 @@ class Post < ApplicationRecord
 
   scope :ordered, -> () { order(created_at: :desc) }
   scope :latest,  -> () { limit(6).ordered }
+  scope :others,  -> (post_id) { latest.where.not(id: post_id) }
   
   before_create :set_permalink
 

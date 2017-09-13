@@ -1,12 +1,19 @@
-<div class="full-height">
-  <%= image_tag 'logo/full/confisio-big.png', class: 'img-responsive center-block', alt: 'Confisio' %>
-  <%= home_link_to_sections %>
+<div class="full-height" >
+  <div class="row">
+    <div class="jumbotron vertical-center">
+      <div class="container text-center">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+          <%= image_tag 'logo/full/confisio-big.png', class: 'img-responsive center-block', alt: 'Confisio' %>
+          <%= home_link_to_sections %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="full-height">
   <%= render 'carousel' %>
 </div>
-
 
 <div class="full-height">
   <div class="row">
@@ -19,7 +26,3 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3036.565191585531!2d-3.6564193571196424!3d40.4406259524151!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd3d911e806f9b0e6!2sConfisio!5e0!3m2!1ses!2ses!4v1501413692442" class="map-full full-height" frameborder="0" style="border:0" allowfullscreen></iframe>
   </div>
 <% end %>
-
-<div class="full-height">
-  Footer
-</div>

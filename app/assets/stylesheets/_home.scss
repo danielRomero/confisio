@@ -7,3 +7,14 @@ iframe.map-full{
   width: 100%;
   pointer-events: none;
 }
+.jumbotron.vertical-center{
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+  margin: -60px 0 0 0;
+  background-color: white;
+  a{
+    display: inline;
+  }
+}

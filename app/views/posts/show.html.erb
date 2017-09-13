@@ -1,5 +1,9 @@
 <article>
-  <h1><%= @section.title.capitalize %></h1>
-  <br/>
-  <%= @post.body.html_safe %>
+  <h2><%= @post.title.capitalize %></h2>
+  <p><%= @post.body.html_safe %></p>
 </article>
+<br/>
+<div class="clearfix visible-xs-block"></div>
+<div class="row">
+  <%= render partial: 'posts/mini_box', collection: Post.others(@post.id), as: :post %>
+</div>

@@ -7,11 +7,12 @@ module ApplicationHelper
   end
 
   def home_link_to_sections
-    content_tag :div, class: 'text-center' do
-      Section.ordered.map do |section|
+    content_tag :p, class: 'text-center' do
+      sections = Section.ordered.map do |section|
         link_to(section.title, section_path(section.permalink))
-      end.join(', ').html_safe
-    end.html_safe
+      end.join(', ')
+      "Clínica de #{sections}".html_safe
+    end
   end
 
   def time_to_hour_minute(time)
