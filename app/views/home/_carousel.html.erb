@@ -10,9 +10,6 @@
     <% CarouselImage.availables.each_with_index do |carousel_image, index| %>
       <div class="item <%= index.zero? ? 'active' : nil %>">
         <%= image_tag carousel_image.image_url(:full) %>
-        <div class="carousel-caption">
-          0
-        </div>
       </div>
     <% end %>
   </div>
