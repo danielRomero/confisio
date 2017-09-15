@@ -1,11 +1,11 @@
 class Section < ApplicationRecord
   mount_uploader :banner, BannerUploader
-  has_many :prices
-  has_many :discounts
-  has_many :posts
+  has_many :prices, dependent: :destroy
+  has_many :discounts, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   validates :body, :title, presence: true
-  validates_uniqueness_of :permalink
+  validates :permalink, uniqueness: true
 
   scope :ordered, -> () { order(created_at: :asc) }
 

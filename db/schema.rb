@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20170814185256) do
   end
 
   create_table "prices", force: :cascade do |t|
-    t.string "unit_name"
     t.string "name"
     t.float "value", null: false
     t.time "session_duration"
