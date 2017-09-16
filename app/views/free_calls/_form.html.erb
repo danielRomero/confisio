@@ -29,7 +29,6 @@
     </div>
   <% end %>
 </div>
-
 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
   <address itemscope itemtype="http://schema.org/LocalBusiness">
     <span class="hidden" itemprop="name">Confisio</span>
@@ -55,11 +54,11 @@
     <%= mail_to(Settings.email, Settings.email, subject: 'Consulta información') %>
     <br/>
     <br/>
-    <%=link_to('https://www.metromadrid.es/export/sites/metro/comun/documentos/planos/Planoesquematicoespanol.pdf', target: :blank) do %>
+    <%=link_to('https://www.metromadrid.es/export/sites/metro/comun/documentos/planos/Planoesquematicoespanol.pdf', target: :blank, title: 'Metro de Madrid') do %>
       <%=image_tag('icon/metro-madrid.svg', size: '35x20') %>
     <% end %>
     <span>
-      <%=link_to('Barrio de la concepción', 'https://www.google.es/maps/dir/Barrio+de+la+Concepci%C3%B3n,+28027+Madrid/Confisio,+Avenida+de+Badajoz,+Madrid/@40.4402363,-3.6560694,17z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0xd422f39e3b11b87:0x801e84be096d7d60!2m2!1d-3.6519981!2d40.4390955!1m5!1m1!1s0xd422f31137e4ebb:0xd3d911e806f9b0e6!2m2!1d-3.6558397!2d40.4414183', target: :blank) %>
+      <%=link_to('Barrio de la concepción', 'https://www.google.es/maps/dir/Barrio+de+la+Concepci%C3%B3n,+28027+Madrid/Confisio,+Avenida+de+Badajoz,+Madrid/@40.4402363,-3.6560694,17z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0xd422f39e3b11b87:0x801e84be096d7d60!2m2!1d-3.6519981!2d40.4390955!1m5!1m1!1s0xd422f31137e4ebb:0xd3d911e806f9b0e6!2m2!1d-3.6558397!2d40.4414183', target: :blank, title: 'Barrio de la concepción') %>
     </span>
   </address>
 </div>

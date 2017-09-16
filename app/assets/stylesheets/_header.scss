@@ -14,3 +14,9 @@
     padding: 0px;
   }
 }
+.nav.navbar-nav.pull-right .btn{
+  color: white;
+}
+.navbar-default .navbar-nav > li > a.btn:hover{
+  color: #777;
+}

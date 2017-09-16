@@ -7,9 +7,9 @@ module ApplicationHelper
   end
 
   def home_link_to_sections
-    content_tag :p, class: 'text-center' do
+    content_tag :h2, class: 'text-center p' do
       sections = Section.ordered.map do |section|
-        link_to(section.title, section_path(section.permalink))
+        link_to(section.title, section_path(section.permalink), title: section.title)
       end.join(', ')
       "Clínica de #{sections}".html_safe
     end
@@ -38,6 +38,14 @@ module ApplicationHelper
 
   def free_price?(price)
     price.value.to_i == 0
+  end
+
+  def prices_tab_active?(index, section)
+    if @section.present?
+      @section.id == section.id
+    else
+      index.zero?
+    end
   end
 
 end

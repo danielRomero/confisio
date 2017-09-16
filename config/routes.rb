@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   scope ':section_permalink' do
     get '/',          to: 'sections#show',   as: :section
-    get 'descuentos', to: 'discounts#index', as: :section_discounts
+    get 'descuentos', to: 'sections#discounts', as: :section_discounts
+    get 'precios', to: 'sections#prices', as: :section_prices
     get ':permalink', to: 'posts#show',      as: :post
   end
 end

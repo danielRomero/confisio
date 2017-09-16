@@ -5,7 +5,7 @@
 
 <ul class="nav nav-tabs" role="tablist">
   <% @sections.each_with_index do |section, index| %>
-  <li role="presentation" class="<%= index.zero? ? 'active' : nil %>">
+  <li role="presentation" class="<%= prices_tab_active?(index, section) ? 'active' : nil %>">
     <a href="#<%= section.permalink %>" aria-controls="<%= section.permalink %>" role="tab" data-toggle="tab"><%= section.title.capitalize %></a>
   </li>
   <% end %>
@@ -13,7 +13,7 @@
 
 <div class="tab-content">
   <% @sections.each_with_index do |section, index| %>
-  <div role="tabpanel" class="tab-pane <%= index.zero? ? 'active' : nil %>" id="<%= section.permalink %>">
+  <div role="tabpanel" class="tab-pane <%= prices_tab_active?(index, section) ? 'active' : nil %>" id="<%= section.permalink %>">
     <div class='row'>
       <%= render section.prices %>
     </div>

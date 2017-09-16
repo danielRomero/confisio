@@ -7,21 +7,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to(root_path, class: 'navbar-brand', title: 'Confisio') do %>
+      <%= link_to(admin_path, class: 'navbar-brand') do %>
         <h1 class="confisio-logo">Confisio</h1>
       <% end %>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
+        <li><%= link_to('Admin', admin_path) %></li>
         <% Section.ordered.each do |section| %>
-          <li><%= link_to(section.title.capitalize, section_path(section.permalink), title: section.title.capitalize) %></li>
+          <li><%= link_to(section.title.capitalize, section_path(section.permalink)) %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav pull-right">
-        <li><%= link_to('Precios',    prices_path, title: 'Precios') %></li>
-        <li><%= link_to('Descuentos', discounts_path, title: 'Descuentos') %></li>
-        <li><%= link_to('Contacto',   contact_path, title: 'Contacto') %></li>
-        <li><%= link_to('¡Pide cita online!',   contact_path, title: '¡Pide cita online!', class: 'btn btn-danger') %></li>
+        <li><%= link_to('Precios',    prices_path) %></li>
+        <li><%= link_to('Descuentos', discounts_path) %></li>
+        <li><%= link_to('Contacto',   contact_path) %></li>
+        <% if current_user %>
+          <li><%= link_to('SALIR', destroy_user_session_path, method: :delete) %></li>
+        <% end %>
       </ul>
     </div>
   </div>

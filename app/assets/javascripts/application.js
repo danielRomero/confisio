@@ -13,10 +13,4 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
-//= require_tree .
 //= require bootstrap-sprockets
-
-$(document).on('turbolinks:load', function () {
-  tinymce.remove();
-  tinymce.init({selector:'.tinymce'});
-});

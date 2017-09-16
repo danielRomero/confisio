@@ -17,7 +17,7 @@
 
 <div class="full-height">
   <div class="row">
-    <%= render partial: 'posts/box', collection: @section.posts.latest, as: :post %>
+    <%= render partial: 'posts/mini_box', collection: @section.posts.ordered, as: :post %>
   </div>
 </div>
 
