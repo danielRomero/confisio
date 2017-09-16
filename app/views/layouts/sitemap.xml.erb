@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <% cache ['v1', 'sitemap'], :expires_in => 1.day do %>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+    <url>
+      <loc><%= root_url %></loc>
+      <lastmod><%= I18n.l(7.days.ago, :format => :w3c) %></lastmod>      
+    </url>
+
+    <url>
+      <loc><%= prices_url %></loc>
+      <lastmod><%= I18n.l(Price.maximum(:updated_at), :format => :w3c) %></lastmod>
+    </url>
+
+    <url>
+      <loc><%= discounts_url %></loc>
+      <lastmod><%= I18n.l(Discount.maximum(:updated_at), :format => :w3c) %></lastmod>
+    </url>
+    
+    <url>
+      <loc><%= contact_url %></loc>
+      <lastmod><%= I18n.l(1.month.ago, :format => :w3c) %></lastmod>
+    </url>
+
+    <% Section.all.each do |section| %>
+
+      <url>
+        <loc><%= section_url(section.permalink) %></loc>
+        <lastmod><%= I18n.l(1.week.ago, :format => :w3c) %></lastmod>
+      </url>
+
+      <% section.posts.all.each do |post| %>
+        <url>
+          <loc><%= post_url(section.permalink, post.permalink) %></loc>
+          <lastmod><%= I18n.l(1.week.ago, :format => :w3c) %></lastmod>
+        </url>
+      <% end %>
+
+      <url>
+        <loc><%= section_prices_url(section.permalink) %></loc>
+        <lastmod><%= I18n.l(section.updated_at, :format => :w3c) %></lastmod>
+      </url>
+
+      <url>
+        <loc><%= section_discounts_url(section.permalink) %></loc>
+        <lastmod><%= I18n.l(section.updated_at, :format => :w3c) %></lastmod>
+      </url>
+
+    <% end %>
+    
+  </urlset>
+<% end %>

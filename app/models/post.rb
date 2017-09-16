@@ -13,6 +13,15 @@ class Post < ApplicationRecord
   validates :title, :body, presence: true
   validates :permalink, uniqueness: true
 
+  def body_preview
+    doc = Nokogiri::HTML(self.body)
+    result = ''
+    doc.css('p').each do |elem|
+      result = result + elem.text
+      break if result.length >= 250
+    end
+  end
+
   private
 
   def set_permalink

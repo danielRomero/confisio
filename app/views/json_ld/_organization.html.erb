@@ -1,0 +1,31 @@
+<script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type" : "Organization",
+    "url" : "<%= root_url %>",
+    "logo": "<%= asset_url('logo/full/confisio-small.svg') %>",
+    "email": "<%= Settings.email %>",
+    "legalName": "Confisio",
+    "numberOfEmployees": "4",
+    "contactPoint" : [
+      {
+        "@type" : "ContactPoint",
+        "telephone" : "+34-<%= Settings.phone.delete(' ') %>",
+        "contactType" : "customer service",
+        "areaServed" : "ES",
+        "availableLanguage" : "Spanish"
+      },
+      {
+        "@type" : "ContactPoint",
+        "telephone" : "+34-<%= Settings.mobile_phone.delete(' ') %>",
+        "contactType" : "customer service",
+        "areaServed" : "ES",
+        "availableLanguage" : "Spanish"
+      }
+    ],
+    "sameAs" : [
+      "https://www.facebook.com/clinicaconfisio",
+      "https://plus.google.com/111880488504173820946"
+    ]
+  }
+</script>

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'contacto',   to: 'pages#contact',   as: :contact
   
   resources  :free_calls, only: :create
+  
+  get 'sitemap', to: 'application#sitemap', as: 'sitemap', defaults: { format: 'xml' }
 
   scope ':section_permalink' do
     get '/',          to: 'sections#show',   as: :section
