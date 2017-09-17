@@ -1,0 +1,27 @@
+<%
+title = "Confisio" + (@title ? " · #{@title}" : ' · Fisioterapia, Psicología, Podología y Nutrición')
+description = @description ? @description : 'Clínica de fisioterapia, psicología, podología y nutrición en Madrid. Para nosotros es importante resolver tus dudas, y que entiendas las causas del problema, para hacerte participe del tratamiento y evitar recaidas. Personal colegiado en constante formación.'
+image = @meta_image || image_url('logo/full/confisio-big.png')
+
+%>
+<title><%= title %></title>
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="<%= title %>">
+<meta name='description' content="<%= description %>">
+<meta itemprop="image" content="<%= image %>">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="<%= image %>">
+<meta name="twitter:title" content="<%= title %>">
+<meta name="twitter:description" content="<%= description %>">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="<%= image %>">
+
+<!-- Open Graph data -->
+<meta property="fb:app_id" content="773252546126437">
+<meta property="og:title" content="<%= title %>" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="<%= request.original_url %>" />
+<meta property="og:image" content="<%= image %>" />
+<meta property="og:description" content="<%= description %>" />
+<meta property="og:site_name" content="Confisio, clínicad de fisioterapia" />
