@@ -8,6 +8,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
     <%= tinymce_assets %>
@@ -20,5 +21,11 @@
       <%= render 'layouts/flashes' %>
       <%= yield %>
     </div>
+
+    <script>
+      $(document).on('turbolinks:load', function() {
+        <%= yield :javascript_ready %>
+      });
+    </script>
   </body>
 </html>

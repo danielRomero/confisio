@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources  :discounts
     resources  :prices
     resources  :sections, except: :show
-    resources  :posts, except: :show
+    resources  :posts, except: :show do
+      collection do
+        post :autocomplete_tags, constraints: { format: :json }
+      end
+    end
     resources  :carousel_images, except: :show
     resources  :free_calls, only: [:index, :delete, :update]
   end

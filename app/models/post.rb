@@ -22,6 +22,10 @@ class Post < ApplicationRecord
     end
   end
 
+  def self.autocomplete(name)
+    ActsAsTaggableOn::Tag.where("tags.name LIKE ?", "%#{name}%")
+  end
+
   private
 
   def set_permalink

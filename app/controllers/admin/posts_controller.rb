@@ -39,6 +39,13 @@ module Admin
       redirect_to admin_posts_url, notice: 'Post was successfully destroyed.'
     end
 
+    def autocomplete_tags
+      tags = Post.autocomplete(params[:q]).pluck(:name)
+      render json: {
+        items: tags.map { |t| { id: t, text: t } }
+      }
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
@@ -47,7 +54,7 @@ module Admin
 
       # Only allow a trusted parameter "white list" through.
       def post_params
-        params.require(:post).permit(:section_id, :title, :body, :tag_list, :banner, :banner_cache, :remove_banner)
+        params.require(:post).permit(:section_id, :title, :body, :banner, :banner_cache, :remove_banner, tag_list: [])
       end
   end
 end

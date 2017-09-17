@@ -43,8 +43,45 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <%= form.label :tag_list, 'Lista de Tags' %>
+    <%= form.select :tag_list,
+          form.object.tag_list.collect {|t| [t, t]}, {},
+          class: 'form-control', multiple: true, id: 'post_tag_list'
+    %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
 <br/>
+
+<% content_for :javascript_ready do %>
+  $('#post_tag_list').select2({
+    language: '<%= I18n.locale %>',
+    minimumInputLength: 2,
+    tags: true,
+    theme: "bootstrap",
+    ajax: {
+      url: "<%=  autocomplete_tags_admin_posts_path %>",
+      dataType: 'json',
+      delay: 250,
+      method: 'POST',
+      cache: true,
+      data: function (params) {
+        var csrf_name  = $("meta[name='csrf-param']").attr('content');
+        var csrf_value = $("meta[name='csrf-token']").attr('content');
+        var obj = { q: params.term };
+        obj[csrf_name] = csrf_value;
+        return obj;
+      },
+      processResults: function (data, params) {
+        return {
+          results: data.items,
+        };
+      }
+    }
+  });
+<% end %>
+
