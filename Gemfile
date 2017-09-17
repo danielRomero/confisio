@@ -38,3 +38,6 @@ gem 'select2-rails'
 group :development do
   gem 'pry-rails'
 end
+group :production do
+  gem 'sendgrid-ruby'
+end
