@@ -1,0 +1,15 @@
+---
+default: &default
+  cloud_name: confisio
+  api_key: Rails.application.secrets.cloudinary['api_key']
+  api_secret: Rails.application.secrets.cloudinary['api_secret']
+  enhance_image_tag: true
+  static_image_support: false
+
+development:
+  cloud_name: confisio-dev
+  <<: *default
+
+production:
+  cloud_name: confisio-prod
+  <<: *default

@@ -32,7 +32,7 @@ gem 'config'
 gem 'acts-as-taggable-on'
 gem 'tinymce-rails'
 gem 'carrierwave', '~> 1.0'
-gem 'mini_magick'
+gem 'cloudinary'
 gem 'select2-rails'
 
 group :development do
