@@ -51,7 +51,13 @@ class BannerUploader < CarrierWave::Uploader::Base
   end
 
   def public_id
-    return "#{model.section.permalink}-#{model.permalink}"
+    result = "#{Rails.env}/section/"
+    if model.respond_to?(:section)
+      result += [model.section.permalink, model.permalink].join('/')
+    else
+      result += model.class.to_s.downcase
+    end
+    result
   end
 
   # Override the filename of the uploaded files:

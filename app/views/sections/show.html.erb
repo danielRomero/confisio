@@ -4,7 +4,7 @@
       <div class="span12">
         <div class="bg-image">
           <%= image_tag(@section.banner_url(:header), alt: @section.title, class: 'img-responsive') %>
-          <h2><%= @section.title %></h2>
+          <h2><%= @section.title.capitalize %></h2>
         </div>
       </div>
     </div>

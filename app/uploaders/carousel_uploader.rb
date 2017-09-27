@@ -6,7 +6,7 @@ class CarouselUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -54,7 +54,7 @@ class CarouselUploader < CarrierWave::Uploader::Base
   # end
 
   def public_id
-    return "confisio-#{SecureRandom.uuid}"
+    return "#{Rails.env}/home/carousel/confisio-#{SecureRandom.uuid}"
   end
 
 end
