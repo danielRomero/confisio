@@ -1,4 +1,4 @@
 <div class="page-header">
-  <h2>Lista de descuentos de <%= @section.title %><small><%= link_to('Pide cita online', contact_path, title: 'Pide cita online') %> o por teléfono <%= Settings.phone %></small></h2>
+  <h2>Lista de descuentos de <%= @section.title %><small><%= link_to('Pide cita online', Settings.reservations_url, title: 'Pide cita online') %> o por teléfono <%= Settings.phone %></small></h2>
   <%= render @section.discounts %>
 </div>
