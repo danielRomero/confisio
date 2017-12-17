@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>Artículos <%= link_to 'Nuevo Artículo', new_admin_post_path, class: 'btn btn-primary btn-sm' %></h1>
 
 <table class="table table-hover table-responsive">
   <thead>
@@ -22,14 +22,10 @@
         <td><%= post.updated_at.strftime('%d/%m/%Y') %></td>
         <td><%= post.section.title %></td>
         <td><%= post.title %></td>
-        <td><%= link_to 'Show', post_path(post.section.permalink, post.permalink) %></td>
-        <td><%= link_to 'Edit', edit_admin_post_path(post) %></td>
-        <td><%= link_to 'Destroy', admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', post_path(post.section.permalink, post.permalink) %></td>
+        <td><%= link_to 'Editar', edit_admin_post_path(post) %></td>
+        <td><%= link_to 'Borrar', admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Post', new_admin_post_path %>

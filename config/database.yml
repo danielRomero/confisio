@@ -8,3 +8,6 @@ default: &default
 development:
   <<: *default
   database: confisio_development_heroku
+  host: 127.0.0.1
+  username: postgres
+  password: postgres
