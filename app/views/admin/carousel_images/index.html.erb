@@ -4,7 +4,7 @@
   <% @carousel_images.each do |carousel_image| %>
     <div class="col-xs-6 col-md-3">
       <%= link_to edit_admin_carousel_image_path(carousel_image), class: 'thumbnail' do %>
-        <%= image_tag(carousel_image.image_url(:thumbnail)) if carousel_image.image_url %>
+        <%= image_tag(carousel_image.image_url(:thumbnail)) if carousel_image.image? %>
       <% end %>
     </div>
   <% end %>
